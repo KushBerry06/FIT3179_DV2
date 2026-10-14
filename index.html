@@ -17,12 +17,63 @@
 </header>
 
 <main>
-  <section>
+  <section class="world-section">
+
     <div class="section-kicker">01 · WORLD</div>
+
     <h2>A world of dogs</h2>
-    <p class="section-intro">Modern breeds were developed across many countries and for many different roles. Start with where recognised breeds came from, then trace how those origins connect with breed groups.</p>
-    <div class="viz wide" id="v1"></div>
-    <div class="viz wide" id="v2"></div>
+
+    <p class="section-intro">
+      Modern breeds were developed across many countries and for many different roles.
+      Start with where recognised breeds came from, then explore how those origins
+      connect with different breed groups.
+    </p>
+
+    <div class="world-layout">
+
+      <!-- WORLD MAP: spans both columns -->
+      <div class="viz world-map" id="v1"></div>
+
+      <!-- TEXT: bottom-left -->
+      <div class="world-story">
+
+        <span class="story-kicker">FROM PLACE TO PURPOSE</span>
+
+        <h3>Europe stands out as a major centre of breed development.</h3>
+
+        <p>
+          The proportional-symbol map shows how recognised breeds are distributed
+          by country of origin. Larger circles represent countries associated with
+          more FCI-recognised breeds.
+        </p>
+
+        <p>
+          The United Kingdom, France and Germany form particularly prominent
+          clusters, while recognised breeds also originate across Asia, the
+          Americas, Africa and Oceania.
+        </p>
+
+        <div class="how-to-read">
+          <h4>How to read the next chart</h4>
+
+          <p>
+            The chord diagram moves from <strong>where breeds came from</strong>
+            to <strong>what kinds of dogs those regions produced</strong>.
+          </p>
+
+          <p>
+            <strong>Thicker connections represent more recognised breeds</strong>
+            linking a region with that breed group.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CHORD: bottom-right -->
+      <div class="viz world-chord" id="v2"></div>
+
+    </div>
+
   </section>
 
   <section>
