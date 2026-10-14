@@ -1,19 +1,30 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
   "data": {
     "url": "data/pet_ownership_2025_grid.csv"
   },
+
   "title": {
-    "text": "How Common Are Different Pets in Australian Homes?",
-    "subtitle": "Each row is a separate 100-household unit grid; categories can overlap because households can own multiple pet types",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "anchor": "start"
+    "text": "Dogs Are Australia's Most Common Household Pet",
+    "subtitle": [
+      "Each row represents 100 households; highlighted squares show approximately how many own that pet type",
+      "Exact survey percentages are shown at right • Categories overlap because households can own more than one type"
+    ],
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 11,
+    "subtitlePadding": 5,
+    "offset": 12,
+    "color": "#24211E",
+    "subtitleColor": "#6F675F"
   },
+
   "facet": {
     "row": {
       "field": "Pet",
       "type": "nominal",
+
       "sort": [
         "Dogs",
         "Cats",
@@ -23,61 +34,153 @@
         "Reptiles",
         "Other pets"
       ],
+
       "header": {
         "title": null,
         "labelAngle": 0,
+        "labelFont": "Inter",
         "labelFontSize": 12,
         "labelFontWeight": "bold",
-        "labelAlign": "left"
+        "labelColor": "#24211E",
+        "labelAlign": "left",
+        "labelPadding": 8
       }
     }
   },
+
   "spec": {
-    "width": 420,
-    "height": 55,
-    "mark": {
-      "type": "square",
-      "size": 120
-    },
-    "encoding": {
-      "x": {
-        "field": "Col",
-        "type": "ordinal",
-        "axis": null
-      },
-      "y": {
-        "field": "Row",
-        "type": "ordinal",
-        "axis": null
-      },
-      "color": {
-        "condition": {
-          "test": "datum.Owned == 1",
-          "value": "#C96A4A"
+    "width": 360,
+    "height": 48,
+
+    "layer": [
+      {
+        "mark": {
+          "type": "square",
+          "size": 72,
+          "cornerRadius": 1
         },
-        "value": "#E5E0D8"
-      },
-      "tooltip": [
-        {
-          "field": "Pet",
-          "type": "nominal"
-        },
-        {
-          "field": "HouseholdPenetration",
-          "type": "quantitative",
-          "title": "Households with this pet",
-          "format": ".1f"
+
+        "encoding": {
+          "x": {
+            "field": "Col",
+            "type": "ordinal",
+            "axis": null
+          },
+
+          "y": {
+            "field": "Row",
+            "type": "ordinal",
+            "axis": null,
+            "sort": "ascending"
+          },
+
+          "color": {
+            "condition": [
+              {
+                "test": "datum.Owned == 1 && datum.Pet === 'Dogs'",
+                "value": "#C96A4A"
+              },
+
+              {
+                "test": "datum.Owned == 1",
+                "value": "#3C7D7B"
+              }
+            ],
+
+            "value": "#E7E1D9"
+          },
+
+          "opacity": {
+            "condition": {
+              "test": "datum.Owned == 1",
+              "value": 1
+            },
+
+            "value": 0.72
+          },
+
+          "tooltip": [
+            {
+              "field": "Pet",
+              "type": "nominal",
+              "title": "Pet type"
+            },
+
+            {
+              "field": "HouseholdPenetration",
+              "type": "quantitative",
+              "title": "Australian households",
+              "format": ".1f"
+            }
+          ]
         }
-      ]
-    }
+      },
+
+      {
+        "transform": [
+          {
+            "filter": "datum.Cell === 1"
+          },
+
+          {
+            "calculate": "format(datum.HouseholdPenetration, '.1f') + '%'",
+            "as": "PercentageLabel"
+          }
+        ],
+
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "font": "Inter",
+          "fontSize": 15,
+          "fontWeight": "bold"
+        },
+
+        "encoding": {
+          "x": {
+            "value": 305
+          },
+
+          "y": {
+            "value": 24
+          },
+
+          "text": {
+            "field": "PercentageLabel"
+          },
+
+          "color": {
+            "condition": {
+              "test": "datum.Pet === 'Dogs'",
+              "value": "#C96A4A"
+            },
+
+            "value": "#3C7D7B"
+          }
+        }
+      }
+    ]
   },
+
   "config": {
-    "background": "#FCFAF6",
+    "background": "#FFFDF9",
+
     "view": {
       "stroke": null
     },
+
     "facet": {
-      "spacing": 5
+      "spacing": 8
+    },
+
+    "title": {
+      "font": "Inter",
+      "subtitleFont": "Inter"
+    },
+
+    "tooltip": {
+      "font": "Inter"
     }
   }
 }

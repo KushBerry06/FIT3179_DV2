@@ -40,7 +40,15 @@
           "update": "datum.link.Region"
         },
         {
-          "events": "view:mouseout",
+          "events": "@nodeArcs:mouseout",
+          "update": "null"
+        },
+        {
+          "events": "@nodeLabels:mouseout",
+          "update": "null"
+        },
+        {
+          "events": "@chordLinks:mouseout",
           "update": "null"
         }
       ]
@@ -63,7 +71,15 @@
           "update": "datum.link.Breed_Group"
         },
         {
-          "events": "view:mouseout",
+          "events": "@nodeArcs:mouseout",
+          "update": "null"
+        },
+        {
+          "events": "@nodeLabels:mouseout",
+          "update": "null"
+        },
+        {
+          "events": "@chordLinks:mouseout",
           "update": "null"
         }
       ]
@@ -79,55 +95,46 @@
     {
       "name": "nodes",
       "source": "chord",
-
       "transform": [
         {
           "type": "formula",
           "expr": "datum.nodes",
           "as": "arr"
         },
-
         {
           "type": "flatten",
           "fields": ["arr"]
         },
-
         {
           "type": "formula",
           "expr": "datum.arr",
           "as": "node"
         },
-
         {
           "type": "formula",
-          "expr": "datum.node.Name === 'Companion and Toy Dogs' ? 'Companion & Toy Dogs' : datum.node.Name === 'Pinscher and Schnauzer' ? 'Pinscher & Schnauzer' : datum.node.Name === 'Scent hounds and related breeds' ? 'Scent hounds' : datum.node.Name === 'Sheepdogs and Cattledogs' ? 'Sheepdogs & Cattledogs' : datum.node.Name === 'Spitz and primitive types' ? 'Spitz & primitive types' : datum.node.Name",
+          "expr": "datum.node.Name === 'Companion and Toy Dogs' ? 'Companion & Toy Dogs' : datum.node.Name === 'Pinscher and Schnauzer' ? 'Pinscher & Schnauzer' : datum.node.Name === 'Scent hounds and related breeds' ? 'Scent hounds' : datum.node.Name === 'Sheepdogs and Cattledogs' ? 'Sheepdogs & Cattle dogs' : datum.node.Name === 'Spitz and primitive types' ? 'Spitz & primitive types' : datum.node.Name",
           "as": "LabelText"
         },
-
         {
           "type": "formula",
-          "expr": "datum.node.Name === 'Asia' ? 455 : datum.node.Name === 'Americas' ? 420 : datum.node.Name === 'Oceania' ? 375 : datum.node.Name === 'Africa' ? 330 : datum.node.Name === 'Companion and Toy Dogs' ? 275 : datum.node.Name === 'Dachshunds' ? 225 : datum.node.LabelX",
+          "expr": "datum.node.Name === 'Sheepdogs and Cattledogs' ? 146 : datum.node.Name === 'Pinscher and Schnauzer' ? 182 : datum.node.Name === 'Dachshunds' ? 243 : datum.node.Name === 'Companion and Toy Dogs' ? 300 : datum.node.Name === 'Africa' ? 368 : datum.node.Name === 'Oceania' ? 416 : datum.node.Name === 'Americas' ? 463 : datum.node.Name === 'Asia' ? 505 : datum.node.LabelX + 18",
           "as": "LabelX2"
         },
-
         {
           "type": "formula",
-          "expr": "datum.node.Name === 'Asia' ? 492 : datum.node.Name === 'Americas' ? 522 : datum.node.Name === 'Oceania' ? 548 : datum.node.Name === 'Africa' ? 565 : datum.node.Name === 'Companion and Toy Dogs' ? 565 : datum.node.Name === 'Dachshunds' ? 546 : datum.node.LabelY",
+          "expr": "datum.node.Name === 'Pinscher and Schnauzer' ? 520 : datum.node.Name === 'Dachshunds' ? 548 : datum.node.Name === 'Companion and Toy Dogs' ? 568 : datum.node.Name === 'Africa' ? 568 : datum.node.Name === 'Oceania' ? 548 : datum.node.Name === 'Americas' ? 523 : datum.node.Name === 'Asia' ? 493 : datum.node.LabelY",
           "as": "LabelY2"
         },
-
         {
           "type": "formula",
           "expr": "(datum.node.StartAngle + datum.node.EndAngle) / 2",
           "as": "MidAngle"
         },
-
         {
           "type": "formula",
-          "expr": "300 + 228 * sin(datum.MidAngle)",
+          "expr": "315 + 228 * sin(datum.MidAngle)",
           "as": "LeaderX"
         },
-
         {
           "type": "formula",
           "expr": "300 - 228 * cos(datum.MidAngle)",
@@ -139,19 +146,16 @@
     {
       "name": "links",
       "source": "chord",
-
       "transform": [
         {
           "type": "formula",
           "expr": "datum.links",
           "as": "arr"
         },
-
         {
           "type": "flatten",
           "fields": ["arr"]
         },
-
         {
           "type": "formula",
           "expr": "datum.arr",
@@ -165,22 +169,16 @@
     {
       "name": "linkWidth",
       "type": "sqrt",
-
       "domain": {
         "data": "links",
         "field": "link.Count"
       },
-
-      "range": [
-        0.8,
-        12
-      ]
+      "range": [0.8, 12]
     },
 
     {
       "name": "regionColor",
       "type": "ordinal",
-
       "domain": [
         "Europe",
         "Asia",
@@ -188,7 +186,6 @@
         "Oceania",
         "Africa"
       ],
-
       "range": [
         "#0072B2",
         "#E69F00",
@@ -200,51 +197,40 @@
   ],
 
   "marks": [
-
     {
       "name": "chordLinks",
-
       "type": "path",
-
       "from": {
         "data": "links"
       },
-
       "encode": {
         "enter": {
           "path": {
             "field": "link.Path"
           },
-
           "stroke": {
             "scale": "regionColor",
             "field": "link.Region"
           },
-
           "fill": {
             "value": null
           },
-
           "strokeWidth": {
             "scale": "linkWidth",
             "field": "link.Count"
           },
-
           "strokeCap": {
             "value": "round"
           },
-
           "tooltip": {
             "signal": "datum.link.Region + ' → ' + datum.link.Breed_Group + ': ' + datum.link.Count + ' recognised breeds'"
           }
         },
-
         "update": {
           "strokeOpacity": {
-            "signal": "(hoverRegion === null && hoverGroup === null) ? 0.24 : ((hoverRegion === null || datum.link.Region === hoverRegion) && (hoverGroup === null || datum.link.Breed_Group === hoverGroup) ? 0.92 : 0.035)"
+            "signal": "(hoverRegion === null && hoverGroup === null) ? 0.16 : ((hoverRegion === null || datum.link.Region === hoverRegion) && (hoverGroup === null || datum.link.Breed_Group === hoverGroup) ? 0.92 : 0.025)"
           }
         },
-
         "hover": {
           "strokeOpacity": {
             "value": 1
@@ -255,103 +241,92 @@
 
     {
       "name": "nodeArcs",
-
       "type": "arc",
-
       "from": {
         "data": "nodes"
       },
-
       "encode": {
         "enter": {
           "x": {
-            "value": 300
+            "value": 315
           },
-
           "y": {
             "value": 300
           },
-
           "startAngle": {
             "field": "node.StartAngle"
           },
-
           "endAngle": {
             "field": "node.EndAngle"
           },
-
           "innerRadius": {
             "value": 205
           },
-
           "outerRadius": {
             "value": 225
           },
-
           "fill": {
             "signal": "datum.node.Type === 'Region' ? scale('regionColor', datum.node.Name) : '#3C7D7B'"
           },
-
           "stroke": {
             "value": "#FFFDF9"
           },
-
           "strokeWidth": {
             "value": 1.5
           },
-
           "cursor": {
             "value": "pointer"
           },
-
           "tooltip": {
             "signal": "datum.node.Name + ': ' + datum.node.Total + ' breed associations'"
           }
         },
-
         "update": {
           "opacity": {
-            "signal": "(hoverRegion === null && hoverGroup === null) ? 1 : datum.node.Type === 'Region' ? (hoverRegion === null || datum.node.Name === hoverRegion ? 1 : 0.25) : (hoverGroup === null || datum.node.Name === hoverGroup ? 1 : 0.25)"
+            "signal": "(hoverRegion === null && hoverGroup === null) ? 1 : datum.node.Type === 'Region' ? (hoverRegion === null || datum.node.Name === hoverRegion ? 1 : 0.20) : (hoverGroup === null || datum.node.Name === hoverGroup ? 1 : 0.20)"
+          }
+        },
+        "hover": {
+          "outerRadius": {
+            "value": 230
           }
         }
       }
     },
 
     {
+      "name": "leaderLines",
       "type": "rule",
-
       "from": {
         "data": "nodes"
       },
-
       "encode": {
         "enter": {
           "x": {
             "field": "LeaderX"
           },
-
           "y": {
             "field": "LeaderY"
           },
-
           "x2": {
             "field": "LabelX2"
           },
-
           "y2": {
             "field": "LabelY2"
           },
-
           "stroke": {
-            "value": "#B8B0A7"
+            "value": "#9E958B"
           },
-
           "strokeWidth": {
-            "value": 0.7
+            "value": 0.8
           },
-
           "strokeOpacity": {
-            "value": 0.55
+            "value": 0.58
+          }
+        },
+        "update": {
+          "opacity": {
+            "signal": "(hoverRegion === null && hoverGroup === null) ? 1 : datum.node.Type === 'Region' ? (hoverRegion === null || datum.node.Name === hoverRegion ? 1 : 0.15) : (hoverGroup === null || datum.node.Name === hoverGroup ? 1 : 0.15)"
           }
         }
       }
@@ -359,151 +334,55 @@
 
     {
       "name": "nodeLabels",
-
       "type": "text",
-
       "from": {
         "data": "nodes"
       },
-
       "encode": {
         "enter": {
           "x": {
             "field": "LabelX2"
           },
-
           "y": {
             "field": "LabelY2"
           },
-
           "text": {
             "field": "LabelText"
           },
-
           "align": {
             "field": "node.Align"
           },
-
           "baseline": {
             "value": "middle"
           },
-
           "font": {
             "value": "Inter"
           },
-
           "fontSize": {
-            "signal": "datum.node.Type === 'Region' ? 11 : 10"
+            "signal": "datum.node.Type === 'Region' ? 11 : 9.5"
           },
-
           "fontWeight": {
             "signal": "datum.node.Type === 'Region' ? 700 : 500"
           },
-
           "fill": {
-            "signal": "datum.node.Type === 'Region' ? scale('regionColor', datum.node.Name) : '#3E3935'"
+            "signal": "datum.node.Type === 'Region' ? scale('regionColor', datum.node.Name) : '#3C7D7B'"
           },
-
           "limit": {
-            "value": 145
+            "value": 150
           },
-
           "cursor": {
             "value": "pointer"
           },
-
           "tooltip": {
             "signal": "datum.node.Name + ': ' + datum.node.Total + ' breed associations'"
           }
         },
-
         "update": {
           "opacity": {
-            "signal": "(hoverRegion === null && hoverGroup === null) ? 1 : datum.node.Type === 'Region' ? (hoverRegion === null || datum.node.Name === hoverRegion ? 1 : 0.32) : (hoverGroup === null || datum.node.Name === hoverGroup ? 1 : 0.32)"
-          }
-        }
-      }
-    },
-
-    {
-      "type": "text",
-
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 300
+            "signal": "(hoverRegion === null && hoverGroup === null) ? 1 : datum.node.Type === 'Region' ? (hoverRegion === null || datum.node.Name === hoverRegion ? 1 : 0.25) : (hoverGroup === null || datum.node.Name === hoverGroup ? 1 : 0.25)"
           },
-
-          "y": {
-            "value": 292
-          },
-
-          "text": {
-            "value": "REGION"
-          },
-
-          "align": {
-            "value": "center"
-          },
-
-          "font": {
-            "value": "Inter"
-          },
-
-          "fontSize": {
-            "value": 9
-          },
-
           "fontWeight": {
-            "value": 700
-          },
-
-          "letterSpacing": {
-            "value": 1.5
-          },
-
-          "fill": {
-            "value": "#9A9189"
-          }
-        }
-      }
-    },
-
-    {
-      "type": "text",
-
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 300
-          },
-
-          "y": {
-            "value": 311
-          },
-
-          "text": {
-            "value": "→ FCI GROUP"
-          },
-
-          "align": {
-            "value": "center"
-          },
-
-          "font": {
-            "value": "Inter"
-          },
-
-          "fontSize": {
-            "value": 11
-          },
-
-          "fontWeight": {
-            "value": 700
-          },
-
-          "fill": {
-            "value": "#514B46"
+            "signal": "(datum.node.Type === 'Region' || (hoverGroup !== null && datum.node.Name === hoverGroup)) ? 700 : 500"
           }
         }
       }

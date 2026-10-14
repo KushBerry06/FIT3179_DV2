@@ -1,74 +1,207 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 650,
-  "height": 500,
-  "title": {
-    "text": "Where Is Australia's Pedigree-Dog Community Most Concentrated?",
-    "subtitle": "Dogs Australia members per 100,000 residents, 2025",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "anchor": "start"
+
+  "width": "container",
+  "height": 430,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
   },
+
+  "title": {
+    "text": "Where Is Australia's Pedigree-Dog Community Strongest?",
+    "subtitle": [
+      "Dogs Australia members per 100,000 residents, 2025",
+      "Normalising by population makes states of very different sizes comparable"
+    ],
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 11,
+    "subtitlePadding": 5,
+    "offset": 12,
+    "color": "#24211E",
+    "subtitleColor": "#6F675F"
+  },
+
   "projection": {
     "type": "mercator"
   },
+
   "data": {
-    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/refs/heads/master/states.min.geojson"
+    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/refs/heads/master/states.min.geojson",
+
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
   },
+
   "transform": [
     {
       "lookup": "properties.STATE_NAME",
+
       "from": {
         "data": {
           "url": "data/australia_state_membership.csv"
         },
+
         "key": "State",
+
         "fields": [
+          "Members_2021",
           "Members_2025",
           "Population_2025",
-          "Members_per_100k"
+          "Members_per_100k",
+          "Change_2021_2025_pct"
         ]
       }
     }
   ],
+
+  "params": [
+    {
+      "name": "stateHover",
+
+      "select": {
+        "type": "point",
+        "on": "pointerover",
+        "clear": "pointerout"
+      }
+    }
+  ],
+
   "mark": {
     "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 1
+    "cursor": "pointer"
   },
+
   "encoding": {
     "color": {
-      "field": "Members_per_100k",
-      "type": "quantitative",
-      "title": "Members per 100k",
-      "scale": {
-        "scheme": "oranges"
-      }
+      "condition": {
+        "test": "isValid(datum.Members_per_100k)",
+
+        "field": "Members_per_100k",
+        "type": "quantitative",
+
+        "title": "Members per 100k",
+
+        "scale": {
+          "domain": [
+            50,
+            155
+          ],
+
+          "range": [
+            "#E4EFEC",
+            "#86B6AD",
+            "#3C7D7B",
+            "#174E4D"
+          ],
+
+          "clamp": true
+        }
+      },
+
+      "value": "#E8E3DC"
     },
+
+    "stroke": {
+      "condition": {
+        "param": "stateHover",
+        "empty": false,
+        "value": "#24211E"
+      },
+
+      "value": "#FFFDF9"
+    },
+
+    "strokeWidth": {
+      "condition": {
+        "param": "stateHover",
+        "empty": false,
+        "value": 2.2
+      },
+
+      "value": 1.2
+    },
+
+    "opacity": {
+      "condition": {
+        "param": "stateHover",
+        "empty": false,
+        "value": 1
+      },
+
+      "value": 0.94
+    },
+
     "tooltip": [
       {
         "field": "properties.STATE_NAME",
         "type": "nominal",
         "title": "State / territory"
       },
+
       {
         "field": "Members_2025",
         "type": "quantitative",
-        "title": "Members (2025)",
+        "title": "Dogs Australia members",
         "format": ","
       },
+
+      {
+        "field": "Population_2025",
+        "type": "quantitative",
+        "title": "Population",
+        "format": ","
+      },
+
       {
         "field": "Members_per_100k",
         "type": "quantitative",
         "title": "Members per 100,000",
         "format": ".1f"
+      },
+
+      {
+        "field": "Change_2021_2025_pct",
+        "type": "quantitative",
+        "title": "Membership change since 2021",
+        "format": "+.1f"
       }
     ]
   },
+
   "config": {
-    "background": "#FCFAF6",
+    "background": "#FFFDF9",
+
     "view": {
       "stroke": null
+    },
+
+    "title": {
+      "font": "Inter",
+      "subtitleFont": "Inter"
+    },
+
+    "legend": {
+      "orient": "bottom",
+      "direction": "horizontal",
+      "gradientLength": 230,
+      "gradientThickness": 10,
+      "titleFont": "Inter",
+      "labelFont": "Inter",
+      "titleFontSize": 11,
+      "labelFontSize": 10,
+      "titleColor": "#514B46",
+      "labelColor": "#6F675F",
+      "offset": 10
+    },
+
+    "tooltip": {
+      "font": "Inter"
     }
   }
 }
