@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "width": 680,
+  "height": 600,
+  "padding": 5,
+  "background": "#FCFAF6",
+  "title": {
+    "text": "Which Regions Produced Which Types of Dogs?",
+    "subtitle": "Connections link breed-origin regions to FCI breed groups; thicker links represent more recognised breeds",
+    "anchor": "start",
+    "fontSize": 22,
+    "subtitleFontSize": 13
+  },
+  "data": [
+    {
+      "name": "chord",
+      "url": "data/chord_data.json"
+    },
+    {
+      "name": "nodes",
+      "source": "chord",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.nodes",
+          "as": "arr"
+        },
+        {
+          "type": "flatten",
+          "fields": [
+            "arr"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.arr",
+          "as": "node"
+        }
+      ]
+    },
+    {
+      "name": "links",
+      "source": "chord",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.links",
+          "as": "arr"
+        },
+        {
+          "type": "flatten",
+          "fields": [
+            "arr"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.arr",
+          "as": "link"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "linkWidth",
+      "type": "sqrt",
+      "domain": {
+        "data": "links",
+        "field": "link.Count"
+      },
+      "range": [
+        0.6,
+        10
+      ]
+    },
+    {
+      "name": "nodeColor",
+      "type": "ordinal",
+      "domain": [
+        "Region",
+        "FCI group"
+      ],
+      "range": [
+        "#C96A4A",
+        "#3C7D7B"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "from": {
+        "data": "links"
+      },
+      "encode": {
+        "enter": {
+          "path": {
+            "field": "link.Path"
+          },
+          "stroke": {
+            "value": "#9A8F87"
+          },
+          "strokeOpacity": {
+            "value": 0.28
+          },
+          "fill": {
+            "value": null
+          },
+          "strokeWidth": {
+            "scale": "linkWidth",
+            "field": "link.Count"
+          },
+          "tooltip": {
+            "signal": "datum.link.Region + ' \u2192 ' + datum.link.Breed_Group + ': ' + datum.link.Count + ' breeds'"
+          }
+        },
+        "hover": {
+          "strokeOpacity": {
+            "value": 0.85
+          }
+        }
+      }
+    },
+    {
+      "type": "arc",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 300
+          },
+          "y": {
+            "value": 300
+          },
+          "startAngle": {
+            "field": "node.StartAngle"
+          },
+          "endAngle": {
+            "field": "node.EndAngle"
+          },
+          "innerRadius": {
+            "value": 205
+          },
+          "outerRadius": {
+            "value": 225
+          },
+          "fill": {
+            "scale": "nodeColor",
+            "field": "node.Type"
+          },
+          "stroke": {
+            "value": "#FCFAF6"
+          },
+          "strokeWidth": {
+            "value": 1
+          },
+          "tooltip": {
+            "signal": "datum.node.Name + ': ' + datum.node.Total + ' breed associations'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "node.LabelX"
+          },
+          "y": {
+            "field": "node.LabelY"
+          },
+          "text": {
+            "field": "node.Name"
+          },
+          "align": {
+            "field": "node.Align"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "fill": {
+            "value": "#2D2A27"
+          },
+          "limit": {
+            "value": 125
+          }
+        }
+      }
+    }
+  ]
+}

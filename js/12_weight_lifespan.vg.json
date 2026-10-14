@@ -1,0 +1,99 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 720,
+  "height": 480,
+  "data": {
+    "url": "data/breed_characteristics.csv"
+  },
+  "title": {
+    "text": "Do Heavier Dogs Tend to Have Shorter Lifespans?",
+    "subtitle": "Each point is a breed; the dashed line shows the overall linear trend in this comparison set",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 90,
+        "opacity": 0.78,
+        "stroke": "white",
+        "strokeWidth": 0.6
+      },
+      "encoding": {
+        "x": {
+          "field": "WeightKg",
+          "type": "quantitative",
+          "title": "Average weight (kg)"
+        },
+        "y": {
+          "field": "LifespanYears",
+          "type": "quantitative",
+          "title": "Average lifespan (years)"
+        },
+        "color": {
+          "field": "Group",
+          "type": "nominal",
+          "legend": {
+            "orient": "right"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Breed",
+            "type": "nominal"
+          },
+          {
+            "field": "Group",
+            "type": "nominal"
+          },
+          {
+            "field": "WeightKg",
+            "type": "quantitative",
+            "title": "Average weight (kg)"
+          },
+          {
+            "field": "LifespanYears",
+            "type": "quantitative",
+            "title": "Average lifespan (years)"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "regression": "LifespanYears",
+          "on": "WeightKg"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeDash": [
+          6,
+          5
+        ],
+        "color": "#5D5852",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "WeightKg",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "LifespanYears",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

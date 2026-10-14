@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 760,
+  "height": 460,
+  "data": {
+    "url": "data/breed_parallel.csv"
+  },
+  "title": {
+    "text": "How Different Are Breed Profiles?",
+    "subtitle": "Each line follows one breed across normalized height, weight, lifespan and general-health measures",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "fields": [
+          "Breed"
+        ],
+        "on": "pointerover",
+        "clear": "pointerout"
+      }
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "strokeWidth": 1.8
+  },
+  "encoding": {
+    "x": {
+      "field": "Metric",
+      "type": "ordinal",
+      "sort": [
+        "Height (cm)",
+        "Weight (kg)",
+        "Lifespan (years)",
+        "General health score"
+      ],
+      "axis": {
+        "title": null,
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "Normalized",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "axis": {
+        "title": "Normalized value",
+        "labels": false,
+        "ticks": false
+      }
+    },
+    "detail": {
+      "field": "Breed"
+    },
+    "color": {
+      "field": "Group",
+      "type": "nominal",
+      "legend": {
+        "orient": "right"
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "hover",
+        "value": 1
+      },
+      "value": 0.22
+    },
+    "tooltip": [
+      {
+        "field": "Breed",
+        "type": "nominal"
+      },
+      {
+        "field": "Metric",
+        "type": "nominal"
+      },
+      {
+        "field": "Value",
+        "type": "quantitative"
+      }
+    ]
+  },
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

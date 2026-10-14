@@ -1,0 +1,134 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 680,
+  "height": 520,
+  "data": {
+    "url": "data/australia_state_membership.csv"
+  },
+  "title": {
+    "text": "How Large \u2014 and How Fast-Changing \u2014 Are State Dog Communities?",
+    "subtitle": "Dorling-style cartogram: circle area = Dogs Australia members in 2025; colour = membership change since 2021",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.85,
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "X",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              0,
+              7
+            ]
+          }
+        },
+        "y": {
+          "field": "Y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              6.5,
+              0.3
+            ]
+          }
+        },
+        "size": {
+          "field": "Members_2025",
+          "type": "quantitative",
+          "title": "Members (2025)",
+          "scale": {
+            "range": [
+              300,
+              5200
+            ]
+          }
+        },
+        "color": {
+          "field": "Change_2021_2025_pct",
+          "type": "quantitative",
+          "title": "Change 2021\u20132025 (%)",
+          "scale": {
+            "scheme": "redblue",
+            "domainMid": 0
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "Members_2021",
+            "type": "quantitative",
+            "title": "Members 2021",
+            "format": ","
+          },
+          {
+            "field": "Members_2025",
+            "type": "quantitative",
+            "title": "Members 2025",
+            "format": ","
+          },
+          {
+            "field": "Change_2021_2025_pct",
+            "type": "quantitative",
+            "title": "Change",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "X",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              0,
+              7
+            ]
+          }
+        },
+        "y": {
+          "field": "Y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [
+              6.5,
+              0.3
+            ]
+          }
+        },
+        "text": {
+          "field": "State",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

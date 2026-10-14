@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "data/pet_ownership_2025_grid.csv"
+  },
+  "title": {
+    "text": "How Common Are Different Pets in Australian Homes?",
+    "subtitle": "Each row is a separate 100-household unit grid; categories can overlap because households can own multiple pet types",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "facet": {
+    "row": {
+      "field": "Pet",
+      "type": "nominal",
+      "sort": [
+        "Dogs",
+        "Cats",
+        "Fish",
+        "Birds",
+        "Small mammals",
+        "Reptiles",
+        "Other pets"
+      ],
+      "header": {
+        "title": null,
+        "labelAngle": 0,
+        "labelFontSize": 12,
+        "labelFontWeight": "bold",
+        "labelAlign": "left"
+      }
+    }
+  },
+  "spec": {
+    "width": 420,
+    "height": 55,
+    "mark": {
+      "type": "square",
+      "size": 120
+    },
+    "encoding": {
+      "x": {
+        "field": "Col",
+        "type": "ordinal",
+        "axis": null
+      },
+      "y": {
+        "field": "Row",
+        "type": "ordinal",
+        "axis": null
+      },
+      "color": {
+        "condition": {
+          "test": "datum.Owned == 1",
+          "value": "#C96A4A"
+        },
+        "value": "#E5E0D8"
+      },
+      "tooltip": [
+        {
+          "field": "Pet",
+          "type": "nominal"
+        },
+        {
+          "field": "HouseholdPenetration",
+          "type": "quantitative",
+          "title": "Households with this pet",
+          "format": ".1f"
+        }
+      ]
+    }
+  },
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    },
+    "facet": {
+      "spacing": 5
+    }
+  }
+}

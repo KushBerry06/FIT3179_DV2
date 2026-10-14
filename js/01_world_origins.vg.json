@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 820,
+  "height": 430,
+  "title": {
+    "text": "Where Did the World's Dog Breeds Originate?",
+    "subtitle": "Circle area represents the number of recognised FCI breeds associated with each country",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KushBerry06/FIT3179_DV2/refs/heads/main/data/world_countries.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "projection": {
+        "type": "equalEarth"
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#EEEAE3",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/breed_origins_map.csv",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "projection": {
+        "type": "equalEarth"
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#C96A4A",
+        "opacity": 0.78,
+        "stroke": "white",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "Breed_Count",
+          "type": "quantitative",
+          "title": "Recognised breeds",
+          "scale": {
+            "range": [
+              20,
+              900
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Breed_Count",
+            "type": "quantitative",
+            "title": "Recognised breeds"
+          },
+          {
+            "field": "Top_Breed_Group",
+            "type": "nominal",
+            "title": "Most common FCI group"
+          },
+          {
+            "field": "Example_Breeds",
+            "type": "nominal",
+            "title": "Example breeds"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "orient": "right"
+    }
+  }
+}

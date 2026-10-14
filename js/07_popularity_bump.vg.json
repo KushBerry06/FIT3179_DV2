@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 850,
+  "height": 520,
+  "data": {
+    "url": "data/breed_popularity_selected.csv"
+  },
+  "title": {
+    "text": "Which Breeds Climbed \u2014 and Which Fell?",
+    "subtitle": "Annual rank among ten selected breeds based on Dogs Australia registrations, 2000\u20132025",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "params": [
+    {
+      "name": "breedHover",
+      "select": {
+        "type": "point",
+        "fields": [
+          "Breed"
+        ],
+        "on": "pointerover",
+        "clear": "pointerout"
+      }
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": false,
+    "strokeWidth": 2.4
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "axis": {
+        "format": "d",
+        "tickCount": 13,
+        "title": "Year"
+      }
+    },
+    "y": {
+      "field": "Rank",
+      "type": "quantitative",
+      "sort": "ascending",
+      "scale": {
+        "domain": [
+          10,
+          1
+        ]
+      },
+      "axis": {
+        "tickMinStep": 1,
+        "title": "Rank among selected breeds"
+      }
+    },
+    "color": {
+      "field": "Breed",
+      "type": "nominal",
+      "legend": {
+        "orient": "right",
+        "title": null
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "breedHover",
+        "value": 1
+      },
+      "value": 0.28
+    },
+    "detail": {
+      "field": "Breed"
+    },
+    "tooltip": [
+      {
+        "field": "Breed",
+        "type": "nominal"
+      },
+      {
+        "field": "Year",
+        "type": "quantitative",
+        "format": "d"
+      },
+      {
+        "field": "Rank",
+        "type": "quantitative"
+      },
+      {
+        "field": "Registrations",
+        "type": "quantitative",
+        "format": ","
+      }
+    ]
+  },
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

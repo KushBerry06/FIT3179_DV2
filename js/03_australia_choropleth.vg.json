@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 650,
+  "height": 500,
+  "title": {
+    "text": "Where Is Australia's Pedigree-Dog Community Most Concentrated?",
+    "subtitle": "Dogs Australia members per 100,000 residents, 2025",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/refs/heads/master/states.min.geojson"
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "data/australia_state_membership.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Members_2025",
+          "Population_2025",
+          "Members_per_100k"
+        ]
+      }
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "Members_per_100k",
+      "type": "quantitative",
+      "title": "Members per 100k",
+      "scale": {
+        "scheme": "oranges"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STATE_NAME",
+        "type": "nominal",
+        "title": "State / territory"
+      },
+      {
+        "field": "Members_2025",
+        "type": "quantitative",
+        "title": "Members (2025)",
+        "format": ","
+      },
+      {
+        "field": "Members_per_100k",
+        "type": "quantitative",
+        "title": "Members per 100,000",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

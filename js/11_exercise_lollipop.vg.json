@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 650,
+  "height": 650,
+  "data": {
+    "url": "data/breed_exercise.csv"
+  },
+  "title": {
+    "text": "Which Breeds Have the Highest Exercise Needs?",
+    "subtitle": "DogTime-derived breed exercise-need scores, 1 (low) to 5 (high)",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rownum"
+        }
+      ],
+      "sort": [
+        {
+          "field": "ExerciseNeed",
+          "order": "descending"
+        },
+        {
+          "field": "Energy",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.rownum <= 25"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2,
+        "color": "#D8D1C7"
+      },
+      "encoding": {
+        "y": {
+          "field": "Breed",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": {
+            "title": null
+          }
+        },
+        "x": {
+          "datum": 0
+        },
+        "x2": {
+          "field": "ExerciseNeed"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120
+      },
+      "encoding": {
+        "y": {
+          "field": "Breed",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "ExerciseNeed",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              5.2
+            ]
+          },
+          "axis": {
+            "title": "Exercise-need score",
+            "tickMinStep": 1
+          }
+        },
+        "color": {
+          "field": "Group",
+          "type": "nominal",
+          "legend": {
+            "orient": "right"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Breed",
+            "type": "nominal"
+          },
+          {
+            "field": "Group",
+            "type": "nominal"
+          },
+          {
+            "field": "ExerciseNeed",
+            "type": "quantitative",
+            "title": "Exercise need"
+          },
+          {
+            "field": "Energy",
+            "type": "quantitative",
+            "title": "Energy level"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

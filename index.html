@@ -1,1 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What Makes Australia's Top Dog?</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">FIT3179 · Data Visualisation 2</div>
+  <h1>What Makes Australia’s Top Dog?</h1>
+  <p class="dek">From breed origins around the world to the dogs Australians register, follow, and live with today.</p>
+</header>
 
+<main>
+  <section>
+    <div class="section-kicker">01 · WORLD</div>
+    <h2>A world of dogs</h2>
+    <p class="section-intro">Modern breeds were developed across many countries and for many different roles. Start with where recognised breeds came from, then trace how those origins connect with breed groups.</p>
+    <div class="viz wide" id="v1"></div>
+    <div class="viz wide" id="v2"></div>
+  </section>
+
+  <section>
+    <div class="section-kicker">02 · AUSTRALIA</div>
+    <h2>From global origins to Australian dog culture</h2>
+    <p class="section-intro">Australia’s pedigree-dog community varies sharply by population size and by state. A separate national pet survey shows just how common dogs are in Australian homes.</p>
+    <div class="grid two">
+      <div class="viz" id="v3"></div>
+      <div class="viz" id="v4"></div>
+    </div>
+    <div class="viz wide" id="v5"></div>
+    <div class="viz wide" id="v6"></div>
+  </section>
+
+  <section>
+    <div class="section-kicker">03 · POPULARITY</div>
+    <h2>The popularity contest</h2>
+    <p class="section-intro">Registration counts are not fixed. Some familiar breeds have held their ground, some surged, and others have fallen substantially over the last quarter-century.</p>
+    <div class="viz wide" id="v7"></div>
+    <div class="viz wide" id="v8"></div>
+  </section>
+
+  <section>
+    <div class="section-kicker">04 · CHARACTERISTICS</div>
+    <h2>No two breeds are the same</h2>
+    <p class="section-intro">Popularity does not describe what living with a breed may be like. Compare temperament, physical profiles, exercise needs, and lifespan.</p>
+    <div class="viz wide" id="v9"></div>
+    <div class="viz wide" id="v10"></div>
+    <div class="grid two">
+      <div class="viz" id="v11"></div>
+      <div class="viz" id="v12"></div>
+    </div>
+  </section>
+
+  <section class="ending">
+    <div class="section-kicker">05 · TAKEAWAY</div>
+    <h2>There is more to a “top dog” than popularity.</h2>
+    <p>Australia’s recognised breeds originate across the world, registrations have changed over time, and breeds differ greatly in temperament, exercise needs, body size and lifespan. Popularity tells us what people choose; breed characteristics help explain what those choices mean.</p>
+  </section>
+
+  <section class="sources">
+    <h2>Sources & notes</h2>
+    <p><strong>Breed origins:</strong> Fédération Cynologique Internationale (FCI) nomenclature; machine-readable compilation by paiv/fci-breeds.</p>
+    <p><strong>Australian registration and membership:</strong> Dogs Australia national membership statistics (1995–2025) and national registration statistics (2000–2025).</p>
+    <p><strong>Population:</strong> Australian Bureau of Statistics, state and territory population at 31 December 2025.</p>
+    <p><strong>Pet ownership:</strong> Animal Medicines Australia, <em>Pets in Australia 2025</em>.</p>
+    <p><strong>Breed traits:</strong> VildMedPap/dogbreeds, compiled from DogTime breed profiles. Trait scores are comparative breed-level ratings, not guarantees of individual behaviour.</p>
+    <p><strong>Spatial boundaries:</strong> Natural Earth (world); Australian state GeoJSON from rowanhogan/australian-states for the working prototype. Replace with the unit-approved ABS boundary file if required before submission.</p>
+    <p class="note"><strong>AI acknowledgement:</strong> Generative AI was used to assist with code drafting, data cleaning, and design iteration. Data sources and final visual choices should be checked by the author against unit requirements before submission.</p>
+  </section>
+</main>
+
+<script>
+const specs = [
+ ['#v1','js/01_world_origins.vg.json'],
+ ['#v2','js/02_origin_group_chord.vg.json'],
+ ['#v3','js/03_australia_choropleth.vg.json'],
+ ['#v4','js/04_pet_unit_grid.vg.json'],
+ ['#v5','js/05_state_cartogram.vg.json'],
+ ['#v6','js/06_group_treemap.vg.json'],
+ ['#v7','js/07_popularity_bump.vg.json'],
+ ['#v8','js/08_popularity_slope.vg.json'],
+ ['#v9','js/09_temperament_heatmap.vg.json'],
+ ['#v10','js/10_parallel_coordinates.vg.json'],
+ ['#v11','js/11_exercise_lollipop.vg.json'],
+ ['#v12','js/12_weight_lifespan.vg.json']
+];
+for (const [el,spec] of specs) {
+  vegaEmbed(el,spec,{actions:false,renderer:'svg'}).catch(err => {
+    document.querySelector(el).innerHTML = `<pre class="error">${err.message}</pre>`;
+    console.error(el,err);
+  });
+}
+</script>
+</body>
+</html>

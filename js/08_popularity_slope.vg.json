@@ -1,0 +1,121 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 620,
+  "height": 480,
+  "data": {
+    "url": "data/breed_slope_2000_2025.csv"
+  },
+  "title": {
+    "text": "Which Selected Breeds Changed the Most?",
+    "subtitle": "Dogs Australia registrations: 2000 compared with 2025",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {
+            "title": null,
+            "labelFontSize": 13
+          }
+        },
+        "y": {
+          "field": "Registrations",
+          "type": "quantitative",
+          "axis": {
+            "title": "Registrations"
+          }
+        },
+        "detail": {
+          "field": "Breed"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Change_pct >= 0",
+            "value": "#3C7D7B"
+          },
+          "value": "#C96A4A"
+        },
+        "tooltip": [
+          {
+            "field": "Breed",
+            "type": "nominal"
+          },
+          {
+            "field": "Registrations",
+            "type": "quantitative",
+            "format": ","
+          },
+          {
+            "field": "Change_pct",
+            "type": "quantitative",
+            "title": "Change (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 65
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Registrations",
+          "type": "quantitative"
+        },
+        "detail": {
+          "field": "Breed"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Change_pct >= 0",
+            "value": "#3C7D7B"
+          },
+          "value": "#C96A4A"
+        },
+        "tooltip": [
+          {
+            "field": "Breed",
+            "type": "nominal"
+          },
+          {
+            "field": "Year",
+            "type": "ordinal"
+          },
+          {
+            "field": "Registrations",
+            "type": "quantitative",
+            "format": ","
+          },
+          {
+            "field": "Change_pct",
+            "type": "quantitative",
+            "title": "Change (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

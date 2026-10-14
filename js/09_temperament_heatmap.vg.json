@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 620,
+  "height": 430,
+  "data": {
+    "url": "data/breed_heatmap.csv"
+  },
+  "title": {
+    "text": "Different Breeds, Different Personality Profiles",
+    "subtitle": "Trait scores range from 1 (low) to 5 (high)",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Affection",
+        "KidFriendly",
+        "DogFriendly",
+        "StrangerFriendly",
+        "Trainability",
+        "Barking"
+      ],
+      "as": [
+        "Trait",
+        "Score"
+      ]
+    },
+    {
+      "calculate": "replace(replace(replace(datum.Trait, 'KidFriendly', 'Kid friendly'), 'DogFriendly', 'Dog friendly'), 'StrangerFriendly', 'Stranger friendly')",
+      "as": "TraitLabel"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "TraitLabel",
+      "type": "nominal",
+      "sort": [
+        "Affection",
+        "Kid friendly",
+        "Dog friendly",
+        "Stranger friendly",
+        "Trainability",
+        "Barking"
+      ],
+      "axis": {
+        "title": null,
+        "labelAngle": -30
+      }
+    },
+    "y": {
+      "field": "Breed",
+      "type": "nominal",
+      "sort": [
+        "Labrador Retriever",
+        "Golden Retriever",
+        "German Shepherd Dog",
+        "Border Collie",
+        "French Bulldog",
+        "Staffordshire Bull Terrier",
+        "Cavalier King Charles Spaniel",
+        "Australian Shepherd",
+        "Rottweiler",
+        "Pug",
+        "Beagle",
+        "Siberian Husky",
+        "Great Dane",
+        "Shiba Inu",
+        "Australian Cattle Dog"
+      ],
+      "axis": {
+        "title": null
+      }
+    },
+    "color": {
+      "field": "Score",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          1,
+          5
+        ],
+        "scheme": "tealblues"
+      },
+      "title": "Score"
+    },
+    "tooltip": [
+      {
+        "field": "Breed",
+        "type": "nominal"
+      },
+      {
+        "field": "TraitLabel",
+        "type": "nominal",
+        "title": "Trait"
+      },
+      {
+        "field": "Score",
+        "type": "quantitative"
+      }
+    ]
+  },
+  "config": {
+    "background": "#FCFAF6",
+    "view": {
+      "stroke": null
+    }
+  }
+}

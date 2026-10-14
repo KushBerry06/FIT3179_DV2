@@ -1,0 +1,16 @@
+Breed,Group,Affection,KidFriendly,DogFriendly,StrangerFriendly,Trainability,Intelligence,Barking,Energy,ExerciseNeed,Health,HeightCm,WeightKg,LifespanYears
+Australian Cattle Dog,Herding,5,3,4,2,5,5,2,5,5,5,47.0,18.1,13.5
+Australian Shepherd,Herding,5,4,5,3,5,5,4,5,5,2,52.1,23.8,13.5
+Beagle,Hound,5,5,5,5,1,4,5,4,4,1,34.3,10.9,12.5
+Border Collie,Herding,5,4,3,5,5,5,2,5,5,2,50.8,17.0,13.5
+Cavalier King Charles Spaniel,Companion,5,5,5,5,4,4,3,3,4,4,31.8,7.0,12.0
+French Bulldog,Companion,5,4,4,4,4,3,3,3,2,2,30.5,10.0,12.5
+German Shepherd Dog,Herding,5,5,2,4,5,5,4,5,5,4,61.0,38.6,12.0
+Golden Retriever,Sporting,5,5,5,5,5,5,3,5,5,2,57.1,29.5,11.0
+Great Dane,Working,5,5,5,5,5,3,4,5,5,4,76.2,68.0,8.5
+Labrador Retriever,Sporting,5,5,5,5,5,5,4,5,5,3,57.1,30.6,11.0
+Pug,Companion,5,4,4,4,3,2,2,3,3,1,35.6,7.3,13.5
+Rottweiler,Working,5,4,2,4,4,5,4,4,4,2,62.2,48.8,9.5
+Shiba Inu,Companion,4,3,3,3,2,4,4,4,3,3,36.8,9.1,14.0
+Siberian Husky,Working,5,5,5,5,2,3,5,5,5,4,54.6,21.5,13.5
+Staffordshire Bull Terrier,Terrier,5,5,1,5,2,3,3,3,4,3,38.1,14.1,13.0
