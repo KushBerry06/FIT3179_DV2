@@ -1,0 +1,21 @@
+Breed,Year,Registrations,Change_pct
+Labrador Retriever,2000,5323,-31.0
+Labrador Retriever,2025,3672,-31.0
+Golden Retriever,2000,4489,-15.9
+Golden Retriever,2025,3776,-15.9
+Staffordshire Bull Terrier,2000,3849,-28.4
+Staffordshire Bull Terrier,2025,2757,-28.4
+German Shepherd Dog,2000,5146,-58.3
+German Shepherd Dog,2025,2147,-58.3
+Border Collie,2000,2312,-14.6
+Border Collie,2025,1975,-14.6
+Cavalier King Charles Spaniel,2000,3501,-50.0
+Cavalier King Charles Spaniel,2025,1749,-50.0
+French Bulldog,2000,203,232.5
+French Bulldog,2025,675,232.5
+Australian Shepherd,2000,281,326.7
+Australian Shepherd,2025,1199,326.7
+Rottweiler,2000,2288,-49.1
+Rottweiler,2025,1164,-49.1
+Pug,2000,1224,-66.5
+Pug,2025,410,-66.5

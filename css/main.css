@@ -1,0 +1,966 @@
+:root {
+  --paper: #f7f2e9;
+  --ink: #24211e;
+  --muted: #6f675f;
+  --accent: #c96a4a;
+  --teal: #3c7d7b;
+  --card: #fffdfa;
+  --rule: #ddd3c6;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+
+.hero,
+main {
+  width: 100%;
+  max-width: 1100px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  padding: 62px 24px 56px;
+
+  border-bottom:
+    1px solid var(--rule);
+}
+
+
+.eyebrow,
+.section-kicker {
+  color: var(--accent);
+
+  font-size: 0.76rem;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+
+h1 {
+  max-width: 950px;
+
+  margin:
+    0.2em
+    0
+    0.24em;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      3.4rem,
+      7vw,
+      6.2rem
+    );
+
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+}
+
+
+.dek {
+  max-width: 760px;
+
+  margin:
+    0
+    0
+    28px;
+
+  color: var(--muted);
+
+  font-size: 1.18rem;
+  line-height: 1.55;
+}
+
+
+.hero-reading {
+  max-width: 800px;
+
+  margin-top: 26px;
+}
+
+
+.story-kicker {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--accent);
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+
+.hero-reading p {
+  margin:
+    0
+    0
+    14px;
+
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+
+
+.hero-reading p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+main {
+  padding:
+    0
+    24px
+    80px;
+
+  overflow-x: hidden;
+}
+
+
+section {
+  min-width: 0;
+
+  padding:
+    64px
+    0;
+
+  border-bottom:
+    1px solid var(--rule);
+}
+
+
+h2 {
+  max-width: 980px;
+
+  margin:
+    0.28em
+    0
+    0;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      2.2rem,
+      4.6vw,
+      3.7rem
+    );
+
+  line-height: 1.03;
+  letter-spacing: -0.018em;
+}
+
+
+/* =========================================================
+   VISUALISATION CARDS
+   ========================================================= */
+
+.viz {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  padding: 18px;
+
+  background: var(--card);
+
+  border:
+    1px solid #e8dfd4;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0
+    7px
+    22px
+    rgba(69, 51, 36, 0.045);
+}
+
+
+.wide {
+  width: 100%;
+}
+
+
+.viz .vega-embed {
+  width: 100%;
+  max-width: 100%;
+
+  overflow: hidden;
+}
+
+
+.viz .vega-embed > div {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+.viz svg {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+}
+
+
+.viz canvas {
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   STORY ROWS
+   ========================================================= */
+
+.section-story-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.04fr)
+    minmax(0, 0.96fr);
+
+  gap: 48px;
+
+  align-items: stretch;
+
+  margin:
+    32px
+    0
+    38px;
+}
+
+
+.reverse-story {
+  grid-template-columns:
+    minmax(0, 0.96fr)
+    minmax(0, 1.04fr);
+}
+
+
+.story-chart {
+  display: flex;
+
+  min-width: 0;
+}
+
+
+.story-chart .viz {
+  width: 100%;
+
+  margin: 0;
+}
+
+
+.story-copy {
+  display: flex;
+
+  flex-direction: column;
+
+  align-self: stretch;
+
+  max-width: 430px;
+
+  padding:
+    2px
+    0;
+}
+
+
+.story-copy h3 {
+  margin:
+    0
+    0
+    17px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      1.65rem,
+      2.6vw,
+      2.2rem
+    );
+
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+}
+
+
+.story-copy p {
+  margin:
+    0
+    0
+    15px;
+
+  color: var(--muted);
+
+  font-size: 0.94rem;
+  line-height: 1.68;
+}
+
+
+.story-copy strong {
+  color: var(--ink);
+}
+
+
+.story-emphasis {
+  margin-top:
+    auto
+    !important;
+
+  margin-bottom:
+    0
+    !important;
+
+  padding:
+    15px
+    0
+    0
+    17px;
+
+  border-left:
+    3px solid var(--accent);
+
+  color:
+    var(--ink)
+    !important;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   FULL WIDTH CHART BLOCKS
+   ========================================================= */
+
+.full-chart-block {
+  width: 100%;
+
+  margin:
+    22px
+    0
+    18px;
+}
+
+
+.full-chart-block .viz {
+  margin: 0;
+}
+
+
+.state-change-viz .vega-embed,
+.origins-flow-viz .vega-embed {
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+}
+
+
+.state-change-viz .vega-embed > div,
+.origins-flow-viz .vega-embed > div {
+  width: auto;
+
+  max-width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.state-change-viz svg,
+.origins-flow-viz svg {
+  width: auto;
+
+  max-width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   COMPACT TAKEAWAY STRIPS
+   ========================================================= */
+
+.compact-takeaways {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1.35fr;
+
+  width: 100%;
+
+  margin:
+    18px
+    0
+    34px;
+
+  border-top:
+    1px solid var(--rule);
+
+  border-bottom:
+    1px solid var(--rule);
+}
+
+
+.compact-takeaway {
+  margin: 0;
+
+  padding:
+    16px
+    20px;
+
+  color: var(--ink);
+
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+
+.compact-takeaway:not(:last-child) {
+  border-right:
+    1px solid var(--rule);
+}
+
+
+.compact-takeaway strong {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTION TRANSITIONS
+   ========================================================= */
+
+.story-transition {
+  max-width: 700px;
+
+  margin:
+    34px
+    auto
+    0;
+
+  text-align: center;
+}
+
+
+.story-transition p {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+
+.story-transition strong {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTION 01
+   ========================================================= */
+
+#owners {
+  padding-top: 60px;
+}
+
+
+/* =========================================================
+   SECTION 02
+   ========================================================= */
+
+#origins {
+  padding-top: 60px;
+}
+
+
+.origins-world-row {
+  grid-template-columns:
+    minmax(0, 1.12fr)
+    minmax(0, 0.88fr);
+
+  margin-top: 38px;
+}
+
+
+.origins-world-row .story-copy {
+  max-width: 400px;
+}
+
+
+.world-map {
+  width: 100%;
+
+  min-width: 0;
+
+  margin: 0;
+
+  padding:
+    14px
+    15px
+    12px;
+}
+
+
+.world-map .vega-bindings {
+  margin:
+    8px
+    0
+    0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+
+.world-map .vega-bindings label {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-weight: 600;
+}
+
+
+.world-map .vega-bindings select {
+  padding:
+    6px
+    10px;
+
+  border:
+    1px solid #d8cdbf;
+
+  border-radius: 8px;
+
+  background: #fffdfa;
+
+  color: var(--ink);
+
+  font: inherit;
+}
+
+
+.origins-chord-row {
+  grid-template-columns:
+    minmax(0, 0.86fr)
+    minmax(0, 1.14fr);
+
+  margin-top: 42px;
+}
+
+
+.origins-chord-row .story-copy {
+  max-width: 390px;
+}
+
+
+.world-chord {
+  width: 100%;
+
+  min-width: 0;
+
+  margin: 0;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   SECTION 03
+   ========================================================= */
+
+#popularity {
+  padding-top: 60px;
+}
+
+
+.popularity-total-row {
+  margin-top: 38px;
+
+  grid-template-columns:
+    minmax(0, 1.12fr)
+    minmax(0, 0.88fr);
+}
+
+
+.popularity-total-row .story-copy {
+  max-width: 390px;
+}
+
+
+.popularity-group-row {
+  margin-top: 42px;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+}
+
+
+.popularity-group-row .story-copy {
+  max-width: 390px;
+}
+
+
+.popularity-slope-block {
+  margin-top: 42px;
+}
+
+
+/* =========================================================
+   SECTION 04
+   ========================================================= */
+
+#living {
+  padding-top: 60px;
+}
+
+
+.living-heatmap-block {
+  margin-top: 38px;
+}
+
+
+.living-profile-row {
+  grid-template-columns:
+    minmax(0, 0.88fr)
+    minmax(0, 1.12fr);
+
+  margin-top: 42px;
+}
+
+
+.living-profile-row .story-copy {
+  max-width: 390px;
+}
+
+
+.living-scatter-block {
+  margin-top: 42px;
+}
+
+
+/* =========================================================
+   PARALLEL COORDINATES CONTROL
+   ========================================================= */
+
+#v12 .vega-bindings {
+  margin-top: 10px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+
+#v12 .vega-bindings label {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-weight: 600;
+}
+
+
+#v12 .vega-bindings select {
+  padding:
+    6px
+    10px;
+
+  border:
+    1px solid #d8cdbf;
+
+  border-radius: 8px;
+
+  background: #fffdfa;
+
+  color: var(--ink);
+
+  font: inherit;
+}
+
+
+/* =========================================================
+   VERDICT
+   ========================================================= */
+
+.ending {
+  padding:
+    78px
+    0;
+}
+
+
+.verdict-copy {
+  max-width: 820px;
+
+  color: var(--muted);
+
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+
+.verdict-copy strong {
+  color: var(--ink);
+}
+
+
+.verdict-final {
+  max-width: 820px;
+
+  margin-top: 30px;
+
+  padding:
+    22px
+    24px;
+
+  background: #f1eadf;
+
+  border-left:
+    4px solid var(--accent);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 1.24rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   SOURCES
+   ========================================================= */
+
+.sources {
+  color: var(--muted);
+
+  font-size: 0.9rem;
+}
+
+
+.sources h2 {
+  color: var(--ink);
+
+  font-size: 2rem;
+}
+
+
+.sources p {
+  max-width: 850px;
+}
+
+
+.note {
+  padding-left: 14px;
+
+  border-left:
+    3px solid var(--accent);
+}
+
+
+/* =========================================================
+   ERRORS
+   ========================================================= */
+
+.error {
+  white-space: pre-wrap;
+
+  color: #9b2c2c;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+
+  main {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+
+  .section-story-row,
+  .reverse-story,
+  .origins-world-row,
+  .origins-chord-row,
+  .popularity-total-row,
+  .popularity-group-row,
+  .living-profile-row {
+    grid-template-columns: 1fr;
+
+    gap: 26px;
+
+    margin:
+      34px
+      0
+      46px;
+  }
+
+
+  .story-copy,
+  .origins-world-row .story-copy,
+  .origins-chord-row .story-copy,
+  .popularity-total-row .story-copy,
+  .popularity-group-row .story-copy,
+  .living-profile-row .story-copy {
+    max-width: none;
+  }
+
+
+  .story-emphasis {
+    margin-top:
+      12px
+      !important;
+  }
+
+
+  .compact-takeaways {
+    grid-template-columns: 1fr;
+  }
+
+
+  .compact-takeaway:not(:last-child) {
+    border-right: 0;
+
+    border-bottom:
+      1px solid var(--rule);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+  .hero {
+    padding-top: 46px;
+  }
+
+
+  h1 {
+    font-size:
+      clamp(
+        3rem,
+        16vw,
+        4.4rem
+      );
+  }
+
+
+  section {
+    padding:
+      48px
+      0;
+  }
+
+
+  h2 {
+    font-size:
+      clamp(
+        2rem,
+        10vw,
+        2.8rem
+      );
+  }
+
+
+  .viz {
+    padding: 10px;
+
+    border-radius: 12px;
+  }
+
+
+  .story-copy h3 {
+    font-size: 1.55rem;
+  }
+
+
+  .compact-takeaway {
+    padding:
+      14px
+      8px;
+  }
+
+}

@@ -1,9 +1,9 @@
-# FIT3179 DV2 — Dog Breeds
+# FIT3179 DV2 | What Makes Australia’s Top Dog?
 
-Working first-pass build for **What Makes Australia’s Top Dog?**
+Final cleaned project package for the FIT3179 Data Visualisation 2 submission.
 
 ## Run locally
-Do not open `index.html` directly with `file://`. Use a local web server, e.g. VS Code Live Server, or run:
+Do not open `index.html` directly with `file://`. Start a local web server from this folder:
 
 ```bash
 python -m http.server 8000
@@ -11,22 +11,29 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-## Visualisations
-1. Proportional-symbol world map — breed origins
-2. Radial chord-style connection diagram — origin regions ↔ FCI groups
-3. Australia choropleth — Dogs Australia members per 100,000 residents
-4. Pictorial unit grid — Australian household pet penetration
-5. Dorling-style state cartogram — membership size + change
-6. Treemap — 2025 registrations by Dogs Australia breed group
-7. Bump chart — rank among 10 selected breeds, 2000–2025
-8. Slopegraph — selected breed registrations, 2000 vs 2025
-9. Heatmap — temperament/behaviour traits
-10. Parallel coordinates — breed physical/health profiles
-11. Lollipop — exercise-need score
-12. Scatterplot — weight vs lifespan
+## Final visualisation order
+1. Pet ownership waffle chart
+2. State pedigree-membership choropleth
+3. State pedigree-membership change chart
+4. World breed-origin proportional-symbol map
+5. Selected-breed origin flow map
+6. Region to FCI breed-group chord diagram
+7. National pedigree-registration trend
+8. 2025 breed-group treemap
+9. Selected-breed popularity bump chart
+10. Selected-breed registration slopegraph
+11. Breed temperament heatmap
+12. Breed-profile parallel coordinates
+13. Weight versus lifespan scatterplot
 
-## Important before submission
-- Replace the prototype Australian state boundary file with the preferred ABS boundary source if your tutor requires official spatial geometry.
-- Review wording/annotations after inspecting final rendered charts.
-- Add the exact AI acknowledgement wording required by the unit.
-- Confirm source URLs/attribution in the final page.
+## Folder structure
+- `index.html` | page content and Vega embeds
+- `css/main.css` | page styling
+- `js/` | the 13 Vega / Vega-Lite specifications in story order
+- `data/` | only datasets used by the final visualisations, plus `sources.csv`
+
+## External dependencies
+The page loads Vega, Vega-Lite and Vega-Embed from jsDelivr. Map geometry is loaded from stable external sources referenced in the relevant specifications. An internet connection is therefore required when viewing the page.
+
+## Source documentation
+See `data/sources.csv` and the Sources & Notes section at the bottom of `index.html`.

@@ -1,0 +1,363 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+
+  "width": 430,
+  "height": 300,
+  "padding": 6,
+
+  "background": "#FFFDF9",
+
+  "title": {
+    "text": "Gundogs Lead 2025 Registrations",
+    "subtitle": "Rectangle area represents each breed group's share of 47,288 registrations",
+    "anchor": "start",
+    "font": "Inter",
+    "fontSize": 16,
+    "fontWeight": 700,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 9.5,
+    "subtitleColor": "#6F675F",
+    "subtitlePadding": 4,
+    "color": "#24211E",
+    "offset": 10
+  },
+
+  "signals": [
+    {
+      "name": "hoverGroup",
+      "value": null,
+      "on": [
+        {
+          "events": "@tiles:mouseover",
+          "update": "datum.id"
+        },
+        {
+          "events": "@tiles:mouseout",
+          "update": "null"
+        },
+        {
+          "events": "@groupLabels:mouseover",
+          "update": "datum.id"
+        },
+        {
+          "events": "@groupLabels:mouseout",
+          "update": "null"
+        }
+      ]
+    }
+  ],
+
+  "data": [
+    {
+      "name": "tree",
+
+      "values": [
+        {
+          "id": "All",
+          "parent": null,
+          "value": 0
+        },
+        {
+          "id": "Gundogs",
+          "parent": "All",
+          "value": 12283,
+          "share": 26.0
+        },
+        {
+          "id": "Working Dogs",
+          "parent": "All",
+          "value": 8656,
+          "share": 18.3
+        },
+        {
+          "id": "Terriers",
+          "parent": "All",
+          "value": 7137,
+          "share": 15.1
+        },
+        {
+          "id": "Toys",
+          "parent": "All",
+          "value": 6255,
+          "share": 13.2
+        },
+        {
+          "id": "Utility",
+          "parent": "All",
+          "value": 5775,
+          "share": 12.2
+        },
+        {
+          "id": "Non-Sporting",
+          "parent": "All",
+          "value": 4189,
+          "share": 8.9
+        },
+        {
+          "id": "Hounds",
+          "parent": "All",
+          "value": 2993,
+          "share": 6.3
+        }
+      ],
+
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+
+        {
+          "type": "treemap",
+          "field": "value",
+
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+
+          "round": true,
+          "method": "binary",
+
+          "size": [
+            430,
+            300
+          ],
+
+          "paddingInner": 3
+        }
+      ]
+    },
+
+    {
+      "name": "leaves",
+      "source": "tree",
+
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 1"
+        },
+
+        {
+          "type": "formula",
+          "expr": "datum.id === 'Hounds' ? '#24211E' : '#FFFDF9'",
+          "as": "LabelColor"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "groupColor",
+      "type": "ordinal",
+
+      "domain": [
+        "Gundogs",
+        "Working Dogs",
+        "Terriers",
+        "Toys",
+        "Utility",
+        "Non-Sporting",
+        "Hounds"
+      ],
+
+      "range": [
+        "#C96A4A",
+        "#357C78",
+        "#D99A45",
+        "#557AA6",
+        "#8C6F94",
+        "#6A9F9A",
+        "#A3B87A"
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "name": "tiles",
+      "type": "rect",
+
+      "from": {
+        "data": "leaves"
+      },
+
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x0"
+          },
+
+          "x2": {
+            "field": "x1"
+          },
+
+          "y": {
+            "field": "y0"
+          },
+
+          "y2": {
+            "field": "y1"
+          },
+
+          "fill": {
+            "scale": "groupColor",
+            "field": "id"
+          },
+
+          "stroke": {
+            "value": "#FFFDF9"
+          },
+
+          "strokeWidth": {
+            "value": 2
+          },
+
+          "cursor": {
+            "value": "pointer"
+          },
+
+          "tooltip": {
+            "signal": "datum.id + ': ' + format(datum.value, ',') + ' registrations (' + format(datum.share, '.1f') + '%)'"
+          }
+        },
+
+        "update": {
+          "opacity": {
+            "signal": "hoverGroup === null || hoverGroup === datum.id ? 1 : 0.28"
+          }
+        },
+
+        "hover": {
+          "strokeWidth": {
+            "value": 4
+          }
+        }
+      }
+    },
+
+    {
+      "name": "groupLabels",
+      "type": "text",
+
+      "from": {
+        "data": "leaves"
+      },
+
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "(datum.x0 + datum.x1) / 2"
+          },
+
+          "y": {
+            "signal": "(datum.y0 + datum.y1) / 2 - 8"
+          },
+
+          "align": {
+            "value": "center"
+          },
+
+          "baseline": {
+            "value": "middle"
+          },
+
+          "text": {
+            "field": "id"
+          },
+
+          "font": {
+            "value": "Inter"
+          },
+
+          "fontSize": {
+            "signal": "datum.value >= 8000 ? 12 : datum.value >= 5000 ? 10.5 : 9.5"
+          },
+
+          "fontWeight": {
+            "value": 700
+          },
+
+          "fill": {
+            "field": "LabelColor"
+          },
+
+          "limit": {
+            "signal": "max(35, datum.x1 - datum.x0 - 12)"
+          },
+
+          "cursor": {
+            "value": "pointer"
+          }
+        },
+
+        "update": {
+          "opacity": {
+            "signal": "hoverGroup === null || hoverGroup === datum.id ? 1 : 0.28"
+          }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+
+      "from": {
+        "data": "leaves"
+      },
+
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "(datum.x0 + datum.x1) / 2"
+          },
+
+          "y": {
+            "signal": "(datum.y0 + datum.y1) / 2 + 10"
+          },
+
+          "align": {
+            "value": "center"
+          },
+
+          "baseline": {
+            "value": "middle"
+          },
+
+          "text": {
+            "signal": "format(datum.value, ',') + ' · ' + format(datum.share, '.1f') + '%'"
+          },
+
+          "font": {
+            "value": "Inter"
+          },
+
+          "fontSize": {
+            "signal": "datum.value >= 5000 ? 9 : 8"
+          },
+
+          "fontWeight": {
+            "value": 500
+          },
+
+          "fill": {
+            "field": "LabelColor"
+          },
+
+          "limit": {
+            "signal": "max(35, datum.x1 - datum.x0 - 12)"
+          }
+        },
+
+        "update": {
+          "opacity": {
+            "signal": "hoverGroup === null || hoverGroup === datum.id ? 0.95 : 0.28"
+          }
+        }
+      }
+    }
+  ]
+}

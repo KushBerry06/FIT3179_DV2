@@ -1,0 +1,581 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Where Do Australia's Top Dogs Come From?",
+    "subtitle": [
+      "Line thickness and circle size show 2025 Dogs Australia registrations of ten selected breeds, grouped by the breed's country of origin"
+    ],
+    "anchor": "start",
+    "font": "Inter",
+    "fontSize": 20,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5f5850",
+    "color": "#2b2622",
+    "offset": 8
+  },
+
+  "width": "container",
+  "height": 430,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+
+  "background": null,
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "legend": {
+      "titleFont": "Inter",
+      "labelFont": "Inter",
+      "titleFontSize": 11,
+      "labelFontSize": 10,
+      "titleColor": "#2b2622",
+      "labelColor": "#5f5850"
+    }
+  },
+
+  "projection": {
+    "type": "equalEarth"
+  },
+
+  "datasets": {
+    "origins": [
+      {
+        "country": "United Kingdom",
+        "lon": -2.0,
+        "lat": 54.0,
+        "registrations": 13929,
+        "breeds": "Golden Retriever, Labrador Retriever, Staffordshire Bull Terrier, Border Collie, Cavalier King Charles Spaniel"
+      },
+      {
+        "country": "Germany",
+        "lon": 10.5,
+        "lat": 51.0,
+        "registrations": 3311,
+        "breeds": "German Shepherd Dog, Rottweiler"
+      },
+      {
+        "country": "United States",
+        "lon": -98.5,
+        "lat": 39.5,
+        "registrations": 1199,
+        "breeds": "Australian Shepherd"
+      },
+      {
+        "country": "France",
+        "lon": 2.5,
+        "lat": 46.5,
+        "registrations": 675,
+        "breeds": "French Bulldog"
+      },
+      {
+        "country": "China",
+        "lon": 104.0,
+        "lat": 35.0,
+        "registrations": 410,
+        "breeds": "Pug"
+      }
+    ],
+
+    "arcs": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-2.0, 54.0],
+            [134.0, -25.0]
+          ]
+        },
+        "properties": {
+          "country": "United Kingdom",
+          "registrations": 13929,
+          "breeds": "Golden Retriever, Labrador Retriever, Staffordshire Bull Terrier, Border Collie, Cavalier King Charles Spaniel"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [10.5, 51.0],
+            [134.0, -25.0]
+          ]
+        },
+        "properties": {
+          "country": "Germany",
+          "registrations": 3311,
+          "breeds": "German Shepherd Dog, Rottweiler"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-98.5, 39.5],
+            [134.0, -25.0]
+          ]
+        },
+        "properties": {
+          "country": "United States",
+          "registrations": 1199,
+          "breeds": "Australian Shepherd"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [2.5, 46.5],
+            [134.0, -25.0]
+          ]
+        },
+        "properties": {
+          "country": "France",
+          "registrations": 675,
+          "breeds": "French Bulldog"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [104.0, 35.0],
+            [134.0, -25.0]
+          ]
+        },
+        "properties": {
+          "country": "China",
+          "registrations": 410,
+          "breeds": "Pug"
+        }
+      }
+    ],
+
+    "australia": [
+      {
+        "label": "Australia",
+        "lon": 134.0,
+        "lat": -25.0
+      }
+    ]
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ece8e1",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5
+      }
+    },
+
+    {
+      "data": {
+        "name": "arcs"
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "filled": false,
+        "opacity": 0.72,
+        "strokeCap": "round"
+      },
+
+      "encoding": {
+        "color": {
+          "field": "properties.country",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "United Kingdom",
+              "Germany",
+              "United States",
+              "France",
+              "China"
+            ],
+
+            "range": [
+              "#C9705A",
+              "#4E8B83",
+              "#8C6FB3",
+              "#D49C45",
+              "#7F9D4E"
+            ]
+          },
+
+          "legend": null
+        },
+
+        "strokeWidth": {
+          "field": "properties.registrations",
+          "type": "quantitative",
+
+          "scale": {
+            "type": "sqrt",
+            "range": [
+              1.2,
+              16
+            ]
+          },
+
+          "legend": {
+            "title": "Registered in 2025",
+
+            "orient": "bottom-left",
+
+            "direction": "horizontal",
+
+            "columns": 4,
+
+            "symbolType": "stroke",
+
+            "symbolStrokeColor": "#8C7568",
+
+            "values": [
+              500,
+              2000,
+              5000,
+              10000
+            ],
+
+            "labelExpr": "format(datum.value, ',')",
+
+            "titleOrient": "top",
+
+            "titleAnchor": "start",
+
+            "titlePadding": 6,
+
+            "labelOffset": 5,
+
+            "columnPadding": 16,
+
+            "rowPadding": 0,
+
+            "offset": 12
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "properties.country",
+            "type": "nominal",
+            "title": "Country of origin"
+          },
+          {
+            "field": "properties.breeds",
+            "type": "nominal",
+            "title": "Breeds"
+          },
+          {
+            "field": "properties.registrations",
+            "type": "quantitative",
+            "title": "2025 registrations",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "name": "origins"
+      },
+
+      "mark": {
+        "type": "circle",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5,
+        "opacity": 0.96
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+
+        "size": {
+          "field": "registrations",
+          "type": "quantitative",
+
+          "scale": {
+            "type": "sqrt",
+            "range": [
+              60,
+              1900
+            ]
+          },
+
+          "legend": null
+        },
+
+        "color": {
+          "field": "country",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "United Kingdom",
+              "Germany",
+              "United States",
+              "France",
+              "China"
+            ],
+
+            "range": [
+              "#C9705A",
+              "#4E8B83",
+              "#8C6FB3",
+              "#D49C45",
+              "#7F9D4E"
+            ]
+          },
+
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "country",
+            "type": "nominal",
+            "title": "Country of origin"
+          },
+          {
+            "field": "breeds",
+            "type": "nominal",
+            "title": "Breeds"
+          },
+          {
+            "field": "registrations",
+            "type": "quantitative",
+            "title": "2025 registrations",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "name": "origins"
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "country",
+          "type": "nominal"
+        },
+
+        "color": {
+          "field": "country",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "United Kingdom",
+              "Germany",
+              "United States",
+              "France",
+              "China"
+            ],
+
+            "range": [
+              "#C9705A",
+              "#4E8B83",
+              "#8C6FB3",
+              "#D49C45",
+              "#7F9D4E"
+            ]
+          },
+
+          "legend": null
+        }
+      },
+
+      "layer": [
+        {
+          "transform": [
+            {
+              "filter": "datum.country == 'United Kingdom'"
+            }
+          ],
+
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -26,
+            "dy": -18,
+            "font": "Inter",
+            "fontSize": 12,
+            "fontWeight": 700
+          }
+        },
+
+        {
+          "transform": [
+            {
+              "filter": "datum.country == 'Germany'"
+            }
+          ],
+
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "dx": 18,
+            "dy": 30,
+            "font": "Inter",
+            "fontSize": 12,
+            "fontWeight": 700
+          }
+        },
+
+        {
+          "transform": [
+            {
+              "filter": "datum.country == 'France'"
+            }
+          ],
+
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -10,
+            "dy": 16,
+            "font": "Inter",
+            "fontSize": 12,
+            "fontWeight": 700
+          }
+        },
+
+        {
+          "transform": [
+            {
+              "filter": "datum.country == 'United States'"
+            }
+          ],
+
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "dy": -22,
+            "font": "Inter",
+            "fontSize": 12,
+            "fontWeight": 700
+          }
+        },
+
+        {
+          "transform": [
+            {
+              "filter": "datum.country == 'China'"
+            }
+          ],
+
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "dy": -18,
+            "font": "Inter",
+            "fontSize": 12,
+            "fontWeight": 700
+          }
+        }
+      ]
+    },
+
+    {
+      "data": {
+        "name": "australia"
+      },
+
+      "mark": {
+        "type": "circle",
+        "fill": "none",
+        "stroke": "#2b2622",
+        "strokeWidth": 2,
+        "size": 220
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "name": "australia"
+      },
+
+      "mark": {
+        "type": "text",
+        "dy": 22,
+        "font": "Inter",
+        "fontSize": 13,
+        "fontWeight": 700,
+        "color": "#2b2622"
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

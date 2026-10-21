@@ -1,0 +1,307 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "width": "container",
+  "height": 470,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
+  },
+
+  "data": {
+    "url": "data/breed_characteristics.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "WeightKg": "number",
+        "LifespanYears": "number"
+      }
+    }
+  },
+
+  "title": {
+    "text": "Do Heavier Dogs Tend to Have Shorter Lifespans?",
+    "subtitle": [
+      "Each point represents one breed",
+      "The dashed line shows the overall linear trend"
+    ],
+    "anchor": "start",
+    "fontSize": 19,
+    "subtitleFontSize": 11,
+    "subtitlePadding": 4,
+    "offset": 12,
+    "color": "#24211E",
+    "subtitleColor": "#6F675F"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 115,
+        "opacity": 0.88,
+        "stroke": "#FFFDF9",
+        "strokeWidth": 1.4,
+        "cursor": "pointer"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "WeightKg",
+          "type": "quantitative",
+          "title": "Average weight (kg)",
+
+          "scale": {
+            "domain": [0, 72]
+          },
+
+          "axis": {
+            "values": [0, 10, 20, 30, 40, 50, 60, 70],
+
+            "labelFont": "Inter",
+            "titleFont": "Inter",
+
+            "labelFontSize": 10,
+            "titleFontSize": 11,
+            "titleFontWeight": "bold",
+
+            "labelColor": "#6F675F",
+            "titleColor": "#24211E",
+
+            "grid": true,
+            "gridColor": "#E9E2D9",
+            "gridOpacity": 0.65,
+
+            "domain": false,
+            "tickColor": "#C9C0B5"
+          }
+        },
+
+        "y": {
+          "field": "LifespanYears",
+          "type": "quantitative",
+          "title": "Average lifespan (years)",
+
+          "scale": {
+            "domain": [7.5, 15]
+          },
+
+          "axis": {
+            "values": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+
+            "labelFont": "Inter",
+            "titleFont": "Inter",
+
+            "labelFontSize": 10,
+            "titleFontSize": 11,
+            "titleFontWeight": "bold",
+
+            "labelColor": "#6F675F",
+            "titleColor": "#24211E",
+
+            "grid": true,
+            "gridColor": "#E9E2D9",
+            "gridOpacity": 0.65,
+
+            "domain": false,
+            "tickColor": "#C9C0B5"
+          }
+        },
+
+        "color": {
+          "field": "Group",
+          "type": "nominal",
+          "title": "Breed group",
+
+          "scale": {
+            "domain": [
+              "Companion",
+              "Herding",
+              "Hound",
+              "Sporting",
+              "Terrier",
+              "Working"
+            ],
+
+            "range": [
+              "#4E79A7",
+              "#F28E2B",
+              "#E15759",
+              "#76B7B2",
+              "#59A14F",
+              "#EDC948"
+            ]
+          },
+
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 3,
+
+            "titleFont": "Inter",
+            "labelFont": "Inter",
+
+            "titleFontSize": 10,
+            "labelFontSize": 9,
+
+            "titleColor": "#514B46",
+            "labelColor": "#6F675F",
+
+            "symbolType": "circle",
+            "symbolSize": 80,
+
+            "offset": 14
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "Breed",
+            "type": "nominal",
+            "title": "Breed"
+          },
+
+          {
+            "field": "Group",
+            "type": "nominal",
+            "title": "Breed group"
+          },
+
+          {
+            "field": "WeightKg",
+            "type": "quantitative",
+            "title": "Average weight",
+            "format": ".1f"
+          },
+
+          {
+            "field": "LifespanYears",
+            "type": "quantitative",
+            "title": "Average lifespan",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "regression": "LifespanYears",
+          "on": "WeightKg"
+        }
+      ],
+
+      "mark": {
+        "type": "line",
+        "strokeDash": [7, 5],
+        "strokeWidth": 2.4,
+        "color": "#514B46",
+        "opacity": 0.9
+      },
+
+      "encoding": {
+        "x": {
+          "field": "WeightKg",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 72]
+          }
+        },
+
+        "y": {
+          "field": "LifespanYears",
+          "type": "quantitative",
+          "scale": {
+            "domain": [7.5, 15]
+          }
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": {
+            "field": "Breed",
+            "oneOf": [
+              "Great Dane",
+              "Bernese Mountain Dog",
+              "Dalmatian"
+            ]
+          }
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "dy": -8,
+        "font": "Inter",
+        "fontSize": 9.5,
+        "fontWeight": "bold",
+        "color": "#514B46"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "WeightKg",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 72]
+          }
+        },
+
+        "y": {
+          "field": "LifespanYears",
+          "type": "quantitative",
+          "scale": {
+            "domain": [7.5, 15]
+          }
+        },
+
+        "text": {
+          "field": "Breed"
+        }
+      }
+    }
+  ],
+
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "shared"
+    }
+  },
+
+  "config": {
+    "background": "#FFFDF9",
+
+    "view": {
+      "stroke": null
+    },
+
+    "title": {
+      "font": "Inter",
+      "subtitleFont": "Inter"
+    },
+
+    "tooltip": {
+      "font": "Inter"
+    }
+  }
+}

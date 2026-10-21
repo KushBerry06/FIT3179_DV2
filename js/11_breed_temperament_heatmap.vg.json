@@ -1,0 +1,254 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "width": "container",
+  "height": 560,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
+  },
+
+  "data": {
+    "url": "data/breed_temperament_scores.csv"
+  },
+
+  "title": {
+    "text": "Different Breeds, Different Personality Profiles",
+    "subtitle": [
+      "Comparative breed trait scores from 1 (low) to 5 (high)",
+      "Darker cells indicate stronger reported trait scores"
+    ],
+    "anchor": "start",
+    "fontSize": 21,
+    "subtitleFontSize": 12,
+    "subtitlePadding": 5,
+    "offset": 14,
+    "color": "#24211E",
+    "subtitleColor": "#6F675F"
+  },
+
+  "transform": [
+    {
+      "fold": [
+        "Affection",
+        "KidFriendly",
+        "DogFriendly",
+        "StrangerFriendly",
+        "Trainability",
+        "Barking"
+      ],
+      "as": ["Trait", "Score"]
+    },
+    {
+      "calculate": "toNumber(datum.Score)",
+      "as": "ScoreNum"
+    },
+    {
+      "calculate": "datum.Trait === 'KidFriendly' ? 'Kid friendly' : datum.Trait === 'DogFriendly' ? 'Dog friendly' : datum.Trait === 'StrangerFriendly' ? 'Stranger friendly' : datum.Trait",
+      "as": "TraitLabel"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 3,
+        "stroke": "#FFFDF9",
+        "strokeWidth": 3,
+        "cursor": "pointer"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "TraitLabel",
+          "type": "nominal",
+          "sort": [
+            "Affection",
+            "Kid friendly",
+            "Dog friendly",
+            "Stranger friendly",
+            "Trainability",
+            "Barking"
+          ],
+          "axis": {
+            "title": null,
+            "orient": "top",
+            "labelAngle": 0,
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold",
+            "labelColor": "#24211E",
+            "labelPadding": 11,
+            "ticks": false,
+            "domain": false
+          },
+          "scale": {
+            "paddingInner": 0.035,
+            "paddingOuter": 0.02
+          }
+        },
+
+        "y": {
+          "field": "Breed",
+          "type": "nominal",
+          "sort": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "German Shepherd Dog",
+            "Border Collie",
+            "French Bulldog",
+            "Staffordshire Bull Terrier",
+            "Cavalier King Charles Spaniel",
+            "Australian Shepherd",
+            "Rottweiler",
+            "Pug",
+            "Beagle",
+            "Siberian Husky",
+            "Great Dane",
+            "Shiba Inu",
+            "Australian Cattle Dog"
+          ],
+          "axis": {
+            "title": null,
+            "labelFont": "Inter",
+            "labelFontSize": 11,
+            "labelColor": "#24211E",
+            "labelPadding": 10,
+            "labelLimit": 220,
+            "ticks": false,
+            "domain": false
+          },
+          "scale": {
+            "paddingInner": 0.06,
+            "paddingOuter": 0.02
+          }
+        },
+
+        "color": {
+          "field": "ScoreNum",
+          "type": "ordinal",
+          "title": null,
+          "scale": {
+            "domain": [1, 2, 3, 4, 5],
+            "range": [
+              "#DDEDEA",
+              "#B9D7D1",
+              "#86B8B0",
+              "#528D88",
+              "#285F60"
+            ]
+          },
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "Breed",
+            "type": "nominal",
+            "title": "Breed"
+          },
+          {
+            "field": "Group",
+            "type": "nominal",
+            "title": "Breed group"
+          },
+          {
+            "field": "TraitLabel",
+            "type": "nominal",
+            "title": "Trait"
+          },
+          {
+            "field": "ScoreNum",
+            "type": "quantitative",
+            "title": "Score",
+            "format": ".0f"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "TraitLabel",
+          "type": "nominal",
+          "sort": [
+            "Affection",
+            "Kid friendly",
+            "Dog friendly",
+            "Stranger friendly",
+            "Trainability",
+            "Barking"
+          ]
+        },
+
+        "y": {
+          "field": "Breed",
+          "type": "nominal",
+          "sort": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "German Shepherd Dog",
+            "Border Collie",
+            "French Bulldog",
+            "Staffordshire Bull Terrier",
+            "Cavalier King Charles Spaniel",
+            "Australian Shepherd",
+            "Rottweiler",
+            "Pug",
+            "Beagle",
+            "Siberian Husky",
+            "Great Dane",
+            "Shiba Inu",
+            "Australian Cattle Dog"
+          ]
+        },
+
+        "text": {
+          "field": "ScoreNum",
+          "type": "quantitative",
+          "format": ".0f"
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.ScoreNum >= 4",
+            "value": "#FFFDF9"
+          },
+          "value": "#24211E"
+        }
+      }
+    }
+  ],
+
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "shared"
+    }
+  },
+
+  "config": {
+    "background": "#FFFDF9",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "Inter",
+      "subtitleFont": "Inter"
+    },
+    "tooltip": {
+      "font": "Inter"
+    }
+  }
+}

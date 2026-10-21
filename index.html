@@ -1,152 +1,907 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
   <title>What Makes Australia's Top Dog?</title>
-  <link rel="stylesheet" href="css/style.css" />
+
+  <link
+    rel="stylesheet"
+    href="css/main.css"
+  />
+
   <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+
 </head>
+
+
 <body>
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+
 <header class="hero">
-  <div class="eyebrow">FIT3179 · Data Visualisation 2</div>
-  <h1>What Makes Australia’s Top Dog?</h1>
-  <p class="dek">From breed origins around the world to the dogs Australians register, follow, and live with today.</p>
-</header>
 
-<main>
-  <section class="world-section">
+  <div class="eyebrow">
+    FIT3179 · DATA VISUALISATION 2
+  </div>
 
-    <div class="section-kicker">01 · WORLD</div>
+  <h1>
+    What Makes Australia’s Top Dog?
+  </h1>
 
-    <h2>A world of dogs</h2>
+  <p class="dek">
+    About half of Australian households have a dog.
+    But which breeds do Australians actually choose,
+    where did those breeds come from,
+    and what are they like to live with?
+  </p>
 
-    <p class="section-intro">
-      Modern breeds were developed across many countries and for many different roles.
-      Start with where recognised breeds came from, then explore how those origins
-      connect with different breed groups.
+
+  <div class="hero-reading">
+
+    <span class="story-kicker">
+      HOW TO READ THIS PAGE
+    </span>
+
+    <p>
+      By <strong>“top dog”</strong> we mean the breeds most registered
+      with Dogs Australia, the national pedigree registry.
     </p>
 
-    <div class="world-layout">
+    <p>
+      Crossbreeds and unregistered dogs are not counted,
+      so this is the <strong>pedigree story</strong>,
+      not every dog in Australia.
+    </p>
 
-      <!-- WORLD MAP: spans both columns -->
-      <div class="viz world-map" id="v1"></div>
+    <p>
+      Scroll down to follow the story in five steps.
+    </p>
 
-      <!-- TEXT: bottom-left -->
-      <div class="world-story">
+  </div>
 
-        <span class="story-kicker">FROM PLACE TO PURPOSE</span>
+</header>
 
-        <h3>Europe stands out as a major centre of breed development.</h3>
 
-        <p>
-          The proportional-symbol map shows how recognised breeds are distributed
-          by country of origin. Larger circles represent countries associated with
-          more FCI-recognised breeds.
-        </p>
 
-        <p>
-          The United Kingdom, France and Germany form particularly prominent
-          clusters, while recognised breeds also originate across Asia, the
-          Americas, Africa and Oceania.
-        </p>
+<main>
 
-        <div class="how-to-read">
-          <h4>How to read the next chart</h4>
 
-          <p>
-            The chord diagram moves from <strong>where breeds came from</strong>
-            to <strong>what kinds of dogs those regions produced</strong>.
-          </p>
+<!-- ======================================================
+     01 · A NATION OF DOG OWNERS
+     ====================================================== -->
 
-          <p>
-            <strong>Thicker connections represent more recognised breeds</strong>
-            linking a region with that breed group.
-          </p>
-        </div>
+<section id="owners">
 
+  <div class="section-kicker">
+    01 · A NATION OF DOG OWNERS
+  </div>
+
+  <h2>
+    Dogs are Australia’s favourite pet,
+    but the pedigree scene is shrinking
+  </h2>
+
+
+  <!-- ROW 1 -->
+
+  <div class="section-story-row">
+
+    <div class="story-chart">
+
+      <div
+        class="viz"
+        id="v1">
       </div>
 
-      <!-- CHORD: bottom-right -->
-      <div class="viz world-chord" id="v2"></div>
+    </div>
+
+
+    <div class="story-copy">
+
+      <h3>
+        Almost one in every two Australian households has a dog.
+      </h3>
+
+      <p>
+        Dogs are comfortably Australia’s most common household pet.
+        In 2025,
+        <strong>49.3% of households reported owning a dog</strong>,
+        compared with 33.6% for cats.
+      </p>
+
+      <p>
+        Fish appear in 11.5% of households and birds in 9.5%,
+        while small mammals and reptiles each appear in fewer than 3%.
+      </p>
+
+      <p class="story-emphasis">
+        Dogs are present in almost half of Australian homes.
+      </p>
 
     </div>
 
-  </section>
+  </div>
 
-  <section>
-    <div class="section-kicker">02 · AUSTRALIA</div>
-    <h2>From global origins to Australian dog culture</h2>
-    <p class="section-intro">Australia’s pedigree-dog community varies sharply by population size and by state. A separate national pet survey shows just how common dogs are in Australian homes.</p>
-    <div class="grid two">
-      <div class="viz" id="v3"></div>
-      <div class="viz" id="v4"></div>
+
+
+  <!-- ROW 2 -->
+
+  <div class="section-story-row reverse-story">
+
+    <div class="story-copy">
+
+      <h3>
+        Dog ownership is widespread,
+        but pedigree participation is not.
+      </h3>
+
+      <p>
+        The map uses
+        <strong>Dogs Australia members per 100,000 residents</strong>
+        rather than raw membership,
+        allowing states with different population sizes
+        to be compared fairly.
+      </p>
+
+      <p>
+        Tasmania records the highest rate at
+        <strong>151.6 members per 100,000 people</strong>,
+        followed by South Australia at 139.3.
+        The Northern Territory records the lowest rate at 55.7.
+      </p>
+
+      <p class="story-emphasis">
+        Population size does not necessarily mean
+        stronger pedigree participation.
+      </p>
+
     </div>
-    <div class="viz wide" id="v5"></div>
-    <div class="viz wide" id="v6"></div>
-  </section>
 
-  <section>
-    <div class="section-kicker">03 · POPULARITY</div>
-    <h2>The popularity contest</h2>
-    <p class="section-intro">Registration counts are not fixed. Some familiar breeds have held their ground, some surged, and others have fallen substantially over the last quarter-century.</p>
-    <div class="viz wide" id="v7"></div>
-    <div class="viz wide" id="v8"></div>
-  </section>
 
-  <section>
-    <div class="section-kicker">04 · CHARACTERISTICS</div>
-    <h2>No two breeds are the same</h2>
-    <p class="section-intro">Popularity does not describe what living with a breed may be like. Compare temperament, physical profiles, exercise needs, and lifespan.</p>
-    <div class="viz wide" id="v9"></div>
-    <div class="viz wide" id="v10"></div>
-    <div class="grid two">
-      <div class="viz" id="v11"></div>
-      <div class="viz" id="v12"></div>
+    <div class="story-chart">
+
+      <div
+        class="viz"
+        id="v2">
+      </div>
+
     </div>
-  </section>
 
-  <section class="ending">
-    <div class="section-kicker">05 · TAKEAWAY</div>
-    <h2>There is more to a “top dog” than popularity.</h2>
-    <p>Australia’s recognised breeds originate across the world, registrations have changed over time, and breeds differ greatly in temperament, exercise needs, body size and lifespan. Popularity tells us what people choose; breed characteristics help explain what those choices mean.</p>
-  </section>
+  </div>
 
-  <section class="sources">
-    <h2>Sources & notes</h2>
-    <p><strong>Breed origins:</strong> Fédération Cynologique Internationale (FCI) nomenclature; machine-readable compilation by paiv/fci-breeds.</p>
-    <p><strong>Australian registration and membership:</strong> Dogs Australia national membership statistics (1995–2025) and national registration statistics (2000–2025).</p>
-    <p><strong>Population:</strong> Australian Bureau of Statistics, state and territory population at 31 December 2025.</p>
-    <p><strong>Pet ownership:</strong> Animal Medicines Australia, <em>Pets in Australia 2025</em>.</p>
-    <p><strong>Breed traits:</strong> VildMedPap/dogbreeds, compiled from DogTime breed profiles. Trait scores are comparative breed-level ratings, not guarantees of individual behaviour.</p>
-    <p><strong>Spatial boundaries:</strong> Natural Earth (world); Australian state GeoJSON from rowanhogan/australian-states for the working prototype. Replace with the unit-approved ABS boundary file if required before submission.</p>
-    <p class="note"><strong>AI acknowledgement:</strong> Generative AI was used to assist with code drafting, data cleaning, and design iteration. Data sources and final visual choices should be checked by the author against unit requirements before submission.</p>
-  </section>
+
+
+  <!-- ROW 3 -->
+
+  <div class="full-chart-block">
+
+    <div
+      class="viz wide state-change-viz"
+      id="v3">
+    </div>
+
+  </div>
+
+
+
+  <div class="compact-takeaways">
+
+    <p class="compact-takeaway">
+      <strong>7 of 8</strong>
+      jurisdictions recorded fewer members in 2025 than in 2021.
+    </p>
+
+    <p class="compact-takeaway">
+      ACT membership grew
+      <strong>43.4%</strong>,
+      from <strong>309</strong> to <strong>443</strong> members.
+    </p>
+
+    <p class="compact-takeaway">
+      Dog ownership remains widespread,
+      while <strong>pedigree participation is shrinking.</strong>
+    </p>
+
+  </div>
+
+
+
+  <div class="story-transition">
+
+    <p>
+      Australians love dogs,
+      but most registered favourites were developed overseas.
+      <strong>Where did they come from?</strong>
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     02 · WHERE OUR DOGS COME FROM
+     ====================================================== -->
+
+<section id="origins">
+
+  <div class="section-kicker">
+    02 · WHERE OUR DOGS COME FROM
+  </div>
+
+  <h2>
+    Our top dogs are immigrants
+  </h2>
+
+
+
+  <!-- WORLD MAP -->
+
+  <div class="section-story-row origins-world-row">
+
+    <div class="story-chart">
+
+      <div
+        class="viz world-map"
+        id="v4">
+      </div>
+
+    </div>
+
+
+    <div class="story-copy">
+
+      <h3>
+        Dog breeds were developed all over the world,
+        but Europe stands out.
+      </h3>
+
+      <p>
+        The proportional-symbol map shows how many recognised
+        FCI breeds are associated with each country.
+        Larger circles represent countries linked with more breeds.
+      </p>
+
+      <p>
+        The
+        <strong>United Kingdom, France and Germany</strong>
+        form one of the strongest concentrations,
+        while recognised breeds also originate across
+        Asia, the Americas, Africa and Oceania.
+      </p>
+
+      <p class="story-emphasis">
+        Europe is a major centre of recognised breed development.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- FLOW MAP -->
+
+  <div class="full-chart-block">
+
+    <div
+      class="viz wide origins-flow-viz"
+      id="v5">
+    </div>
+
+  </div>
+
+
+
+  <div class="compact-takeaways">
+
+    <p class="compact-takeaway">
+      <strong>5 of 10</strong>
+      selected breeds trace back to the United Kingdom.
+    </p>
+
+    <p class="compact-takeaway">
+      UK-origin breeds account for
+      <strong>more than two-thirds</strong>
+      of registrations among these ten breeds.
+    </p>
+
+    <p class="compact-takeaway">
+      Australia’s favourites may be registered locally,
+      but <strong>their origins are overwhelmingly overseas.</strong>
+    </p>
+
+  </div>
+
+
+
+  <!-- CHORD -->
+
+  <div class="section-story-row origins-chord-row">
+
+    <div class="story-copy">
+
+      <h3>
+        Where a breed came from is also linked
+        to what it was bred to do.
+      </h3>
+
+      <p>
+        The chord diagram connects broad origin regions
+        with recognised FCI breed groups.
+      </p>
+
+      <p>
+        <strong>Thicker connections represent more recognised breeds</strong>
+        linking a region with a particular breed group.
+        This reveals how different parts of the world developed
+        different mixtures of working, hunting and companion dogs.
+      </p>
+
+      <p class="story-emphasis">
+        Geography tells us where breeds began.
+        Breed groups reveal the roles they were developed for.
+      </p>
+
+    </div>
+
+
+    <div class="story-chart">
+
+      <div
+        class="viz world-chord"
+        id="v6">
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="story-transition">
+
+    <p>
+      Origins explain where these breeds began.
+      Registrations show which ones Australians choose today.
+      <strong>Which breeds now lead the pack?</strong>
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     03 · THE POPULARITY CONTEST
+     ====================================================== -->
+
+<section id="popularity">
+
+  <div class="section-kicker">
+    03 · THE POPULARITY CONTEST
+  </div>
+
+  <h2>
+    Golden Retrievers became number one
+    by falling more slowly
+  </h2>
+
+
+
+  <!-- TOTAL REGISTRATIONS -->
+
+  <div class="section-story-row popularity-total-row">
+
+    <div class="story-chart">
+
+      <div
+        class="viz"
+        id="v7">
+      </div>
+
+    </div>
+
+
+    <div class="story-copy">
+
+      <h3>
+        Australia’s pedigree market
+        has become much smaller.
+      </h3>
+
+      <p>
+        Dogs Australia recorded
+        <strong>77,559 registrations in 2000</strong>.
+        By 2025 the total had fallen to
+        <strong>47,288</strong>,
+        about 39% lower.
+      </p>
+
+      <p>
+        Registrations briefly climbed to
+        <strong>78,580 in 2021</strong>,
+        before falling sharply over the following four years.
+      </p>
+
+      <p class="story-emphasis">
+        A breed can climb the rankings even while
+        its own registration numbers are falling.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- TREEMAP -->
+
+  <div class="section-story-row reverse-story popularity-group-row">
+
+    <div class="story-copy">
+
+      <h3>
+        Before individual breeds,
+        one group dominates the registry.
+      </h3>
+
+      <p>
+        Breed groups provide a broader view of what Australians register.
+        In 2025,
+        <strong>Gundogs accounted for 26.0%</strong>
+        of all Dogs Australia registrations.
+      </p>
+
+      <p>
+        Working Dogs followed at 18.3%,
+        with Terriers, Toys and Utility dogs also representing
+        substantial shares.
+      </p>
+
+      <p class="story-emphasis">
+        Gundogs alone account for more than one quarter
+        of all 2025 registrations.
+      </p>
+
+    </div>
+
+
+    <div class="story-chart">
+
+      <div
+        class="viz"
+        id="v8">
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- BUMP CHART -->
+
+  <div class="full-chart-block">
+
+    <div
+      class="viz wide"
+      id="v9">
+    </div>
+
+  </div>
+
+
+
+  <div class="compact-takeaways">
+
+    <p class="compact-takeaway">
+      The <strong>Golden Retriever</strong>
+      finished 2025 ranked first among the ten selected breeds.
+    </p>
+
+    <p class="compact-takeaway">
+      It overtook the
+      <strong>Labrador Retriever in 2024</strong>.
+    </p>
+
+    <p class="compact-takeaway">
+      Rank is relative.
+      A breed can rise because <strong>other breeds fall faster.</strong>
+    </p>
+
+  </div>
+
+
+
+  <!-- SLOPE CHART -->
+
+  <div class="full-chart-block popularity-slope-block">
+
+    <div
+      class="viz wide"
+      id="v10">
+    </div>
+
+  </div>
+
+
+
+  <div class="compact-takeaways">
+
+    <p class="compact-takeaway">
+      Golden Retriever registrations fell
+      <strong>15.9%</strong>
+      from 2000 to 2025.
+    </p>
+
+    <p class="compact-takeaway">
+      Labrador registrations fell
+      <strong>31.0%</strong>
+      over the same period.
+    </p>
+
+    <p class="compact-takeaway">
+      Only the Australian Shepherd
+      <strong>(+326.7%, from 281 to 1,199)</strong>
+      and French Bulldog
+      <strong>(+232.5%, from 203 to 675)</strong>
+      grew.
+    </p>
+
+  </div>
+
+
+
+  <div class="story-transition">
+
+    <p>
+      Registration data tells us what Australians choose.
+      <strong>
+        It does not tell us what those dogs are like to live with.
+      </strong>
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     04 · LIVING WITH THEM
+     ====================================================== -->
+
+<section id="living">
+
+  <div class="section-kicker">
+    04 · LIVING WITH THEM
+  </div>
+
+  <h2>
+    Popularity doesn’t tell you
+    what a dog is like to live with
+  </h2>
+
+
+
+  <!-- HEATMAP -->
+
+  <div class="full-chart-block living-heatmap-block">
+
+    <div
+      class="viz wide"
+      id="v11">
+    </div>
+
+  </div>
+
+
+
+  <div class="compact-takeaways">
+
+    <p class="compact-takeaway">
+      Most selected breeds score
+      <strong>very highly for affection.</strong>
+    </p>
+
+    <p class="compact-takeaway">
+      Trainability, dog friendliness and barking
+      <strong>vary much more between breeds.</strong>
+    </p>
+
+    <p class="compact-takeaway">
+      Darker means a <strong>higher score</strong>,
+      not necessarily a better trait.
+    </p>
+
+  </div>
+
+
+
+  <!-- PARALLEL COORDINATES -->
+
+  <div class="section-story-row reverse-story living-profile-row">
+
+    <div class="story-copy">
+
+      <h3>
+        The same dog can rank high on one characteristic
+        and low on another.
+      </h3>
+
+      <p>
+        The parallel-coordinates chart compares
+        height, weight, lifespan and general health.
+        Each measure is
+        <strong>normalised within its own metric</strong>
+        so very different units can be compared together.
+      </p>
+
+      <p>
+        Choose a breed from the dropdown
+        or hover over a line to isolate it from the rest.
+      </p>
+
+      <p class="story-emphasis">
+        There is no single profile that defines
+        the “best” dog.
+      </p>
+
+    </div>
+
+
+    <div class="story-chart">
+
+      <div
+        class="viz"
+        id="v12">
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- SCATTER -->
+
+  <div class="full-chart-block living-scatter-block">
+
+    <div
+      class="viz wide"
+      id="v13">
+    </div>
+
+  </div>
+
+
+
+  <div class="compact-takeaways">
+
+    <p class="compact-takeaway">
+      Across these breeds,
+      <strong>heavier dogs tend to live shorter lives.</strong>
+    </p>
+
+    <p class="compact-takeaway">
+      Great Danes and Bernese Mountain Dogs
+      sit near the <strong>heavy, shorter-lived end</strong>.
+    </p>
+
+    <p class="compact-takeaway">
+      This is a <strong>breed-level pattern</strong>,
+      not a prediction for an individual dog.
+    </p>
+
+  </div>
+
+
+
+  <div class="story-transition">
+
+    <p>
+      Ownership, origins, popularity and breed characteristics
+      tell different parts of the story.
+      <strong>So which breed is really Australia’s top dog?</strong>
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     05 · VERDICT
+     ====================================================== -->
+
+<section
+  id="verdict"
+  class="ending">
+
+  <div class="section-kicker">
+    05 · VERDICT
+  </div>
+
+  <h2>
+    The top dog depends on how you count
+  </h2>
+
+  <p class="verdict-copy">
+    Among the ten breeds followed here,
+    the
+    <strong>Golden Retriever finishes 2025 on top.</strong>
+    But it got there because Labrador registrations fell faster,
+    not because Golden Retriever registrations grew.
+  </p>
+
+  <p class="verdict-copy">
+    Australia’s most familiar pedigree breeds are overwhelmingly imported,
+    many of them from the United Kingdom.
+    Popularity also tells us surprisingly little about daily life:
+    breeds differ substantially in temperament,
+    body size and lifespan.
+  </p>
+
+  <p class="verdict-final">
+    <strong>
+      Popularity tells us what Australians register.
+      It cannot tell us which dog is right for a particular home.
+    </strong>
+  </p>
+
+</section>
+
+
+
+<!-- ======================================================
+     SOURCES
+     ====================================================== -->
+
+<section class="sources">
+
+  <h2>
+    Sources & notes
+  </h2>
+
+  <p>
+    <strong>Breed origins:</strong>
+    Fédération Cynologique Internationale (FCI) nomenclature;
+    machine-readable compilation by paiv/fci-breeds.
+  </p>
+
+  <p>
+    <strong>Australian registration and membership:</strong>
+    Dogs Australia national membership statistics
+    and national registration statistics.
+  </p>
+
+  <p>
+    <strong>Population:</strong>
+    Australian Bureau of Statistics,
+    state and territory population,
+    31 December 2025.
+  </p>
+
+  <p>
+    <strong>Pet ownership:</strong>
+    Animal Medicines Australia,
+    <em>Pets in Australia 2025</em>.
+  </p>
+
+  <p>
+    <strong>Breed traits:</strong>
+    VildMedPap/dogbreeds,
+    compiled from DogTime breed profiles.
+    Trait scores are comparative breed-level ratings,
+    not guarantees of individual behaviour.
+  </p>
+
+  <p>
+    <strong>Spatial boundaries:</strong>
+    Natural Earth for world geography.
+    Australian state boundaries use the current project boundary dataset.
+  </p>
+
+  <p class="note">
+    <strong>AI acknowledgement:</strong>
+    Generative AI was used to assist with code drafting,
+    data cleaning and design iteration.
+    Data sources and final visual choices were checked by the author.
+  </p>
+
+</section>
+
+
 </main>
 
+
+
 <script>
+
 const specs = [
- ['#v1','js/01_world_origins.vg.json'],
- ['#v2','js/02_origin_group_chord.vg.json'],
- ['#v3','js/03_australia_choropleth.vg.json'],
- ['#v4','js/04_pet_unit_grid.vg.json'],
- ['#v5','js/05_state_cartogram.vg.json'],
- ['#v6','js/06_group_treemap.vg.json'],
- ['#v7','js/07_popularity_bump.vg.json'],
- ['#v8','js/08_popularity_slope.vg.json'],
- ['#v9','js/09_temperament_heatmap.vg.json'],
- ['#v10','js/10_parallel_coordinates.vg.json'],
- ['#v11','js/11_exercise_lollipop.vg.json'],
- ['#v12','js/12_weight_lifespan.vg.json']
+
+  ['#v1', 'js/01_pet_ownership_waffle.vg.json'],
+
+  ['#v2', 'js/02_state_membership_choropleth.vg.json'],
+
+  ['#v3', 'js/03_state_membership_change.vg.json'],
+
+  ['#v4', 'js/04_world_breed_origins.vg.json'],
+
+  ['#v5', 'js/05_selected_breed_origin_flow.vg.json'],
+
+  ['#v6', 'js/06_region_breed_group_chord.vg.json'],
+
+  ['#v7', 'js/07_national_registration_trend.vg.json'],
+
+  ['#v8', 'js/08_breed_group_treemap.vg.json'],
+
+  ['#v9', 'js/09_selected_breed_rank_bump.vg.json'],
+
+  ['#v10', 'js/10_selected_breed_registration_slope.vg.json'],
+
+  ['#v11', 'js/11_breed_temperament_heatmap.vg.json'],
+
+  ['#v12', 'js/12_breed_profile_parallel_coordinates.vg.json'],
+
+  ['#v13', 'js/13_weight_lifespan_scatter.vg.json']
+
 ];
-for (const [el,spec] of specs) {
-  vegaEmbed(el,spec,{actions:false,renderer:'svg'}).catch(err => {
-    document.querySelector(el).innerHTML = `<pre class="error">${err.message}</pre>`;
-    console.error(el,err);
+
+
+for (const [el, spec] of specs) {
+
+  vegaEmbed(
+    el,
+    spec,
+    {
+      actions: false,
+      renderer: 'svg'
+    }
+  )
+
+  .catch(err => {
+
+    const container =
+      document.querySelector(el);
+
+    if (container) {
+
+      container.innerHTML =
+        `<pre class="error">${err.message}</pre>`;
+
+    }
+
+    console.error(
+      `Error loading ${spec}:`,
+      err
+    );
+
   });
+
 }
+
 </script>
+
+
 </body>
+
 </html>

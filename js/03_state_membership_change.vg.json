@@ -1,0 +1,435 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "width": 1180,
+  "height": 460,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+
+  "data": {
+    "url": "data/state_membership_2021_2025.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "0",
+      "as": "Zero"
+    },
+    {
+      "calculate": "format(datum.Change_2021_2025_pct, '+.1f') + '%'",
+      "as": "ChangeLabel"
+    },
+    {
+      "calculate": "datum.State === 'Australian Capital Territory' ? 'ACT' : datum.State === 'Western Australia' ? 'WA' : datum.State === 'Tasmania' ? 'TAS' : datum.State === 'South Australia' ? 'SA' : datum.State === 'Queensland' ? 'QLD' : datum.State === 'Victoria' ? 'VIC' : datum.State === 'New South Wales' ? 'NSW' : 'NT'",
+      "as": "StateShort"
+    }
+  ],
+
+  "title": {
+    "text": "Most State Dog Communities Have Shrunk Since 2021",
+    "subtitle": [
+      "Membership change from 2021–2025 • Circle area represents Dogs Australia members in 2025",
+      "The ACT is the only jurisdiction in this comparison to record membership growth"
+    ],
+    "anchor": "start",
+    "fontSize": 21,
+    "subtitleFontSize": 12,
+    "subtitlePadding": 5,
+    "offset": 14,
+    "color": "#24211E",
+    "subtitleColor": "#6F675F"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "strokeCap": "round",
+        "opacity": 0.55
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Zero",
+          "type": "quantitative",
+          "scale": {
+            "domain": [-38, 50]
+          }
+        },
+
+        "x2": {
+          "field": "Change_2021_2025_pct"
+        },
+
+        "y": {
+          "field": "StateShort",
+          "type": "nominal",
+
+          "sort": [
+            "ACT",
+            "WA",
+            "TAS",
+            "SA",
+            "QLD",
+            "VIC",
+            "NSW",
+            "NT"
+          ],
+
+          "scale": {
+            "paddingInner": 0.35,
+            "paddingOuter": 0.20
+          },
+
+          "axis": {
+            "title": null,
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold",
+            "labelColor": "#24211E",
+            "labelPadding": 24,
+            "labelLimit": 80,
+            "ticks": false,
+            "domain": false
+          }
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.Change_2021_2025_pct > 0",
+            "value": "#79AEA5"
+          },
+
+          "value": "#E0A08B"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#817970",
+        "strokeWidth": 1.4,
+        "strokeDash": [5, 4]
+      },
+
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+
+          "scale": {
+            "domain": [-38, 50]
+          }
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.96,
+        "stroke": "#FFFDF9",
+        "strokeWidth": 2,
+        "cursor": "pointer"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Change_2021_2025_pct",
+          "type": "quantitative",
+          "title": "Membership change, 2021–2025",
+
+          "scale": {
+            "domain": [-38, 50]
+          },
+
+          "axis": {
+            "values": [
+              -30,
+              -20,
+              -10,
+              0,
+              10,
+              20,
+              30,
+              40
+            ],
+
+            "labelExpr": "datum.value > 0 ? '+' + datum.value + '%' : datum.value + '%'",
+
+            "labelFont": "Inter",
+            "labelFontSize": 11,
+            "labelColor": "#6F675F",
+
+            "titleFont": "Inter",
+            "titleFontSize": 12,
+            "titleFontWeight": "bold",
+            "titleColor": "#24211E",
+            "titlePadding": 14,
+
+            "grid": true,
+            "gridColor": "#E9E2D9",
+            "gridOpacity": 0.65,
+
+            "domain": false,
+            "tickColor": "#C9C0B5"
+          }
+        },
+
+        "y": {
+          "field": "StateShort",
+          "type": "nominal",
+
+          "sort": [
+            "ACT",
+            "WA",
+            "TAS",
+            "SA",
+            "QLD",
+            "VIC",
+            "NSW",
+            "NT"
+          ],
+
+          "scale": {
+            "paddingInner": 0.35,
+            "paddingOuter": 0.20
+          },
+
+          "axis": {
+            "title": null,
+            "labelFont": "Inter",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold",
+            "labelColor": "#24211E",
+            "labelPadding": 24,
+            "labelLimit": 80,
+            "ticks": false,
+            "domain": false
+          }
+        },
+
+        "size": {
+          "field": "Members_2025",
+          "type": "quantitative",
+          "title": "Members in 2025",
+
+          "scale": {
+            "domain": [
+              0,
+              7000
+            ],
+            "range": [
+              120,
+              2000
+            ]
+          },
+
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+
+            "values": [
+              1000,
+              3000,
+              5000,
+              7000
+            ],
+
+            "labelExpr": "format(datum.value, ',')",
+
+            "titleFont": "Inter",
+            "labelFont": "Inter",
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+
+            "titleColor": "#514B46",
+            "labelColor": "#6F675F",
+
+            "symbolStrokeColor": "#FFFDF9",
+            "symbolStrokeWidth": 1,
+
+            "offset": 15
+          }
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.Change_2021_2025_pct > 0",
+            "value": "#2F7F72"
+          },
+
+          "value": "#C96A4A"
+        },
+
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+
+          {
+            "field": "Members_2021",
+            "type": "quantitative",
+            "title": "Members in 2021",
+            "format": ","
+          },
+
+          {
+            "field": "Members_2025",
+            "type": "quantitative",
+            "title": "Members in 2025",
+            "format": ","
+          },
+
+          {
+            "field": "Change_2021_2025_pct",
+            "type": "quantitative",
+            "title": "Change",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Change_2021_2025_pct < 0"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -24,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#A95138"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Change_2021_2025_pct",
+          "type": "quantitative",
+
+          "scale": {
+            "domain": [-38, 50]
+          }
+        },
+
+        "y": {
+          "field": "StateShort",
+          "type": "nominal",
+
+          "sort": [
+            "ACT",
+            "WA",
+            "TAS",
+            "SA",
+            "QLD",
+            "VIC",
+            "NSW",
+            "NT"
+          ],
+
+          "scale": {
+            "paddingInner": 0.35,
+            "paddingOuter": 0.20
+          }
+        },
+
+        "text": {
+          "field": "ChangeLabel"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Change_2021_2025_pct >= 0"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 24,
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#276C63"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Change_2021_2025_pct",
+          "type": "quantitative",
+
+          "scale": {
+            "domain": [-38, 50]
+          }
+        },
+
+        "y": {
+          "field": "StateShort",
+          "type": "nominal",
+
+          "sort": [
+            "ACT",
+            "WA",
+            "TAS",
+            "SA",
+            "QLD",
+            "VIC",
+            "NSW",
+            "NT"
+          ],
+
+          "scale": {
+            "paddingInner": 0.35,
+            "paddingOuter": 0.20
+          }
+        },
+
+        "text": {
+          "field": "ChangeLabel"
+        }
+      }
+    }
+  ],
+
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "shared"
+    }
+  },
+
+  "config": {
+    "background": "#FFFDF9",
+
+    "view": {
+      "stroke": null
+    },
+
+    "title": {
+      "font": "Inter",
+      "subtitleFont": "Inter"
+    },
+
+    "tooltip": {
+      "font": "Inter"
+    }
+  }
+}

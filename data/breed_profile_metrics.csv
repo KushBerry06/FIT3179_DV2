@@ -1,0 +1,81 @@
+Breed,Group,Metric,Value,Normalized
+Australian Cattle Dog,Herding,Height (cm),47.0,0.4886
+Australian Shepherd,Herding,Height (cm),52.1,0.5779
+Beagle,Hound,Height (cm),34.3,0.2662
+Bernese Mountain Dog,Working,Height (cm),64.8,0.8004
+Border Collie,Herding,Height (cm),50.8,0.5552
+Cavalier King Charles Spaniel,Companion,Height (cm),31.8,0.2224
+Chihuahua,Companion,Height (cm),19.1,0.0
+French Bulldog,Companion,Height (cm),30.5,0.1996
+German Shepherd Dog,Herding,Height (cm),61.0,0.7338
+Golden Retriever,Sporting,Height (cm),57.1,0.6655
+Great Dane,Working,Height (cm),76.2,1.0
+Jack Russell Terrier,Terrier,Height (cm),38.1,0.3327
+Labrador Retriever,Sporting,Height (cm),57.1,0.6655
+Poodle,Companion,Height (cm),55.9,0.6445
+Pug,Companion,Height (cm),35.6,0.289
+Rottweiler,Working,Height (cm),62.2,0.7548
+Shiba Inu,Companion,Height (cm),36.8,0.31
+Siberian Husky,Working,Height (cm),54.6,0.6217
+Staffordshire Bull Terrier,Terrier,Height (cm),38.1,0.3327
+Whippet,Hound,Height (cm),50.8,0.5552
+Australian Cattle Dog,Herding,Weight (kg),18.1,0.2439
+Australian Shepherd,Herding,Weight (kg),23.8,0.3303
+Beagle,Hound,Weight (kg),10.9,0.1348
+Bernese Mountain Dog,Working,Weight (kg),42.0,0.6061
+Border Collie,Herding,Weight (kg),17.0,0.2273
+Cavalier King Charles Spaniel,Companion,Weight (kg),7.0,0.0758
+Chihuahua,Companion,Weight (kg),2.0,0.0
+French Bulldog,Companion,Weight (kg),10.0,0.1212
+German Shepherd Dog,Herding,Weight (kg),38.6,0.5545
+Golden Retriever,Sporting,Weight (kg),29.5,0.4167
+Great Dane,Working,Weight (kg),68.0,1.0
+Jack Russell Terrier,Terrier,Weight (kg),6.8,0.0727
+Labrador Retriever,Sporting,Weight (kg),30.6,0.4333
+Poodle,Companion,Weight (kg),26.1,0.3652
+Pug,Companion,Weight (kg),7.3,0.0803
+Rottweiler,Working,Weight (kg),48.8,0.7091
+Shiba Inu,Companion,Weight (kg),9.1,0.1076
+Siberian Husky,Working,Weight (kg),21.5,0.2955
+Staffordshire Bull Terrier,Terrier,Weight (kg),14.1,0.1833
+Whippet,Hound,Weight (kg),15.0,0.197
+Australian Cattle Dog,Herding,Lifespan (years),13.5,0.9167
+Australian Shepherd,Herding,Lifespan (years),13.5,0.9167
+Beagle,Hound,Lifespan (years),12.5,0.75
+Bernese Mountain Dog,Working,Lifespan (years),8.0,0.0
+Border Collie,Herding,Lifespan (years),13.5,0.9167
+Cavalier King Charles Spaniel,Companion,Lifespan (years),12.0,0.6667
+Chihuahua,Companion,Lifespan (years),14.0,1.0
+French Bulldog,Companion,Lifespan (years),12.5,0.75
+German Shepherd Dog,Herding,Lifespan (years),12.0,0.6667
+Golden Retriever,Sporting,Lifespan (years),11.0,0.5
+Great Dane,Working,Lifespan (years),8.5,0.0833
+Jack Russell Terrier,Terrier,Lifespan (years),12.5,0.75
+Labrador Retriever,Sporting,Lifespan (years),11.0,0.5
+Poodle,Companion,Lifespan (years),13.5,0.9167
+Pug,Companion,Lifespan (years),13.5,0.9167
+Rottweiler,Working,Lifespan (years),9.5,0.25
+Shiba Inu,Companion,Lifespan (years),14.0,1.0
+Siberian Husky,Working,Lifespan (years),13.5,0.9167
+Staffordshire Bull Terrier,Terrier,Lifespan (years),13.0,0.8333
+Whippet,Hound,Lifespan (years),13.5,0.9167
+Australian Cattle Dog,Herding,General health score,5.0,1.0
+Australian Shepherd,Herding,General health score,2.0,0.25
+Beagle,Hound,General health score,1.0,0.0
+Bernese Mountain Dog,Working,General health score,1.0,0.0
+Border Collie,Herding,General health score,2.0,0.25
+Cavalier King Charles Spaniel,Companion,General health score,4.0,0.75
+Chihuahua,Companion,General health score,2.0,0.25
+French Bulldog,Companion,General health score,2.0,0.25
+German Shepherd Dog,Herding,General health score,4.0,0.75
+Golden Retriever,Sporting,General health score,2.0,0.25
+Great Dane,Working,General health score,4.0,0.75
+Jack Russell Terrier,Terrier,General health score,4.0,0.75
+Labrador Retriever,Sporting,General health score,3.0,0.5
+Poodle,Companion,General health score,2.0,0.25
+Pug,Companion,General health score,1.0,0.0
+Rottweiler,Working,General health score,2.0,0.25
+Shiba Inu,Companion,General health score,3.0,0.5
+Siberian Husky,Working,General health score,4.0,0.75
+Staffordshire Bull Terrier,Terrier,General health score,3.0,0.5
+Whippet,Hound,General health score,4.0,0.75

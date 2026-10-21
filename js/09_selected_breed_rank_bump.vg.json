@@ -1,0 +1,327 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "width": "container",
+  "height": 520,
+
+  "padding": {
+    "left": 5,
+    "right": 10,
+    "top": 5,
+    "bottom": 5
+  },
+
+  "background": null,
+
+  "title": {
+    "text": "Which Breeds Climbed and Which Fell?",
+    "subtitle": "Annual rank among ten selected breeds based on Dogs Australia registrations, 2000-2025",
+    "anchor": "start",
+    "font": "Inter",
+    "fontSize": 22,
+    "fontWeight": 700,
+    "subtitleFont": "Inter",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#6F675F",
+    "subtitlePadding": 5,
+    "color": "#24211E",
+    "offset": 10
+  },
+
+  "data": {
+    "url": "data/selected_breed_rankings_2000_2025.csv"
+  },
+
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "breedHover",
+          "select": {
+            "type": "point",
+            "fields": ["Breed"],
+            "on": "pointerover",
+            "clear": "pointerout",
+            "toggle": false
+          }
+        }
+      ],
+
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "strokeCap": "round",
+        "strokeJoin": "round",
+        "cursor": "pointer"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2000, 2027],
+            "nice": false
+          },
+          "axis": {
+            "title": "Year",
+            "titleFont": "Inter",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "titlePadding": 8,
+            "values": [2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024],
+            "format": "d",
+            "labelFont": "Inter",
+            "labelFontSize": 10,
+            "labelColor": "#6F675F",
+            "tickColor": "#D8D0C7",
+            "domain": false,
+            "grid": true,
+            "gridColor": "#E7E0D7",
+            "gridOpacity": 0.9
+          }
+        },
+
+        "y": {
+          "field": "Rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [10, 1],
+            "nice": false
+          },
+          "axis": {
+            "title": "Rank among selected breeds",
+            "titleFont": "Inter",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "titlePadding": 10,
+            "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            "labelFont": "Inter",
+            "labelFontSize": 10,
+            "labelColor": "#6F675F",
+            "tickColor": "#D8D0C7",
+            "domain": false,
+            "grid": false
+          }
+        },
+
+        "color": {
+          "field": "Breed",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australian Shepherd",
+              "Border Collie",
+              "Cavalier King Charles Spaniel",
+              "French Bulldog",
+              "German Shepherd Dog",
+              "Golden Retriever",
+              "Labrador Retriever",
+              "Pug",
+              "Rottweiler",
+              "Staffordshire Bull Terrier"
+            ],
+            "range": [
+              "#5976A9",
+              "#5D8A66",
+              "#D46A6A",
+              "#7DAFB2",
+              "#8C6A58",
+              "#D6A63C",
+              "#9A7AAE",
+              "#E6A1B0",
+              "#D3874A",
+              "#7FAF6B"
+            ]
+          },
+          "legend": null
+        },
+
+        "opacity": {
+          "condition": {
+            "param": "breedHover",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.16
+        },
+
+        "detail": {
+          "field": "Breed"
+        },
+
+        "tooltip": [
+          {
+            "field": "Breed",
+            "type": "nominal",
+            "title": "Breed"
+          },
+          {
+            "field": "Year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Rank",
+            "type": "quantitative",
+            "title": "Rank"
+          },
+          {
+            "field": "Registrations",
+            "type": "quantitative",
+            "title": "Registrations",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Year === 2025"
+        }
+      ],
+
+      "mark": {
+        "type": "circle",
+        "size": 70,
+        "stroke": "#FFFDF9",
+        "strokeWidth": 1.2
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2000, 2027]
+          }
+        },
+
+        "y": {
+          "field": "Rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [10, 1]
+          }
+        },
+
+        "color": {
+          "field": "Breed",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australian Shepherd",
+              "Border Collie",
+              "Cavalier King Charles Spaniel",
+              "French Bulldog",
+              "German Shepherd Dog",
+              "Golden Retriever",
+              "Labrador Retriever",
+              "Pug",
+              "Rottweiler",
+              "Staffordshire Bull Terrier"
+            ],
+            "range": [
+              "#5976A9",
+              "#5D8A66",
+              "#D46A6A",
+              "#7DAFB2",
+              "#8C6A58",
+              "#D6A63C",
+              "#9A7AAE",
+              "#E6A1B0",
+              "#D3874A",
+              "#7FAF6B"
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Year === 2025"
+        },
+        {
+          "calculate": "2025.25",
+          "as": "LabelYear"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 4,
+        "font": "Inter",
+        "fontSize": 10.5,
+        "fontWeight": 600
+      },
+
+      "encoding": {
+        "x": {
+          "field": "LabelYear",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2000, 2027]
+          }
+        },
+
+        "y": {
+          "field": "Rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [10, 1]
+          }
+        },
+
+        "text": {
+          "field": "Breed"
+        },
+
+        "color": {
+          "field": "Breed",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australian Shepherd",
+              "Border Collie",
+              "Cavalier King Charles Spaniel",
+              "French Bulldog",
+              "German Shepherd Dog",
+              "Golden Retriever",
+              "Labrador Retriever",
+              "Pug",
+              "Rottweiler",
+              "Staffordshire Bull Terrier"
+            ],
+            "range": [
+              "#5976A9",
+              "#5D8A66",
+              "#D46A6A",
+              "#7DAFB2",
+              "#8C6A58",
+              "#D6A63C",
+              "#9A7AAE",
+              "#E6A1B0",
+              "#D3874A",
+              "#7FAF6B"
+            ]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "width": 560,
+  "height": 420,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
+  },
+
+  "data": {
+    "url": "data/pet_ownership_grid_2025.csv"
+  },
+
+  "title": {
+    "text": "Dogs Are Australia's Most Common Household Pet",
+    "subtitle": [
+      "Each grid represents 100 Australian households",
+      "Filled squares show households that own each pet type • Categories can overlap"
+    ],
+    "anchor": "start",
+    "fontSize": 19,
+    "subtitleFontSize": 11,
+    "subtitlePadding": 5,
+    "offset": 12,
+    "color": "#24211E",
+    "subtitleColor": "#6F675F"
+  },
+
+  "transform": [
+    {
+      "calculate": "floor((datum.Cell - 1) / 20) + 1",
+      "as": "GridRow"
+    },
+    {
+      "calculate": "((datum.Cell - 1) % 20) + 1",
+      "as": "GridCol"
+    },
+    {
+      "calculate": "datum.GridCol + 4.8",
+      "as": "PlotX"
+    },
+    {
+      "calculate": "datum.PetOrder * 6 + datum.GridRow",
+      "as": "PlotY"
+    },
+    {
+      "calculate": "datum.PetOrder * 6 + 3",
+      "as": "LabelY"
+    },
+    {
+      "calculate": "format(datum.HouseholdPenetration, '.1f') + '%'",
+      "as": "PercentageLabel"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "square",
+        "size": 140,
+        "cornerRadius": 1.5,
+        "stroke": "#F7F3EE",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "x": {
+          "field": "PlotX",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 31]
+          }
+        },
+
+        "y": {
+          "field": "PlotY",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 43],
+            "reverse": true
+          }
+        },
+
+        "color": {
+          "condition": [
+            {
+              "test": "datum.Owned == 1 && datum.Pet === 'Dogs'",
+              "value": "#C96A4A"
+            },
+            {
+              "test": "datum.Owned == 1",
+              "value": "#3C7D7B"
+            }
+          ],
+          "value": "#CFC8BE"
+        },
+
+        "opacity": {
+          "condition": [
+            {
+              "test": "datum.Owned == 1 && datum.Pet === 'Dogs'",
+              "value": 1
+            },
+            {
+              "test": "datum.Owned == 1",
+              "value": 0.95
+            }
+          ],
+          "value": 0.88
+        },
+
+        "tooltip": [
+          {
+            "field": "Pet",
+            "type": "nominal",
+            "title": "Pet type"
+          },
+          {
+            "field": "HouseholdPenetration",
+            "type": "quantitative",
+            "title": "Households owning this pet",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "toNumber(datum.Cell) == 1"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "fill": "#24211E"
+      },
+
+      "encoding": {
+        "x": {
+          "datum": 3.7,
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 31]
+          }
+        },
+
+        "y": {
+          "field": "LabelY",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 43],
+            "reverse": true
+          }
+        },
+
+        "text": {
+          "field": "Pet"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "toNumber(datum.Cell) == 1"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "font": "Inter",
+        "fontSize": 15,
+        "fontWeight": "bold"
+      },
+
+      "encoding": {
+        "x": {
+          "datum": 26.3,
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 31]
+          }
+        },
+
+        "y": {
+          "field": "LabelY",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 43],
+            "reverse": true
+          }
+        },
+
+        "text": {
+          "field": "PercentageLabel"
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.Pet === 'Dogs'",
+            "value": "#C96A4A"
+          },
+          "value": "#276C6B"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": "#FFFDF9",
+
+    "view": {
+      "stroke": null
+    },
+
+    "title": {
+      "font": "Inter",
+      "subtitleFont": "Inter"
+    },
+
+    "tooltip": {
+      "font": "Inter"
+    }
+  }
+}

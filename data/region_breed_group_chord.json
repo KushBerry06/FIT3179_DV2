@@ -1,0 +1,324 @@
+{
+  "nodes": [
+    {
+      "Name": "Europe",
+      "Type": "Region",
+      "Total": 297,
+      "StartAngle": 0,
+      "EndAngle": 2.423661652254609,
+      "LabelX": 534.07,
+      "LabelY": 212.17,
+      "Align": "left"
+    },
+    {
+      "Name": "Asia",
+      "Type": "Region",
+      "Total": 30,
+      "StartAngle": 2.448661652254609,
+      "EndAngle": 2.6934759605631555,
+      "LabelX": 435.02,
+      "LabelY": 510.4,
+      "Align": "left"
+    },
+    {
+      "Name": "Americas",
+      "Type": "Region",
+      "Total": 25,
+      "StartAngle": 2.7184759605631554,
+      "EndAngle": 2.9224878841536106,
+      "LabelX": 378.91,
+      "LabelY": 537.22,
+      "Align": "left"
+    },
+    {
+      "Name": "Oceania",
+      "Type": "Region",
+      "Total": 5,
+      "StartAngle": 2.9474878841536105,
+      "EndAngle": 2.9882902688717015,
+      "LabelX": 343.21,
+      "LabelY": 546.24,
+      "Align": "left"
+    },
+    {
+      "Name": "Africa",
+      "Type": "Region",
+      "Total": 5,
+      "StartAngle": 3.0132902688717014,
+      "EndAngle": 3.0540926535897923,
+      "LabelX": 326.92,
+      "LabelY": 548.55,
+      "Align": "left"
+    },
+    {
+      "Name": "Companion and Toy Dogs",
+      "Type": "FCI group",
+      "Total": 28,
+      "StartAngle": 3.0790926535897922,
+      "EndAngle": 3.307586008011102,
+      "LabelX": 287.07,
+      "LabelY": 549.67,
+      "Align": "right"
+    },
+    {
+      "Name": "Dachshunds",
+      "Type": "FCI group",
+      "Total": 1,
+      "StartAngle": 3.332586008011102,
+      "EndAngle": 3.34074648495472,
+      "LabelX": 251.54,
+      "LabelY": 545.26,
+      "Align": "right"
+    },
+    {
+      "Name": "Pinscher and Schnauzer",
+      "Type": "FCI group",
+      "Total": 61,
+      "StartAngle": 3.36574648495472,
+      "EndAngle": 3.8635355785154313,
+      "LabelX": 186.1,
+      "LabelY": 522.55,
+      "Align": "right"
+    },
+    {
+      "Name": "Pointing Dogs",
+      "Type": "FCI group",
+      "Total": 36,
+      "StartAngle": 3.888535578515431,
+      "EndAngle": 4.182312748485687,
+      "LabelX": 105.13,
+      "LabelY": 456.61,
+      "Align": "right"
+    },
+    {
+      "Name": "Retrievers",
+      "Type": "FCI group",
+      "Total": 22,
+      "StartAngle": 4.207312748485688,
+      "EndAngle": 4.3868432412452885,
+      "LabelX": 71.25,
+      "LabelY": 400.87,
+      "Align": "right"
+    },
+    {
+      "Name": "Scent hounds and related breeds",
+      "Type": "FCI group",
+      "Total": 72,
+      "StartAngle": 4.411843241245289,
+      "EndAngle": 4.9993975811858,
+      "LabelX": 50.01,
+      "LabelY": 301.69,
+      "Align": "right"
+    },
+    {
+      "Name": "Sheepdogs and Cattledogs",
+      "Type": "FCI group",
+      "Total": 47,
+      "StartAngle": 5.0243975811858,
+      "EndAngle": 5.407939997535856,
+      "LabelX": 81.06,
+      "LabelY": 179.32,
+      "Align": "right"
+    },
+    {
+      "Name": "Sighthounds",
+      "Type": "FCI group",
+      "Total": 13,
+      "StartAngle": 5.432939997535857,
+      "EndAngle": 5.539026197802894,
+      "LabelX": 121.15,
+      "LabelY": 125.32,
+      "Align": "right"
+    },
+    {
+      "Name": "Spitz and primitive types",
+      "Type": "FCI group",
+      "Total": 46,
+      "StartAngle": 5.564026197802894,
+      "EndAngle": 5.939408137209332,
+      "LabelX": 173.3,
+      "LabelY": 84.48,
+      "Align": "right"
+    },
+    {
+      "Name": "Terriers",
+      "Type": "FCI group",
+      "Total": 36,
+      "StartAngle": 5.9644081372093325,
+      "EndAngle": 6.2581853071795885,
+      "LabelX": 257.24,
+      "LabelY": 53.68,
+      "Align": "right"
+    }
+  ],
+  "links": [
+    {
+      "Region": "Africa",
+      "Breed_Group": "Companion and Toy Dogs",
+      "Count": 1,
+      "Path": "M 321.75,500.83 Q 300,300 289.55,501.73"
+    },
+    {
+      "Region": "Africa",
+      "Breed_Group": "Pinscher and Schnauzer",
+      "Count": 1,
+      "Path": "M 321.75,500.83 Q 300,300 207.97,479.82"
+    },
+    {
+      "Region": "Africa",
+      "Breed_Group": "Scent hounds and related breeds",
+      "Count": 1,
+      "Path": "M 321.75,500.83 Q 300,300 98.00,301.37"
+    },
+    {
+      "Region": "Africa",
+      "Breed_Group": "Sighthounds",
+      "Count": 2,
+      "Path": "M 321.75,500.83 Q 300,300 155.49,158.86"
+    },
+    {
+      "Region": "Americas",
+      "Breed_Group": "Companion and Toy Dogs",
+      "Count": 3,
+      "Path": "M 363.76,491.67 Q 300,300 289.55,501.73"
+    },
+    {
+      "Region": "Americas",
+      "Breed_Group": "Pinscher and Schnauzer",
+      "Count": 5,
+      "Path": "M 363.76,491.67 Q 300,300 207.97,479.82"
+    },
+    {
+      "Region": "Americas",
+      "Breed_Group": "Retrievers",
+      "Count": 4,
+      "Path": "M 363.76,491.67 Q 300,300 115.17,381.50"
+    },
+    {
+      "Region": "Americas",
+      "Breed_Group": "Scent hounds and related breeds",
+      "Count": 3,
+      "Path": "M 363.76,491.67 Q 300,300 98.00,301.37"
+    },
+    {
+      "Region": "Americas",
+      "Breed_Group": "Sheepdogs and Cattledogs",
+      "Count": 2,
+      "Path": "M 363.76,491.67 Q 300,300 123.10,202.49"
+    },
+    {
+      "Region": "Americas",
+      "Breed_Group": "Spitz and primitive types",
+      "Count": 6,
+      "Path": "M 363.76,491.67 Q 300,300 197.63,125.86"
+    },
+    {
+      "Region": "Americas",
+      "Breed_Group": "Terriers",
+      "Count": 2,
+      "Path": "M 363.76,491.67 Q 300,300 265.45,100.98"
+    },
+    {
+      "Region": "Asia",
+      "Breed_Group": "Companion and Toy Dogs",
+      "Count": 8,
+      "Path": "M 409.09,470.01 Q 300,300 289.55,501.73"
+    },
+    {
+      "Region": "Asia",
+      "Breed_Group": "Pinscher and Schnauzer",
+      "Count": 4,
+      "Path": "M 409.09,470.01 Q 300,300 207.97,479.82"
+    },
+    {
+      "Region": "Asia",
+      "Breed_Group": "Sighthounds",
+      "Count": 2,
+      "Path": "M 409.09,470.01 Q 300,300 155.49,158.86"
+    },
+    {
+      "Region": "Asia",
+      "Breed_Group": "Spitz and primitive types",
+      "Count": 15,
+      "Path": "M 409.09,470.01 Q 300,300 197.63,125.86"
+    },
+    {
+      "Region": "Asia",
+      "Breed_Group": "Terriers",
+      "Count": 1,
+      "Path": "M 409.09,470.01 Q 300,300 265.45,100.98"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Companion and Toy Dogs",
+      "Count": 16,
+      "Path": "M 489.12,229.04 Q 300,300 289.55,501.73"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Dachshunds",
+      "Count": 1,
+      "Path": "M 489.12,229.04 Q 300,300 260.84,498.17"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Pinscher and Schnauzer",
+      "Count": 51,
+      "Path": "M 489.12,229.04 Q 300,300 207.97,479.82"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Pointing Dogs",
+      "Count": 36,
+      "Path": "M 489.12,229.04 Q 300,300 142.55,426.54"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Retrievers",
+      "Count": 18,
+      "Path": "M 489.12,229.04 Q 300,300 115.17,381.50"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Scent hounds and related breeds",
+      "Count": 68,
+      "Path": "M 489.12,229.04 Q 300,300 98.00,301.37"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Sheepdogs and Cattledogs",
+      "Count": 42,
+      "Path": "M 489.12,229.04 Q 300,300 123.10,202.49"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Sighthounds",
+      "Count": 9,
+      "Path": "M 489.12,229.04 Q 300,300 155.49,158.86"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Spitz and primitive types",
+      "Count": 25,
+      "Path": "M 489.12,229.04 Q 300,300 197.63,125.86"
+    },
+    {
+      "Region": "Europe",
+      "Breed_Group": "Terriers",
+      "Count": 31,
+      "Path": "M 489.12,229.04 Q 300,300 265.45,100.98"
+    },
+    {
+      "Region": "Oceania",
+      "Breed_Group": "Sheepdogs and Cattledogs",
+      "Count": 3,
+      "Path": "M 334.91,498.96 Q 300,300 123.10,202.49"
+    },
+    {
+      "Region": "Oceania",
+      "Breed_Group": "Terriers",
+      "Count": 2,
+      "Path": "M 334.91,498.96 Q 300,300 265.45,100.98"
+    }
+  ]
+}

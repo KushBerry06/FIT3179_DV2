@@ -1,0 +1,366 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "width": 520,
+  "height": 430,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
+  },
+
+  "title": {
+    "text": "Where Is Pedigree-Dog Membership Strongest in Australia?",
+    "subtitle": [
+      "Dogs Australia members per 100,000 residents, 2025",
+      "Population-normalised membership allows fair comparison between states and territories"
+    ],
+    "anchor": "start",
+    "fontSize": 17,
+    "subtitleFontSize": 11,
+    "subtitlePadding": 5,
+    "offset": 12,
+    "color": "#24211E",
+    "subtitleColor": "#6F675F"
+  },
+
+  "projection": {
+    "type": "identity",
+    "reflectY": true
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+
+          "from": {
+            "data": {
+              "url": "data/state_membership_2021_2025.csv"
+            },
+
+            "key": "State",
+
+            "fields": [
+              "Members_2021",
+              "Members_2025",
+              "Population_2025",
+              "Members_per_100k",
+              "Change_2021_2025_pct"
+            ]
+          }
+        },
+
+        {
+          "filter": "isValid(datum.Members_per_100k)"
+        }
+      ],
+
+      "params": [
+        {
+          "name": "hoverState",
+
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "cursor": "pointer"
+      },
+
+      "encoding": {
+        "color": {
+          "field": "Members_per_100k",
+          "type": "quantitative",
+
+          "title": "Members per 100k",
+
+          "scale": {
+            "domain": [
+              55,
+              155
+            ],
+
+            "range": [
+              "#E4EFEC",
+              "#B7D5CE",
+              "#82B5AD",
+              "#4A8A84",
+              "#174E4D"
+            ],
+
+            "clamp": true
+          },
+
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+
+            "gradientLength": 220,
+            "gradientThickness": 11,
+
+            "titleFont": "Inter",
+            "labelFont": "Inter",
+
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+
+            "titleColor": "#514B46",
+            "labelColor": "#6F675F",
+
+            "offset": 12
+          }
+        },
+
+        "stroke": {
+          "condition": {
+            "param": "hoverState",
+            "empty": false,
+            "value": "#24211E"
+          },
+
+          "value": "#FFFDF9"
+        },
+
+        "strokeWidth": {
+          "condition": {
+            "param": "hoverState",
+            "empty": false,
+            "value": 2.2
+          },
+
+          "value": 1.2
+        },
+
+        "opacity": {
+          "condition": {
+            "param": "hoverState",
+            "empty": false,
+            "value": 1
+          },
+
+          "value": 0.96
+        },
+
+        "tooltip": [
+          {
+            "field": "properties.STATE_NAME",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+
+          {
+            "field": "Members_2025",
+            "type": "quantitative",
+            "title": "Members in 2025",
+            "format": ","
+          },
+
+          {
+            "field": "Population_2025",
+            "type": "quantitative",
+            "title": "Population",
+            "format": ","
+          },
+
+          {
+            "field": "Members_per_100k",
+            "type": "quantitative",
+            "title": "Members per 100,000",
+            "format": ".1f"
+          },
+
+          {
+            "field": "Change_2021_2025_pct",
+            "type": "quantitative",
+            "title": "Change since 2021",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "abbr": "WA",
+            "longitude": 122.5,
+            "latitude": -25.5,
+            "lightText": false
+          },
+          {
+            "abbr": "NT",
+            "longitude": 133.2,
+            "latitude": -20.0,
+            "lightText": false
+          },
+          {
+            "abbr": "SA",
+            "longitude": 135.5,
+            "latitude": -30.2,
+            "lightText": true
+          },
+          {
+            "abbr": "QLD",
+            "longitude": 144.5,
+            "latitude": -23.3,
+            "lightText": false
+          },
+          {
+            "abbr": "NSW",
+            "longitude": 146.8,
+            "latitude": -32.2,
+            "lightText": false
+          },
+          {
+            "abbr": "VIC",
+            "longitude": 144.3,
+            "latitude": -37.2,
+            "lightText": false
+          },
+          {
+            "abbr": "TAS",
+            "longitude": 146.5,
+            "latitude": -42.0,
+            "lightText": true
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "abbr"
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.lightText",
+            "value": "#FFFDF9"
+          },
+
+          "value": "#24211E"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "longitude": 149.0,
+            "latitude": -35.5
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 30,
+        "color": "#24211E"
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "abbr": "ACT",
+            "longitude": 149.0,
+            "latitude": -35.5
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#24211E",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 12,
+        "dy": -8
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "abbr"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": "#FFFDF9",
+
+    "view": {
+      "stroke": null
+    },
+
+    "title": {
+      "font": "Inter",
+      "subtitleFont": "Inter"
+    },
+
+    "tooltip": {
+      "font": "Inter"
+    }
+  }
+}
