@@ -1,67 +1,59 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "width": "container",
   "height": 520,
-
   "background": null,
-
   "padding": {
     "left": 12,
     "right": 12,
     "top": 5,
     "bottom": 5
   },
-
   "title": {
-    "text": "Which Selected Breeds Changed the Most?",
+    "text": "Which selected breeds changed the most?",
     "subtitle": [
       "Dogs Australia registrations in 2000 compared with 2025",
       "Teal indicates growth • Terracotta indicates decline"
     ],
     "anchor": "start",
     "font": "Inter",
-    "fontSize": 20,
+    "fontSize": 18,
     "fontWeight": 700,
     "subtitleFont": "Inter",
-    "subtitleFontSize": 11,
-    "subtitleColor": "#6F675F",
-    "subtitlePadding": 4,
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5A554F",
+    "subtitlePadding": 5,
     "color": "#24211E",
-    "offset": 12
+    "offset": 12,
+    "lineHeight": 22.5,
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6
   },
-
   "data": {
     "url": "data/selected_breed_registrations_2000_2025.csv"
   },
-
   "transform": [
     {
       "calculate": "datum.Year == 2000 ? 2003 : 2022.5",
       "as": "PlotX"
     },
-
     {
       "calculate": "datum.Year == 2000 ? 2002.15 : 2023.7",
       "as": "LabelX"
     },
-
     {
       "calculate": "datum.Year == 2000 ? 2002.65 : 2022.95",
       "as": "LeaderX2"
     },
-
     {
       "calculate": "datum.Year == 2000 ? (datum.Breed === 'Labrador Retriever' ? 5450 : datum.Breed === 'German Shepherd Dog' ? 5050 : datum.Breed === 'Golden Retriever' ? 4520 : datum.Breed === 'Staffordshire Bull Terrier' ? 3920 : datum.Breed === 'Cavalier King Charles Spaniel' ? 3500 : datum.Breed === 'Border Collie' ? 2500 : datum.Breed === 'Rottweiler' ? 2160 : datum.Breed === 'Pug' ? 1260 : datum.Breed === 'Australian Shepherd' ? 430 : 130) : (datum.Breed === 'Golden Retriever' ? 3940 : datum.Breed === 'Labrador Retriever' ? 3600 : datum.Breed === 'Staffordshire Bull Terrier' ? 2840 : datum.Breed === 'German Shepherd Dog' ? 2360 : datum.Breed === 'Border Collie' ? 2030 : datum.Breed === 'Cavalier King Charles Spaniel' ? 1690 : datum.Breed === 'Australian Shepherd' ? 1370 : datum.Breed === 'Rottweiler' ? 1050 : datum.Breed === 'French Bulldog' ? 720 : 390)",
       "as": "LabelY"
     },
-
     {
       "calculate": "format(datum.Registrations, ',')",
       "as": "ValueText"
     }
   ],
-
   "layer": [
     {
       "mark": {
@@ -69,56 +61,50 @@
         "strokeWidth": 2.5,
         "strokeCap": "round"
       },
-
       "encoding": {
         "x": {
           "field": "PlotX",
           "type": "quantitative",
-
           "scale": {
-            "domain": [1995, 2027],
+            "domain": [
+              1995,
+              2027
+            ],
             "nice": false
           },
-
           "axis": {
             "title": null,
-
             "values": [
               2003,
               2022.5
             ],
-
             "labelExpr": "datum.value == 2003 ? '2000' : datum.value == 2022.5 ? '2025' : ''",
-
             "labelFont": "Inter",
             "labelFontSize": 14,
             "labelFontWeight": 700,
             "labelColor": "#24211E",
             "labelPadding": 10,
-
             "ticks": false,
             "domain": false,
             "grid": false
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
-
           "scale": {
-            "domain": [0, 5700],
+            "domain": [
+              0,
+              5700
+            ],
             "nice": false
           },
-
           "axis": {
             "title": "Registrations",
-
             "titleFont": "Inter",
             "titleFontSize": 11,
             "titleFontWeight": 600,
             "titlePadding": 26,
-
             "values": [
               0,
               1000,
@@ -127,40 +113,31 @@
               4000,
               5000
             ],
-
             "labelExpr": "format(datum.value, ',')",
-
             "labelFont": "Inter",
             "labelFontSize": 9,
             "labelColor": "#857B72",
             "labelPadding": 10,
-
             "ticks": false,
             "domain": false,
-
             "grid": true,
             "gridColor": "#ECE5DC",
             "gridOpacity": 0.75
           }
         },
-
         "detail": {
           "field": "Breed"
         },
-
         "order": {
           "field": "Year"
         },
-
         "color": {
           "condition": {
             "test": "datum.Change_pct >= 0",
             "value": "#3C7D7B"
           },
-
           "value": "#C96A4A"
         },
-
         "tooltip": [
           {
             "field": "Breed",
@@ -188,7 +165,6 @@
         ]
       }
     },
-
     {
       "mark": {
         "type": "point",
@@ -197,217 +173,220 @@
         "stroke": "#FFFDF9",
         "strokeWidth": 1.3
       },
-
       "encoding": {
         "x": {
           "field": "PlotX",
           "type": "quantitative",
-
           "scale": {
-            "domain": [1995, 2027]
+            "domain": [
+              1995,
+              2027
+            ]
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
-
           "scale": {
-            "domain": [0, 5700]
+            "domain": [
+              0,
+              5700
+            ]
           }
         },
-
         "color": {
           "condition": {
             "test": "datum.Change_pct >= 0",
             "value": "#3C7D7B"
           },
-
           "value": "#C96A4A"
         }
       }
     },
-
     {
       "mark": {
         "type": "rule",
         "strokeWidth": 0.9,
         "opacity": 0.6
       },
-
       "encoding": {
         "x": {
           "field": "PlotX",
           "type": "quantitative",
-
           "scale": {
-            "domain": [1995, 2027]
+            "domain": [
+              1995,
+              2027
+            ]
           }
         },
-
         "x2": {
           "field": "LeaderX2"
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
-
           "scale": {
-            "domain": [0, 5700]
+            "domain": [
+              0,
+              5700
+            ]
           }
         },
-
         "y2": {
           "field": "LabelY"
         },
-
         "color": {
           "condition": {
             "test": "datum.Change_pct >= 0",
             "value": "#8AAEAA"
           },
-
           "value": "#DDB3A4"
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year == 2000"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "right",
         "baseline": "middle",
         "dy": -7,
-
         "font": "Inter",
         "fontSize": 11,
         "fontWeight": 700,
         "color": "#24211E"
       },
-
       "encoding": {
         "x": {
           "field": "LabelX",
           "type": "quantitative",
-
           "scale": {
-            "domain": [1995, 2027]
+            "domain": [
+              1995,
+              2027
+            ]
           }
         },
-
         "y": {
           "field": "LabelY",
           "type": "quantitative",
-
           "scale": {
-            "domain": [0, 5700]
+            "domain": [
+              0,
+              5700
+            ]
           }
         },
-
         "text": {
           "field": "Breed"
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year == 2000"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "right",
         "baseline": "middle",
         "dy": 9,
-
         "font": "Inter",
         "fontSize": 10,
         "fontWeight": 500,
         "color": "#6F675F"
       },
-
       "encoding": {
         "x": {
           "field": "LabelX",
           "type": "quantitative",
-
           "scale": {
-            "domain": [1995, 2027]
+            "domain": [
+              1995,
+              2027
+            ]
           }
         },
-
         "y": {
           "field": "LabelY",
           "type": "quantitative",
-
           "scale": {
-            "domain": [0, 5700]
+            "domain": [
+              0,
+              5700
+            ]
           }
         },
-
         "text": {
           "field": "ValueText"
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year == 2025"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "left",
         "baseline": "middle",
-
         "font": "Inter",
         "fontSize": 10,
         "fontWeight": 500,
         "color": "#6F675F"
       },
-
       "encoding": {
         "x": {
           "field": "LabelX",
           "type": "quantitative",
-
           "scale": {
-            "domain": [1995, 2027]
+            "domain": [
+              1995,
+              2027
+            ]
           }
         },
-
         "y": {
           "field": "LabelY",
           "type": "quantitative",
-
           "scale": {
-            "domain": [0, 5700]
+            "domain": [
+              0,
+              5700
+            ]
           }
         },
-
         "text": {
           "field": "ValueText"
         }
       }
     }
   ],
-
   "config": {
     "view": {
       "stroke": null
+    },
+    "font": "Inter",
+    "title": {
+      "font": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFont": "Inter",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     }
   }
 }

@@ -1,36 +1,35 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "title": {
-    "text": "Where Do Australia's Top Dogs Come From?",
+    "text": "Where do Australia's top dogs come from?",
     "subtitle": [
       "Line thickness and circle size show 2025 Dogs Australia registrations of ten selected breeds, grouped by the breed's country of origin"
     ],
     "anchor": "start",
     "font": "Inter",
-    "fontSize": 20,
+    "fontSize": 18,
     "subtitleFont": "Inter",
-    "subtitleFontSize": 12,
-    "subtitleColor": "#5f5850",
-    "color": "#2b2622",
-    "offset": 8
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5A554F",
+    "color": "#24211E",
+    "offset": 8,
+    "fontWeight": 700,
+    "lineHeight": 22.5,
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6,
+    "subtitlePadding": 5
   },
-
   "width": "container",
   "height": 430,
-
   "autosize": {
     "type": "fit",
     "contains": "padding"
   },
-
   "background": null,
-
   "config": {
     "view": {
       "stroke": null
     },
-
     "legend": {
       "titleFont": "Inter",
       "labelFont": "Inter",
@@ -38,13 +37,24 @@
       "labelFontSize": 10,
       "titleColor": "#2b2622",
       "labelColor": "#5f5850"
+    },
+    "font": "Inter",
+    "title": {
+      "font": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFont": "Inter",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     }
   },
-
   "projection": {
     "type": "equalEarth"
   },
-
   "datasets": {
     "origins": [
       {
@@ -83,15 +93,20 @@
         "breeds": "Pug"
       }
     ],
-
     "arcs": [
       {
         "type": "Feature",
         "geometry": {
           "type": "LineString",
           "coordinates": [
-            [-2.0, 54.0],
-            [134.0, -25.0]
+            [
+              -2.0,
+              54.0
+            ],
+            [
+              134.0,
+              -25.0
+            ]
           ]
         },
         "properties": {
@@ -105,8 +120,14 @@
         "geometry": {
           "type": "LineString",
           "coordinates": [
-            [10.5, 51.0],
-            [134.0, -25.0]
+            [
+              10.5,
+              51.0
+            ],
+            [
+              134.0,
+              -25.0
+            ]
           ]
         },
         "properties": {
@@ -120,8 +141,14 @@
         "geometry": {
           "type": "LineString",
           "coordinates": [
-            [-98.5, 39.5],
-            [134.0, -25.0]
+            [
+              -98.5,
+              39.5
+            ],
+            [
+              134.0,
+              -25.0
+            ]
           ]
         },
         "properties": {
@@ -135,8 +162,14 @@
         "geometry": {
           "type": "LineString",
           "coordinates": [
-            [2.5, 46.5],
-            [134.0, -25.0]
+            [
+              2.5,
+              46.5
+            ],
+            [
+              134.0,
+              -25.0
+            ]
           ]
         },
         "properties": {
@@ -150,8 +183,14 @@
         "geometry": {
           "type": "LineString",
           "coordinates": [
-            [104.0, 35.0],
-            [134.0, -25.0]
+            [
+              104.0,
+              35.0
+            ],
+            [
+              134.0,
+              -25.0
+            ]
           ]
         },
         "properties": {
@@ -161,7 +200,6 @@
         }
       }
     ],
-
     "australia": [
       {
         "label": "Australia",
@@ -170,7 +208,6 @@
       }
     ]
   },
-
   "layer": [
     {
       "data": {
@@ -180,7 +217,6 @@
           "feature": "countries"
         }
       },
-
       "mark": {
         "type": "geoshape",
         "fill": "#ece8e1",
@@ -188,24 +224,20 @@
         "strokeWidth": 0.5
       }
     },
-
     {
       "data": {
         "name": "arcs"
       },
-
       "mark": {
         "type": "geoshape",
         "filled": false,
         "opacity": 0.72,
         "strokeCap": "round"
       },
-
       "encoding": {
         "color": {
           "field": "properties.country",
           "type": "nominal",
-
           "scale": {
             "domain": [
               "United Kingdom",
@@ -214,7 +246,6 @@
               "France",
               "China"
             ],
-
             "range": [
               "#C9705A",
               "#4E8B83",
@@ -223,14 +254,11 @@
               "#7F9D4E"
             ]
           },
-
           "legend": null
         },
-
         "strokeWidth": {
           "field": "properties.registrations",
           "type": "quantitative",
-
           "scale": {
             "type": "sqrt",
             "range": [
@@ -238,45 +266,29 @@
               16
             ]
           },
-
           "legend": {
             "title": "Registered in 2025",
-
             "orient": "bottom-left",
-
             "direction": "horizontal",
-
             "columns": 4,
-
             "symbolType": "stroke",
-
             "symbolStrokeColor": "#8C7568",
-
             "values": [
               500,
               2000,
               5000,
               10000
             ],
-
             "labelExpr": "format(datum.value, ',')",
-
             "titleOrient": "top",
-
             "titleAnchor": "start",
-
             "titlePadding": 6,
-
             "labelOffset": 5,
-
             "columnPadding": 16,
-
             "rowPadding": 0,
-
             "offset": 12
           }
         },
-
         "tooltip": [
           {
             "field": "properties.country",
@@ -297,34 +309,28 @@
         ]
       }
     },
-
     {
       "data": {
         "name": "origins"
       },
-
       "mark": {
         "type": "circle",
         "stroke": "#ffffff",
         "strokeWidth": 1.5,
         "opacity": 0.96
       },
-
       "encoding": {
         "longitude": {
           "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "lat",
           "type": "quantitative"
         },
-
         "size": {
           "field": "registrations",
           "type": "quantitative",
-
           "scale": {
             "type": "sqrt",
             "range": [
@@ -332,14 +338,11 @@
               1900
             ]
           },
-
           "legend": null
         },
-
         "color": {
           "field": "country",
           "type": "nominal",
-
           "scale": {
             "domain": [
               "United Kingdom",
@@ -348,7 +351,6 @@
               "France",
               "China"
             ],
-
             "range": [
               "#C9705A",
               "#4E8B83",
@@ -357,10 +359,8 @@
               "#7F9D4E"
             ]
           },
-
           "legend": null
         },
-
         "tooltip": [
           {
             "field": "country",
@@ -381,32 +381,26 @@
         ]
       }
     },
-
     {
       "data": {
         "name": "origins"
       },
-
       "encoding": {
         "longitude": {
           "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "lat",
           "type": "quantitative"
         },
-
         "text": {
           "field": "country",
           "type": "nominal"
         },
-
         "color": {
           "field": "country",
           "type": "nominal",
-
           "scale": {
             "domain": [
               "United Kingdom",
@@ -415,7 +409,6 @@
               "France",
               "China"
             ],
-
             "range": [
               "#C9705A",
               "#4E8B83",
@@ -424,11 +417,9 @@
               "#7F9D4E"
             ]
           },
-
           "legend": null
         }
       },
-
       "layer": [
         {
           "transform": [
@@ -436,7 +427,6 @@
               "filter": "datum.country == 'United Kingdom'"
             }
           ],
-
           "mark": {
             "type": "text",
             "align": "right",
@@ -447,14 +437,12 @@
             "fontWeight": 700
           }
         },
-
         {
           "transform": [
             {
               "filter": "datum.country == 'Germany'"
             }
           ],
-
           "mark": {
             "type": "text",
             "align": "center",
@@ -465,14 +453,12 @@
             "fontWeight": 700
           }
         },
-
         {
           "transform": [
             {
               "filter": "datum.country == 'France'"
             }
           ],
-
           "mark": {
             "type": "text",
             "align": "right",
@@ -483,14 +469,12 @@
             "fontWeight": 700
           }
         },
-
         {
           "transform": [
             {
               "filter": "datum.country == 'United States'"
             }
           ],
-
           "mark": {
             "type": "text",
             "align": "center",
@@ -500,14 +484,12 @@
             "fontWeight": 700
           }
         },
-
         {
           "transform": [
             {
               "filter": "datum.country == 'China'"
             }
           ],
-
           "mark": {
             "type": "text",
             "align": "center",
@@ -519,12 +501,10 @@
         }
       ]
     },
-
     {
       "data": {
         "name": "australia"
       },
-
       "mark": {
         "type": "circle",
         "fill": "none",
@@ -532,25 +512,21 @@
         "strokeWidth": 2,
         "size": 220
       },
-
       "encoding": {
         "longitude": {
           "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "lat",
           "type": "quantitative"
         }
       }
     },
-
     {
       "data": {
         "name": "australia"
       },
-
       "mark": {
         "type": "text",
         "dy": 22,
@@ -559,18 +535,15 @@
         "fontWeight": 700,
         "color": "#2b2622"
       },
-
       "encoding": {
         "longitude": {
           "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "lat",
           "type": "quantitative"
         },
-
         "text": {
           "field": "label",
           "type": "nominal"

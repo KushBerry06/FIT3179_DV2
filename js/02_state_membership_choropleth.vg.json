@@ -1,35 +1,35 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
-  "width": 520,
-  "height": 430,
-
+  "width": "container",
+  "height": 360,
   "autosize": {
     "type": "fit",
-    "contains": "padding",
-    "resize": true
+    "contains": "padding"
   },
-
   "title": {
-    "text": "Where Is Pedigree-Dog Membership Strongest in Australia?",
+    "text": "Where is pedigree-dog membership strongest?",
     "subtitle": [
       "Dogs Australia members per 100,000 residents, 2025",
-      "Population-normalised membership allows fair comparison between states and territories"
+      "Population-normalised rate for fair state comparisons"
     ],
     "anchor": "start",
-    "fontSize": 17,
-    "subtitleFontSize": 11,
+    "fontSize": 18,
+    "subtitleFontSize": 13,
     "subtitlePadding": 5,
-    "offset": 12,
+    "offset": 10,
     "color": "#24211E",
-    "subtitleColor": "#6F675F"
+    "subtitleColor": "#5A554F",
+    "font": "Inter",
+    "fontWeight": 700,
+    "lineHeight": 22,
+    "subtitleFont": "Inter",
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 18
   },
-
   "projection": {
     "type": "identity",
     "reflectY": true
   },
-
   "layer": [
     {
       "data": {
@@ -39,18 +39,14 @@
           "property": "features"
         }
       },
-
       "transform": [
         {
           "lookup": "properties.STATE_NAME",
-
           "from": {
             "data": {
               "url": "data/state_membership_2021_2025.csv"
             },
-
             "key": "State",
-
             "fields": [
               "Members_2021",
               "Members_2025",
@@ -60,42 +56,24 @@
             ]
           }
         },
-
         {
           "filter": "isValid(datum.Members_per_100k)"
         }
       ],
-
-      "params": [
-        {
-          "name": "hoverState",
-
-          "select": {
-            "type": "point",
-            "on": "pointerover",
-            "clear": "pointerout"
-          }
-        }
-      ],
-
       "mark": {
         "type": "geoshape",
         "cursor": "pointer"
       },
-
       "encoding": {
         "color": {
           "field": "Members_per_100k",
           "type": "quantitative",
-
           "title": "Members per 100k",
-
           "scale": {
             "domain": [
               55,
               155
             ],
-
             "range": [
               "#E4EFEC",
               "#B7D5CE",
@@ -103,88 +81,55 @@
               "#4A8A84",
               "#174E4D"
             ],
-
             "clamp": true
           },
-
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-
             "gradientLength": 220,
             "gradientThickness": 11,
-
             "titleFont": "Inter",
             "labelFont": "Inter",
-
             "titleFontSize": 11,
             "labelFontSize": 10,
-
             "titleColor": "#514B46",
             "labelColor": "#6F675F",
-
-            "offset": 12
+            "offset": 10
           }
         },
-
         "stroke": {
-          "condition": {
-            "param": "hoverState",
-            "empty": false,
-            "value": "#24211E"
-          },
-
           "value": "#FFFDF9"
         },
-
         "strokeWidth": {
-          "condition": {
-            "param": "hoverState",
-            "empty": false,
-            "value": 2.2
-          },
-
           "value": 1.2
         },
-
         "opacity": {
-          "condition": {
-            "param": "hoverState",
-            "empty": false,
-            "value": 1
-          },
-
           "value": 0.96
         },
-
         "tooltip": [
           {
             "field": "properties.STATE_NAME",
             "type": "nominal",
             "title": "State / territory"
           },
-
           {
             "field": "Members_2025",
             "type": "quantitative",
             "title": "Members in 2025",
             "format": ","
           },
-
           {
             "field": "Population_2025",
             "type": "quantitative",
             "title": "Population",
             "format": ","
           },
-
           {
             "field": "Members_per_100k",
             "type": "quantitative",
             "title": "Members per 100,000",
             "format": ".1f"
           },
-
           {
             "field": "Change_2021_2025_pct",
             "type": "quantitative",
@@ -194,7 +139,6 @@
         ]
       }
     },
-
     {
       "data": {
         "values": [
@@ -242,40 +186,33 @@
           }
         ]
       },
-
       "mark": {
         "type": "text",
         "font": "Inter",
-        "fontSize": 11,
+        "fontSize": 10,
         "fontWeight": "bold"
       },
-
       "encoding": {
         "longitude": {
           "field": "longitude",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "latitude",
           "type": "quantitative"
         },
-
         "text": {
           "field": "abbr"
         },
-
         "color": {
           "condition": {
             "test": "datum.lightText",
             "value": "#FFFDF9"
           },
-
           "value": "#24211E"
         }
       }
     },
-
     {
       "data": {
         "values": [
@@ -285,27 +222,23 @@
           }
         ]
       },
-
       "mark": {
         "type": "point",
         "filled": true,
         "size": 30,
         "color": "#24211E"
       },
-
       "encoding": {
         "longitude": {
           "field": "longitude",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "latitude",
           "type": "quantitative"
         }
       }
     },
-
     {
       "data": {
         "values": [
@@ -316,11 +249,10 @@
           }
         ]
       },
-
       "mark": {
         "type": "text",
         "font": "Inter",
-        "fontSize": 11,
+        "fontSize": 10,
         "fontWeight": "bold",
         "fill": "#24211E",
         "align": "left",
@@ -328,39 +260,41 @@
         "dx": 12,
         "dy": -8
       },
-
       "encoding": {
         "longitude": {
           "field": "longitude",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "latitude",
           "type": "quantitative"
         },
-
         "text": {
           "field": "abbr"
         }
       }
     }
   ],
-
   "config": {
     "background": "#FFFDF9",
-
     "view": {
       "stroke": null
     },
-
     "title": {
       "font": "Inter",
-      "subtitleFont": "Inter"
+      "subtitleFont": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     },
-
     "tooltip": {
       "font": "Inter"
-    }
+    },
+    "font": "Inter"
   }
 }

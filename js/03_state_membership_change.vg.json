@@ -1,18 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "width": 1180,
   "height": 460,
-
   "autosize": {
     "type": "fit",
     "contains": "padding"
   },
-
   "data": {
     "url": "data/state_membership_2021_2025.csv"
   },
-
   "transform": [
     {
       "calculate": "0",
@@ -27,22 +23,26 @@
       "as": "StateShort"
     }
   ],
-
   "title": {
-    "text": "Most State Dog Communities Have Shrunk Since 2021",
+    "text": "Most state dog communities have shrunk since 2021",
     "subtitle": [
       "Membership change from 2021–2025 • Circle area represents Dogs Australia members in 2025",
       "The ACT is the only jurisdiction in this comparison to record membership growth"
     ],
     "anchor": "start",
-    "fontSize": 21,
-    "subtitleFontSize": 12,
+    "fontSize": 18,
+    "subtitleFontSize": 14,
     "subtitlePadding": 5,
     "offset": 14,
     "color": "#24211E",
-    "subtitleColor": "#6F675F"
+    "subtitleColor": "#5A554F",
+    "font": "Inter",
+    "fontWeight": 700,
+    "lineHeight": 22.5,
+    "subtitleFont": "Inter",
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6
   },
-
   "layer": [
     {
       "mark": {
@@ -51,24 +51,23 @@
         "strokeCap": "round",
         "opacity": 0.55
       },
-
       "encoding": {
         "x": {
           "field": "Zero",
           "type": "quantitative",
           "scale": {
-            "domain": [-38, 50]
+            "domain": [
+              -38,
+              50
+            ]
           }
         },
-
         "x2": {
           "field": "Change_2021_2025_pct"
         },
-
         "y": {
           "field": "StateShort",
           "type": "nominal",
-
           "sort": [
             "ACT",
             "WA",
@@ -79,12 +78,10 @@
             "NSW",
             "NT"
           ],
-
           "scale": {
             "paddingInner": 0.35,
-            "paddingOuter": 0.20
+            "paddingOuter": 0.2
           },
-
           "axis": {
             "title": null,
             "labelFont": "Inter",
@@ -97,38 +94,38 @@
             "domain": false
           }
         },
-
         "color": {
           "condition": {
             "test": "datum.Change_2021_2025_pct > 0",
             "value": "#79AEA5"
           },
-
           "value": "#E0A08B"
         }
       }
     },
-
     {
       "mark": {
         "type": "rule",
         "stroke": "#817970",
         "strokeWidth": 1.4,
-        "strokeDash": [5, 4]
+        "strokeDash": [
+          5,
+          4
+        ]
       },
-
       "encoding": {
         "x": {
           "datum": 0,
           "type": "quantitative",
-
           "scale": {
-            "domain": [-38, 50]
+            "domain": [
+              -38,
+              50
+            ]
           }
         }
       }
     },
-
     {
       "mark": {
         "type": "circle",
@@ -137,17 +134,17 @@
         "strokeWidth": 2,
         "cursor": "pointer"
       },
-
       "encoding": {
         "x": {
           "field": "Change_2021_2025_pct",
           "type": "quantitative",
           "title": "Membership change, 2021–2025",
-
           "scale": {
-            "domain": [-38, 50]
+            "domain": [
+              -38,
+              50
+            ]
           },
-
           "axis": {
             "values": [
               -30,
@@ -159,32 +156,25 @@
               30,
               40
             ],
-
             "labelExpr": "datum.value > 0 ? '+' + datum.value + '%' : datum.value + '%'",
-
             "labelFont": "Inter",
             "labelFontSize": 11,
             "labelColor": "#6F675F",
-
             "titleFont": "Inter",
             "titleFontSize": 12,
             "titleFontWeight": "bold",
             "titleColor": "#24211E",
             "titlePadding": 14,
-
             "grid": true,
             "gridColor": "#E9E2D9",
             "gridOpacity": 0.65,
-
             "domain": false,
             "tickColor": "#C9C0B5"
           }
         },
-
         "y": {
           "field": "StateShort",
           "type": "nominal",
-
           "sort": [
             "ACT",
             "WA",
@@ -195,12 +185,10 @@
             "NSW",
             "NT"
           ],
-
           "scale": {
             "paddingInner": 0.35,
-            "paddingOuter": 0.20
+            "paddingOuter": 0.2
           },
-
           "axis": {
             "title": null,
             "labelFont": "Inter",
@@ -213,12 +201,10 @@
             "domain": false
           }
         },
-
         "size": {
           "field": "Members_2025",
           "type": "quantitative",
           "title": "Members in 2025",
-
           "scale": {
             "domain": [
               0,
@@ -229,65 +215,52 @@
               2000
             ]
           },
-
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-
             "values": [
               1000,
               3000,
               5000,
               7000
             ],
-
             "labelExpr": "format(datum.value, ',')",
-
             "titleFont": "Inter",
             "labelFont": "Inter",
             "titleFontSize": 11,
             "labelFontSize": 10,
-
             "titleColor": "#514B46",
             "labelColor": "#6F675F",
-
             "symbolStrokeColor": "#FFFDF9",
             "symbolStrokeWidth": 1,
-
             "offset": 15
           }
         },
-
         "color": {
           "condition": {
             "test": "datum.Change_2021_2025_pct > 0",
             "value": "#2F7F72"
           },
-
           "value": "#C96A4A"
         },
-
         "tooltip": [
           {
             "field": "State",
             "type": "nominal",
             "title": "State / territory"
           },
-
           {
             "field": "Members_2021",
             "type": "quantitative",
             "title": "Members in 2021",
             "format": ","
           },
-
           {
             "field": "Members_2025",
             "type": "quantitative",
             "title": "Members in 2025",
             "format": ","
           },
-
           {
             "field": "Change_2021_2025_pct",
             "type": "quantitative",
@@ -297,14 +270,12 @@
         ]
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Change_2021_2025_pct < 0"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "right",
@@ -315,21 +286,20 @@
         "fontWeight": "bold",
         "color": "#A95138"
       },
-
       "encoding": {
         "x": {
           "field": "Change_2021_2025_pct",
           "type": "quantitative",
-
           "scale": {
-            "domain": [-38, 50]
+            "domain": [
+              -38,
+              50
+            ]
           }
         },
-
         "y": {
           "field": "StateShort",
           "type": "nominal",
-
           "sort": [
             "ACT",
             "WA",
@@ -340,26 +310,22 @@
             "NSW",
             "NT"
           ],
-
           "scale": {
             "paddingInner": 0.35,
-            "paddingOuter": 0.20
+            "paddingOuter": 0.2
           }
         },
-
         "text": {
           "field": "ChangeLabel"
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Change_2021_2025_pct >= 0"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "left",
@@ -370,21 +336,20 @@
         "fontWeight": "bold",
         "color": "#276C63"
       },
-
       "encoding": {
         "x": {
           "field": "Change_2021_2025_pct",
           "type": "quantitative",
-
           "scale": {
-            "domain": [-38, 50]
+            "domain": [
+              -38,
+              50
+            ]
           }
         },
-
         "y": {
           "field": "StateShort",
           "type": "nominal",
-
           "sort": [
             "ACT",
             "WA",
@@ -395,41 +360,43 @@
             "NSW",
             "NT"
           ],
-
           "scale": {
             "paddingInner": 0.35,
-            "paddingOuter": 0.20
+            "paddingOuter": 0.2
           }
         },
-
         "text": {
           "field": "ChangeLabel"
         }
       }
     }
   ],
-
   "resolve": {
     "scale": {
       "x": "shared",
       "y": "shared"
     }
   },
-
   "config": {
     "background": "#FFFDF9",
-
     "view": {
       "stroke": null
     },
-
     "title": {
       "font": "Inter",
-      "subtitleFont": "Inter"
+      "subtitleFont": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     },
-
     "tooltip": {
       "font": "Inter"
-    }
+    },
+    "font": "Inter"
   }
 }

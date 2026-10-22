@@ -1,69 +1,143 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "width": "container",
   "height": 245,
-
   "background": null,
-
   "padding": {
     "left": 4,
     "right": 16,
     "top": 4,
     "bottom": 0
   },
-
   "title": {
-    "text": "Pedigree Registrations Fell 39%",
+    "text": "Pedigree registrations have fallen 40% since 2021",
     "subtitle": [
       "Dogs Australia national registrations, 2000-2025",
-      "The 2021 peak was followed by a steep decline"
+      "The 2021 peak was followed by a steep decline",
+      "Y-axis starts at 45,000 to make the post-2021 change easier to compare"
     ],
     "anchor": "start",
     "font": "Inter",
-    "fontSize": 16,
+    "fontSize": 18,
     "fontWeight": 700,
     "color": "#24211E",
     "subtitleFont": "Inter",
-    "subtitleFontSize": 10,
-    "subtitleColor": "#6F675F",
-    "subtitlePadding": 4,
-    "offset": 10
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5A554F",
+    "subtitlePadding": 5,
+    "offset": 10,
+    "lineHeight": 22.5,
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6
   },
-
   "data": {
     "values": [
-      {"Year": 2000, "Registrations": 77559},
-      {"Year": 2001, "Registrations": 69946},
-      {"Year": 2002, "Registrations": 69419},
-      {"Year": 2003, "Registrations": 66710},
-      {"Year": 2004, "Registrations": 64189},
-      {"Year": 2005, "Registrations": 62340},
-      {"Year": 2006, "Registrations": 61524},
-      {"Year": 2007, "Registrations": 64074},
-      {"Year": 2008, "Registrations": 63387},
-      {"Year": 2009, "Registrations": 66588},
-
-      {"Year": 2010, "Registrations": 66040},
-      {"Year": 2011, "Registrations": 63465},
-      {"Year": 2012, "Registrations": 64224},
-      {"Year": 2013, "Registrations": 66904},
-      {"Year": 2014, "Registrations": 69274},
-      {"Year": 2015, "Registrations": 70130},
-      {"Year": 2016, "Registrations": 71199},
-      {"Year": 2017, "Registrations": 70524},
-      {"Year": 2018, "Registrations": 69335},
-      {"Year": 2019, "Registrations": 66999},
-      {"Year": 2020, "Registrations": 70533},
-
-      {"Year": 2021, "Registrations": 78580},
-      {"Year": 2022, "Registrations": 68950},
-      {"Year": 2023, "Registrations": 56491},
-      {"Year": 2024, "Registrations": 48820},
-      {"Year": 2025, "Registrations": 47288}
+      {
+        "Year": 2000,
+        "Registrations": 77559
+      },
+      {
+        "Year": 2001,
+        "Registrations": 69946
+      },
+      {
+        "Year": 2002,
+        "Registrations": 69419
+      },
+      {
+        "Year": 2003,
+        "Registrations": 66710
+      },
+      {
+        "Year": 2004,
+        "Registrations": 64189
+      },
+      {
+        "Year": 2005,
+        "Registrations": 62340
+      },
+      {
+        "Year": 2006,
+        "Registrations": 61524
+      },
+      {
+        "Year": 2007,
+        "Registrations": 64074
+      },
+      {
+        "Year": 2008,
+        "Registrations": 63387
+      },
+      {
+        "Year": 2009,
+        "Registrations": 66588
+      },
+      {
+        "Year": 2010,
+        "Registrations": 66040
+      },
+      {
+        "Year": 2011,
+        "Registrations": 63465
+      },
+      {
+        "Year": 2012,
+        "Registrations": 64224
+      },
+      {
+        "Year": 2013,
+        "Registrations": 66904
+      },
+      {
+        "Year": 2014,
+        "Registrations": 69274
+      },
+      {
+        "Year": 2015,
+        "Registrations": 70130
+      },
+      {
+        "Year": 2016,
+        "Registrations": 71199
+      },
+      {
+        "Year": 2017,
+        "Registrations": 70524
+      },
+      {
+        "Year": 2018,
+        "Registrations": 69335
+      },
+      {
+        "Year": 2019,
+        "Registrations": 66999
+      },
+      {
+        "Year": 2020,
+        "Registrations": 70533
+      },
+      {
+        "Year": 2021,
+        "Registrations": 78580
+      },
+      {
+        "Year": 2022,
+        "Registrations": 68950
+      },
+      {
+        "Year": 2023,
+        "Registrations": 56491
+      },
+      {
+        "Year": 2024,
+        "Registrations": 48820
+      },
+      {
+        "Year": 2025,
+        "Registrations": 47288
+      }
     ]
   },
-
   "layer": [
     {
       "mark": {
@@ -73,20 +147,19 @@
         "strokeCap": "round",
         "strokeJoin": "round"
       },
-
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
-
           "scale": {
-            "domain": [2000, 2025],
+            "domain": [
+              2000,
+              2025
+            ],
             "nice": false
           },
-
           "axis": {
             "title": null,
-
             "values": [
               2000,
               2005,
@@ -95,65 +168,52 @@
               2020,
               2025
             ],
-
             "format": "d",
-
             "labelFont": "Inter",
             "labelFontSize": 9,
             "labelColor": "#6F675F",
             "labelPadding": 5,
-
             "tickColor": "#CFC6BC",
-
             "domainColor": "#BDB4A9",
-
             "grid": false
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
-
           "scale": {
-            "domain": [45000, 81000],
+            "domain": [
+              45000,
+              81000
+            ],
             "nice": false,
             "zero": false
           },
-
           "axis": {
             "title": "National registrations",
-
             "titleFont": "Inter",
             "titleFontSize": 9.5,
             "titleFontWeight": 600,
             "titleColor": "#24211E",
             "titlePadding": 9,
-
             "values": [
               50000,
               60000,
               70000,
               80000
             ],
-
             "labelExpr": "format(datum.value / 1000, '.0f') + 'k'",
-
             "labelFont": "Inter",
             "labelFontSize": 9,
             "labelColor": "#6F675F",
-
             "domain": false,
-
             "ticks": false,
-
             "grid": true,
             "gridColor": "#E6DED4",
             "gridOpacity": 1,
             "gridWidth": 1
           }
         },
-
         "tooltip": [
           {
             "field": "Year",
@@ -170,14 +230,12 @@
         ]
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year >= 2021"
         }
       ],
-
       "mark": {
         "type": "line",
         "stroke": "#C96A4A",
@@ -185,36 +243,38 @@
         "strokeCap": "round",
         "strokeJoin": "round"
       },
-
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
           "scale": {
-            "domain": [2000, 2025],
+            "domain": [
+              2000,
+              2025
+            ],
             "nice": false
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
           "scale": {
-            "domain": [45000, 81000],
+            "domain": [
+              45000,
+              81000
+            ],
             "nice": false,
             "zero": false
           }
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year === 2000 || datum.Year === 2021 || datum.Year === 2025"
         }
       ],
-
       "mark": {
         "type": "circle",
         "size": 82,
@@ -222,33 +282,35 @@
         "stroke": "#FFFDF9",
         "strokeWidth": 1.5
       },
-
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
           "scale": {
-            "domain": [2000, 2025]
+            "domain": [
+              2000,
+              2025
+            ]
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
           "scale": {
-            "domain": [45000, 81000]
+            "domain": [
+              45000,
+              81000
+            ]
           }
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year === 2000"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "left",
@@ -260,37 +322,38 @@
         "fontWeight": 700,
         "color": "#8E402E"
       },
-
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
           "scale": {
-            "domain": [2000, 2025]
+            "domain": [
+              2000,
+              2025
+            ]
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
           "scale": {
-            "domain": [45000, 81000]
+            "domain": [
+              45000,
+              81000
+            ]
           }
         },
-
         "text": {
           "value": "77,559"
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year === 2021"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "center",
@@ -301,81 +364,96 @@
         "fontWeight": 700,
         "color": "#8E402E"
       },
-
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
           "scale": {
-            "domain": [2000, 2025]
+            "domain": [
+              2000,
+              2025
+            ]
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
           "scale": {
-            "domain": [45000, 81000]
+            "domain": [
+              45000,
+              81000
+            ]
           }
         },
-
         "text": {
-          "value": "2021 peak · 78,580"
+          "value": "2021 peak \u00b7 78,580"
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "datum.Year === 2025"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "right",
-        "baseline": "bottom",
-        "dx": -7,
-        "dy": -8,
+        "baseline": "middle",
+        "dx": -14,
+        "dy": 0,
         "font": "Inter",
         "fontSize": 10,
         "fontWeight": 700,
         "color": "#8E402E"
       },
-
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
           "scale": {
-            "domain": [2000, 2025]
+            "domain": [
+              2000,
+              2025
+            ]
           }
         },
-
         "y": {
           "field": "Registrations",
           "type": "quantitative",
           "scale": {
-            "domain": [45000, 81000]
+            "domain": [
+              45000,
+              81000
+            ]
           }
         },
-
         "text": {
           "value": "47,288"
         }
       }
     }
   ],
-
   "config": {
     "view": {
       "stroke": null
     },
-
     "axis": {
       "labelFont": "Inter",
       "titleFont": "Inter"
+    },
+    "font": "Inter",
+    "title": {
+      "font": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFont": "Inter",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     }
   }
 }

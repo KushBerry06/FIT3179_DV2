@@ -13,6 +13,10 @@
 
   <title>What Makes Australia's Top Dog?</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link
     rel="stylesheet"
     href="css/main.css"
@@ -49,6 +53,11 @@
     and what are they like to live with?
   </p>
 
+  <p class="byline">
+    Created by <strong>Kush Berry</strong> · FIT3179 Data Visualisation 2,
+    Monash University · Semester 2, 2026 · Published 22 October 2026
+  </p>
+
 
   <div class="hero-reading">
 
@@ -67,8 +76,10 @@
       not every dog in Australia.
     </p>
 
-    <p>
-      Scroll down to follow the story in five steps.
+    <p class="story-roadmap">
+      <strong>Five questions guide the story:</strong>
+      Who owns dogs? Where do they come from? Which breeds lead?
+      What are they like to live with? So which is the top dog?
     </p>
 
   </div>
@@ -107,13 +118,15 @@
         id="v1">
       </div>
 
+      <p class="chart-source">Source: <a href="https://animalmedicinesaustralia.org.au/resources/pets-in-australia-a-national-survey-of-pets-and-people-3/" target="_blank" rel="noopener noreferrer">Animal Medicines Australia, <em>Pets in Australia 2025</em></a>.</p>
+
     </div>
 
 
     <div class="story-copy">
 
       <h3>
-        Almost one in every two Australian households has a dog.
+        Almost one in two Australian households has a dog.
       </h3>
 
       <p>
@@ -129,7 +142,8 @@
       </p>
 
       <p class="story-emphasis">
-        Dogs are present in almost half of Australian homes.
+        Dogs are about 1.5 times as common as cats:
+        49.3% of homes versus 33.6%.
       </p>
 
     </div>
@@ -165,8 +179,8 @@
       </p>
 
       <p class="story-emphasis">
-        Population size does not necessarily mean
-        stronger pedigree participation.
+        Tasmania’s pedigree membership rate is about 2.7 times
+        the Northern Territory’s: 151.6 versus 55.7 per 100,000.
       </p>
 
     </div>
@@ -178,6 +192,8 @@
         class="viz"
         id="v2">
       </div>
+
+      <p class="chart-source">Sources: <a href="https://www.dogsaustralia.org.au/media/10432/memberstats_to-2025v2.pdf" target="_blank" rel="noopener noreferrer">Dogs Australia membership statistics</a> and <a href="https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/dec-2025" target="_blank" rel="noopener noreferrer">ABS population data</a>.</p>
 
     </div>
 
@@ -193,6 +209,8 @@
       class="viz wide state-change-viz"
       id="v3">
     </div>
+
+      <p class="chart-source">Source: <a href="https://www.dogsaustralia.org.au/media/10432/memberstats_to-2025v2.pdf" target="_blank" rel="noopener noreferrer">Dogs Australia membership statistics, 2021-2025</a>.</p>
 
   </div>
 
@@ -212,8 +230,8 @@
     </p>
 
     <p class="compact-takeaway">
-      Dog ownership remains widespread,
-      while <strong>pedigree participation is shrinking.</strong>
+      Pedigree membership fell in <strong>7 of 8</strong> states and territories
+      between 2021 and 2025. Our data cannot say why.
     </p>
 
   </div>
@@ -223,9 +241,8 @@
   <div class="story-transition">
 
     <p>
-      Australians love dogs,
-      but most registered favourites were developed overseas.
-      <strong>Where did they come from?</strong>
+      Pedigree membership is shrinking, but Australia’s favourite breeds mostly began overseas.
+      <strong>So where did they come from?</strong>
     </p>
 
   </div>
@@ -261,6 +278,8 @@
         id="v4">
       </div>
 
+      <p class="chart-source">Sources: <a href="https://www.fci.be/en/nomenclature/" target="_blank" rel="noopener noreferrer">FCI breed nomenclature</a> and <a href="https://github.com/paiv/fci-breeds" target="_blank" rel="noopener noreferrer">paiv/fci-breeds</a>.</p>
+
     </div>
 
 
@@ -272,9 +291,10 @@
       </h3>
 
       <p>
-        The proportional-symbol map shows how many recognised
-        FCI breeds are associated with each country.
-        Larger circles represent countries linked with more breeds.
+        The proportional-symbol map uses breeds recognised by the
+        <strong>Fédération Cynologique Internationale (FCI)</strong>,
+        the world body that officially recognises breeds.
+        Each circle shows how many official breeds come from that country.
       </p>
 
       <p>
@@ -286,7 +306,8 @@
       </p>
 
       <p class="story-emphasis">
-        Europe is a major centre of recognised breed development.
+        Europe accounts for <strong>288 of the 362 recognised breeds</strong>
+        represented in this country-linked dataset, about 80%.
       </p>
 
     </div>
@@ -303,6 +324,8 @@
       class="viz wide origins-flow-viz"
       id="v5">
     </div>
+
+      <p class="chart-source">Sources: <a href="https://www.dogsaustralia.org.au/about-dogs-australia/statistics" target="_blank" rel="noopener noreferrer">Dogs Australia registration statistics</a> and <a href="https://www.fci.be/en/nomenclature/" target="_blank" rel="noopener noreferrer">FCI breed nomenclature</a>.</p>
 
   </div>
 
@@ -322,8 +345,9 @@
     </p>
 
     <p class="compact-takeaway">
-      Australia’s favourites may be registered locally,
-      but <strong>their origins are overwhelmingly overseas.</strong>
+      UK breeds make up <strong>71%</strong> of registrations among the ten
+      (13,929 of 19,524). Even the “Australian” Shepherd was developed
+      in the United States.
     </p>
 
   </div>
@@ -342,15 +366,14 @@
       </h3>
 
       <p>
-        The chord diagram connects broad origin regions
-        with recognised FCI breed groups.
+        Each ribbon links a part of the world to a type of dog bred there,
+        such as herding, hunting or companion dogs.
       </p>
 
       <p>
-        <strong>Thicker connections represent more recognised breeds</strong>
-        linking a region with a particular breed group.
-        This reveals how different parts of the world developed
-        different mixtures of working, hunting and companion dogs.
+        <strong>Thicker ribbons represent more recognised breeds.</strong>
+        This makes it easier to see which breed groups are most strongly
+        associated with each origin region.
       </p>
 
       <p class="story-emphasis">
@@ -368,6 +391,8 @@
         id="v6">
       </div>
 
+      <p class="chart-source">Sources: <a href="https://www.fci.be/en/nomenclature/" target="_blank" rel="noopener noreferrer">FCI breed nomenclature</a> and <a href="https://github.com/paiv/fci-breeds" target="_blank" rel="noopener noreferrer">paiv/fci-breeds</a>.</p>
+
     </div>
 
   </div>
@@ -377,9 +402,8 @@
   <div class="story-transition">
 
     <p>
-      Origins explain where these breeds began.
-      Registrations show which ones Australians choose today.
-      <strong>Which breeds now lead the pack?</strong>
+      Origins explain where breeds began.
+      <strong>Which breeds lead in Australia now?</strong>
     </p>
 
   </div>
@@ -416,6 +440,8 @@
         id="v7">
       </div>
 
+      <p class="chart-source">Source: <a href="https://www.dogsaustralia.org.au/about-dogs-australia/statistics" target="_blank" rel="noopener noreferrer">Dogs Australia national registration statistics, 2000-2025</a>.</p>
+
     </div>
 
 
@@ -441,8 +467,8 @@
       </p>
 
       <p class="story-emphasis">
-        A breed can climb the rankings even while
-        its own registration numbers are falling.
+        From the 2021 peak to 2025,
+        national pedigree registrations fell <strong>39.8%</strong>.
       </p>
 
     </div>
@@ -476,8 +502,8 @@
       </p>
 
       <p class="story-emphasis">
-        Gundogs alone account for more than one quarter
-        of all 2025 registrations.
+        Labradors and Golden Retrievers make up <strong>61%</strong>
+        of Gundog registrations: 7,448 of 12,283.
       </p>
 
     </div>
@@ -490,10 +516,21 @@
         id="v8">
       </div>
 
+      <p class="chart-source">Source: <a href="https://www.dogsaustralia.org.au/about-dogs-australia/statistics" target="_blank" rel="noopener noreferrer">Dogs Australia national registration statistics, 2025</a>.</p>
+
     </div>
 
   </div>
 
+
+
+  <p class="chart-intro">
+    The popularity charts follow ten breeds with complete Dogs Australia registration records
+    across the 2000-2025 comparison. Together they account for
+    <strong>19,524 registrations, 41.3% of the 2025 national total</strong>.
+    The later heatmap and scatterplot use a broader set of breeds because those charts compare
+    breed characteristics rather than popularity.
+  </p>
 
 
   <!-- BUMP CHART -->
@@ -504,6 +541,8 @@
       class="viz wide"
       id="v9">
     </div>
+
+      <p class="chart-source">Source: <a href="https://www.dogsaustralia.org.au/about-dogs-australia/statistics" target="_blank" rel="noopener noreferrer">Dogs Australia national registration statistics, 2000-2025</a>.</p>
 
   </div>
 
@@ -522,8 +561,8 @@
     </p>
 
     <p class="compact-takeaway">
-      Rank is relative.
-      A breed can rise because <strong>other breeds fall faster.</strong>
+      A breed can climb the rankings even while
+      <strong>its own registration numbers are falling.</strong>
     </p>
 
   </div>
@@ -539,6 +578,8 @@
       id="v10">
     </div>
 
+      <p class="chart-source">Source: <a href="https://www.dogsaustralia.org.au/about-dogs-australia/statistics" target="_blank" rel="noopener noreferrer">Dogs Australia national registration statistics, 2000 and 2025</a>.</p>
+
   </div>
 
 
@@ -552,9 +593,8 @@
     </p>
 
     <p class="compact-takeaway">
-      Labrador registrations fell
-      <strong>31.0%</strong>
-      over the same period.
+      The <strong>Pug had the largest percentage fall</strong> among the ten:
+      <strong>-66.5%</strong>, from 1,224 to 410 registrations.
     </p>
 
     <p class="compact-takeaway">
@@ -572,10 +612,8 @@
   <div class="story-transition">
 
     <p>
-      Registration data tells us what Australians choose.
-      <strong>
-        It does not tell us what those dogs are like to live with.
-      </strong>
+      Popularity tells us what Australians register.
+      <strong>What are those breeds like to live with?</strong>
     </p>
 
   </div>
@@ -609,6 +647,8 @@
       class="viz wide"
       id="v11">
     </div>
+
+      <p class="chart-source">Source: <a href="https://github.com/VildMedPap/dogbreeds" target="_blank" rel="noopener noreferrer">VildMedPap/dogbreeds, compiled from DogTime breed profiles</a>.</p>
 
   </div>
 
@@ -649,9 +689,8 @@
       <p>
         The parallel-coordinates chart compares
         height, weight, lifespan and general health.
-        Each measure is
-        <strong>normalised within its own metric</strong>
-        so very different units can be compared together.
+        Each measure is <strong>rescaled from lowest to highest</strong>
+        so height, weight and lifespan can share one chart.
       </p>
 
       <p>
@@ -674,6 +713,8 @@
         id="v12">
       </div>
 
+      <p class="chart-source">Source: <a href="https://github.com/VildMedPap/dogbreeds" target="_blank" rel="noopener noreferrer">VildMedPap/dogbreeds, compiled from DogTime breed profiles</a>.</p>
+
     </div>
 
   </div>
@@ -688,6 +729,8 @@
       class="viz wide"
       id="v13">
     </div>
+
+      <p class="chart-source">Source: <a href="https://github.com/VildMedPap/dogbreeds" target="_blank" rel="noopener noreferrer">VildMedPap/dogbreeds, compiled from DogTime breed profiles</a>.</p>
 
   </div>
 
@@ -717,8 +760,7 @@
   <div class="story-transition">
 
     <p>
-      Ownership, origins, popularity and breed characteristics
-      tell different parts of the story.
+      Popularity and traits tell different stories.
       <strong>So which breed is really Australia’s top dog?</strong>
     </p>
 
@@ -760,6 +802,33 @@
     body size and lifespan.
   </p>
 
+  <div class="verdict-scorecard" aria-label="Top dog scorecard">
+    <div class="score-row">
+      <span class="score-label">Most registered in 2025</span>
+      <strong>Golden Retriever</strong>
+      <span>3,776 registrations</span>
+    </div>
+
+    <div class="score-row">
+      <span class="score-label">Biggest growth, 2000-2025</span>
+      <strong>Australian Shepherd</strong>
+      <span>+326.7%</span>
+    </div>
+
+    <div class="score-row">
+      <span class="score-label">Biggest percentage fall, 2000-2025</span>
+      <strong>Pug</strong>
+      <span>-66.5%</span>
+    </div>
+
+    <div class="score-row">
+      <span class="score-label">Longest-lived in the trait dataset</span>
+      <strong>Dalmatian</strong>
+      <span>14.5 years</span>
+    </div>
+  </div>
+
+
   <p class="verdict-final">
     <strong>
       Popularity tells us what Australians register.
@@ -778,53 +847,121 @@
 <section class="sources">
 
   <h2>
-    Sources & notes
+    Sources &amp; notes
   </h2>
 
   <p>
-    <strong>Breed origins:</strong>
-    Fédération Cynologique Internationale (FCI) nomenclature;
-    machine-readable compilation by paiv/fci-breeds.
+    All web sources below were accessed on <strong>22 October 2026</strong>.
+    Licence notes describe the reuse information identified for this project;
+    where an explicit open licence was not identified, the source is attributed
+    and used for this university data visualisation.
   </p>
 
-  <p>
-    <strong>Australian registration and membership:</strong>
-    Dogs Australia national membership statistics
-    and national registration statistics.
-  </p>
-
-  <p>
-    <strong>Population:</strong>
-    Australian Bureau of Statistics,
-    state and territory population,
-    31 December 2025.
-  </p>
-
-  <p>
-    <strong>Pet ownership:</strong>
-    Animal Medicines Australia,
-    <em>Pets in Australia 2025</em>.
-  </p>
-
-  <p>
-    <strong>Breed traits:</strong>
-    VildMedPap/dogbreeds,
-    compiled from DogTime breed profiles.
-    Trait scores are comparative breed-level ratings,
-    not guarantees of individual behaviour.
-  </p>
-
-  <p>
-    <strong>Spatial boundaries:</strong>
-    Natural Earth for world geography.
-    Australian state boundaries use the current project boundary dataset.
-  </p>
+  <div class="source-table-wrap">
+    <table class="source-table">
+      <thead>
+        <tr>
+          <th>Dataset / asset</th>
+          <th>Publisher / source</th>
+          <th>Year</th>
+          <th>URL</th>
+          <th>Licence / use note</th>
+          <th>Used in</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Official breed nomenclature</td>
+          <td>Fédération Cynologique Internationale (FCI)</td>
+          <td>2026 access</td>
+          <td><a href="https://www.fci.be/en/nomenclature/" target="_blank" rel="noopener noreferrer">fci.be</a></td>
+          <td>No open licence identified in the project materials; attributed as the official nomenclature source.</td>
+          <td>World origins, flow map, chord</td>
+        </tr>
+        <tr>
+          <td>Machine-readable FCI breed compilation</td>
+          <td>paiv/fci-breeds</td>
+          <td>2016 onward</td>
+          <td><a href="https://github.com/paiv/fci-breeds" target="_blank" rel="noopener noreferrer">GitHub repository</a></td>
+          <td>MIT License.</td>
+          <td>World origins, chord</td>
+        </tr>
+        <tr>
+          <td>Membership statistics 1995-2025</td>
+          <td>Dogs Australia</td>
+          <td>2025</td>
+          <td><a href="https://www.dogsaustralia.org.au/media/10432/memberstats_to-2025v2.pdf" target="_blank" rel="noopener noreferrer">Dogs Australia PDF</a></td>
+          <td>Publisher material; used with attribution for academic visualisation.</td>
+          <td>State choropleth, membership change</td>
+        </tr>
+        <tr>
+          <td>National registration statistics</td>
+          <td>Dogs Australia</td>
+          <td>2000-2025</td>
+          <td><a href="https://www.dogsaustralia.org.au/about-dogs-australia/statistics" target="_blank" rel="noopener noreferrer">Dogs Australia statistics</a></td>
+          <td>Publisher material; used with attribution for academic visualisation.</td>
+          <td>Flow map, trend, treemap, bump, slope</td>
+        </tr>
+        <tr>
+          <td>National, state and territory population</td>
+          <td>Australian Bureau of Statistics</td>
+          <td>Dec 2025</td>
+          <td><a href="https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/dec-2025" target="_blank" rel="noopener noreferrer">ABS</a></td>
+          <td>CC BY 4.0 unless otherwise noted by the ABS.</td>
+          <td>State choropleth</td>
+        </tr>
+        <tr>
+          <td>Pets in Australia 2025</td>
+          <td>Animal Medicines Australia</td>
+          <td>2025</td>
+          <td><a href="https://animalmedicinesaustralia.org.au/resources/pets-in-australia-a-national-survey-of-pets-and-people-3/" target="_blank" rel="noopener noreferrer">Animal Medicines Australia</a></td>
+          <td>Publisher material; used with attribution for academic visualisation.</td>
+          <td>Pet ownership waffle</td>
+        </tr>
+        <tr>
+          <td>Dog breed characteristics</td>
+          <td>VildMedPap/dogbreeds, derived from DogTime</td>
+          <td>Repository dataset</td>
+          <td><a href="https://github.com/VildMedPap/dogbreeds" target="_blank" rel="noopener noreferrer">GitHub repository</a></td>
+          <td>No licence file identified in the repository; original source is credited and the dataset is attributed.</td>
+          <td>Heatmap, parallel coordinates, scatter</td>
+        </tr>
+        <tr>
+          <td>World geographic boundaries</td>
+          <td>Natural Earth</td>
+          <td>1:110m dataset</td>
+          <td><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a></td>
+          <td>Public domain.</td>
+          <td>World maps</td>
+        </tr>
+        <tr>
+          <td>Australian state GeoJSON, <code>states.geojson</code></td>
+          <td>rowanhogan/australian-states</td>
+          <td>Repository asset</td>
+          <td><a href="https://github.com/rowanhogan/australian-states" target="_blank" rel="noopener noreferrer">GitHub repository</a></td>
+          <td>No licence file identified in the repository; attributed as the boundary source.</td>
+          <td>Australian choropleth</td>
+        </tr>
+        <tr>
+          <td>World 110m TopoJSON distribution</td>
+          <td>vega-datasets</td>
+          <td>Current package access</td>
+          <td><a href="https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json" target="_blank" rel="noopener noreferrer">world-110m.json</a></td>
+          <td>Used as the delivery source for the world basemap geometry.</td>
+          <td>World proportional-symbol map, flow map</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <p class="note">
     <strong>AI acknowledgement:</strong>
-    Generative AI was used to assist with code drafting,
-    data cleaning and design iteration.
-    Data sources and final visual choices were checked by the author.
+    Generative AI was used for code drafting, copy-editing and design feedback.
+    Data sources, calculations and final visual choices were checked by the author.
+  </p>
+
+  <p class="authorship-note">
+    <strong>Author:</strong> Kush Berry · Monash University · FIT3179 Data Visualisation 2 · Semester 2, 2026 · Published 22 October 2026
   </p>
 
 </section>

@@ -1,34 +1,35 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "width": "container",
   "height": 560,
-
   "autosize": {
     "type": "fit",
     "contains": "padding",
     "resize": true
   },
-
   "data": {
     "url": "data/breed_temperament_scores.csv"
   },
-
   "title": {
-    "text": "Different Breeds, Different Personality Profiles",
+    "text": "Different breeds, different personality profiles",
     "subtitle": [
       "Comparative breed trait scores from 1 (low) to 5 (high)",
       "Darker cells indicate stronger reported trait scores"
     ],
     "anchor": "start",
-    "fontSize": 21,
-    "subtitleFontSize": 12,
+    "fontSize": 18,
+    "subtitleFontSize": 14,
     "subtitlePadding": 5,
     "offset": 14,
     "color": "#24211E",
-    "subtitleColor": "#6F675F"
+    "subtitleColor": "#5A554F",
+    "font": "Inter",
+    "fontWeight": 700,
+    "lineHeight": 22.5,
+    "subtitleFont": "Inter",
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6
   },
-
   "transform": [
     {
       "fold": [
@@ -39,7 +40,10 @@
         "Trainability",
         "Barking"
       ],
-      "as": ["Trait", "Score"]
+      "as": [
+        "Trait",
+        "Score"
+      ]
     },
     {
       "calculate": "toNumber(datum.Score)",
@@ -50,7 +54,6 @@
       "as": "TraitLabel"
     }
   ],
-
   "layer": [
     {
       "mark": {
@@ -60,7 +63,6 @@
         "strokeWidth": 3,
         "cursor": "pointer"
       },
-
       "encoding": {
         "x": {
           "field": "TraitLabel",
@@ -90,7 +92,6 @@
             "paddingOuter": 0.02
           }
         },
-
         "y": {
           "field": "Breed",
           "type": "nominal",
@@ -126,13 +127,18 @@
             "paddingOuter": 0.02
           }
         },
-
         "color": {
           "field": "ScoreNum",
           "type": "ordinal",
           "title": null,
           "scale": {
-            "domain": [1, 2, 3, 4, 5],
+            "domain": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
             "range": [
               "#DDEDEA",
               "#B9D7D1",
@@ -143,7 +149,6 @@
           },
           "legend": null
         },
-
         "tooltip": [
           {
             "field": "Breed",
@@ -169,7 +174,6 @@
         ]
       }
     },
-
     {
       "mark": {
         "type": "text",
@@ -177,7 +181,6 @@
         "fontSize": 12,
         "fontWeight": "bold"
       },
-
       "encoding": {
         "x": {
           "field": "TraitLabel",
@@ -191,7 +194,6 @@
             "Barking"
           ]
         },
-
         "y": {
           "field": "Breed",
           "type": "nominal",
@@ -213,13 +215,11 @@
             "Australian Cattle Dog"
           ]
         },
-
         "text": {
           "field": "ScoreNum",
           "type": "quantitative",
           "format": ".0f"
         },
-
         "color": {
           "condition": {
             "test": "datum.ScoreNum >= 4",
@@ -230,14 +230,12 @@
       }
     }
   ],
-
   "resolve": {
     "scale": {
       "x": "shared",
       "y": "shared"
     }
   },
-
   "config": {
     "background": "#FFFDF9",
     "view": {
@@ -245,10 +243,19 @@
     },
     "title": {
       "font": "Inter",
-      "subtitleFont": "Inter"
+      "subtitleFont": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     },
     "tooltip": {
       "font": "Inter"
-    }
+    },
+    "font": "Inter"
   }
 }

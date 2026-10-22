@@ -1,30 +1,32 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "width": "container",
   "height": 430,
-
   "autosize": {
     "type": "fit",
     "contains": "padding",
     "resize": true
   },
-
   "title": {
-    "text": "Where Did the World's Dog Breeds Originate?",
+    "text": "Where did the world's dog breeds originate?",
     "subtitle": [
-      "Circle area represents the number of recognised FCI breeds associated with each country",
+      "Each circle shows how many official breeds come from that country",
       "Select a continent to explore • Hover over a circle for country details"
     ],
     "anchor": "start",
-    "fontSize": 19,
-    "subtitleFontSize": 10,
+    "fontSize": 18,
+    "subtitleFontSize": 14,
     "subtitlePadding": 5,
     "offset": 10,
     "color": "#24211E",
-    "subtitleColor": "#6F675F"
+    "subtitleColor": "#5A554F",
+    "font": "Inter",
+    "fontWeight": 700,
+    "lineHeight": 22.5,
+    "subtitleFont": "Inter",
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6
   },
-
   "params": [
     {
       "name": "continent",
@@ -44,19 +46,15 @@
       }
     }
   ],
-
   "projection": {
     "type": "equalEarth",
-
     "center": {
       "expr": "continent === 'Europe' ? [15, 52] : continent === 'Asia' ? [95, 35] : continent === 'Africa' ? [20, 4] : continent === 'North America' ? [-100, 43] : continent === 'South America' ? [-60, -18] : continent === 'Oceania' ? [145, -24] : [0, 8]"
     },
-
     "scale": {
       "expr": "continent === 'Europe' ? 270 : continent === 'Asia' ? 125 : continent === 'Africa' ? 155 : continent === 'North America' ? 130 : continent === 'South America' ? 150 : continent === 'Oceania' ? 220 : 88"
     }
   },
-
   "layer": [
     {
       "data": {
@@ -66,7 +64,6 @@
           "feature": "countries"
         }
       },
-
       "mark": {
         "type": "geoshape",
         "fill": "#ECE8E2",
@@ -74,7 +71,6 @@
         "strokeWidth": 0.7
       }
     },
-
     {
       "data": {
         "url": "data/world_breed_origins.csv",
@@ -87,18 +83,15 @@
           }
         }
       },
-
       "transform": [
         {
           "calculate": "datum.Longitude >= -170 && datum.Longitude <= -20 && datum.Latitude >= 7 ? 'North America' : datum.Longitude >= -90 && datum.Longitude <= -30 && datum.Latitude < 15 ? 'South America' : datum.Longitude >= -25 && datum.Longitude <= 45 && datum.Latitude >= 35 ? 'Europe' : datum.Longitude >= -20 && datum.Longitude <= 55 && datum.Latitude > -35 && datum.Latitude < 35 ? 'Africa' : datum.Longitude >= 110 && datum.Latitude < 0 ? 'Oceania' : datum.Longitude >= 25 ? 'Asia' : 'Europe'",
           "as": "Continent"
         },
-
         {
           "filter": "continent === 'World' || datum.Continent === continent"
         }
       ],
-
       "params": [
         {
           "name": "hoverCountry",
@@ -113,29 +106,24 @@
           }
         }
       ],
-
       "mark": {
         "type": "circle",
         "color": "#C96A4A",
         "cursor": "pointer"
       },
-
       "encoding": {
         "longitude": {
           "field": "Longitude",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "Latitude",
           "type": "quantitative"
         },
-
         "size": {
           "field": "Breed_Count",
           "type": "quantitative",
           "title": "Recognised breeds",
-
           "scale": {
             "domain": [
               1,
@@ -146,7 +134,6 @@
               1100
             ]
           },
-
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
@@ -157,7 +144,6 @@
             "symbolStrokeWidth": 1
           }
         },
-
         "opacity": {
           "condition": {
             "param": "hoverCountry",
@@ -166,7 +152,6 @@
           },
           "value": 0.18
         },
-
         "stroke": {
           "condition": {
             "param": "hoverCountry",
@@ -175,7 +160,6 @@
           },
           "value": "#FFFFFF"
         },
-
         "strokeWidth": {
           "condition": {
             "param": "hoverCountry",
@@ -184,32 +168,27 @@
           },
           "value": 0.9
         },
-
         "tooltip": [
           {
             "field": "Country",
             "type": "nominal",
             "title": "Country"
           },
-
           {
             "field": "Continent",
             "type": "nominal",
             "title": "Continent"
           },
-
           {
             "field": "Breed_Count",
             "type": "quantitative",
             "title": "Recognised breeds"
           },
-
           {
             "field": "Top_Breed_Group",
             "type": "nominal",
             "title": "Most represented FCI group"
           },
-
           {
             "field": "Example_Breeds",
             "type": "nominal",
@@ -219,19 +198,23 @@
       }
     }
   ],
-
   "config": {
     "background": "#FFFDF9",
-
     "view": {
       "stroke": null
     },
-
     "title": {
       "font": "Inter",
-      "subtitleFont": "Inter"
+      "subtitleFont": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     },
-
     "legend": {
       "labelFont": "Inter",
       "titleFont": "Inter",
@@ -240,9 +223,9 @@
       "labelColor": "#6F675F",
       "titleColor": "#24211E"
     },
-
     "tooltip": {
       "font": "Inter"
-    }
+    },
+    "font": "Inter"
   }
 }

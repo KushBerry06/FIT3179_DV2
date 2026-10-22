@@ -2,6 +2,8 @@
 
 Final cleaned project package for the FIT3179 Data Visualisation 2 submission.
 
+Created by **Kush Berry**, Monash University, Semester 2 2026. Published 22 October 2026.
+
 ## Run locally
 Do not open `index.html` directly with `file://`. Start a local web server from this folder:
 
@@ -36,4 +38,4 @@ Then open `http://localhost:8000`.
 The page loads Vega, Vega-Lite and Vega-Embed from jsDelivr. Map geometry is loaded from stable external sources referenced in the relevant specifications. An internet connection is therefore required when viewing the page.
 
 ## Source documentation
-See `data/sources.csv` and the Sources & Notes section at the bottom of `index.html`.
+See `data/sources.csv` and the Sources & Notes section at the bottom of `index.html`. The metadata includes URLs, access dates, licence/use notes and the charts supplied by each source.

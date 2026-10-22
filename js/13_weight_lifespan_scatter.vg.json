@@ -1,15 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "width": "container",
   "height": 470,
-
   "autosize": {
     "type": "fit",
     "contains": "padding",
     "resize": true
   },
-
   "data": {
     "url": "data/breed_characteristics.csv",
     "format": {
@@ -20,22 +17,26 @@
       }
     }
   },
-
   "title": {
-    "text": "Do Heavier Dogs Tend to Have Shorter Lifespans?",
+    "text": "Do heavier dogs tend to have shorter lifespans?",
     "subtitle": [
       "Each point represents one breed",
       "The dashed line shows the overall linear trend"
     ],
     "anchor": "start",
-    "fontSize": 19,
-    "subtitleFontSize": 11,
-    "subtitlePadding": 4,
+    "fontSize": 18,
+    "subtitleFontSize": 14,
+    "subtitlePadding": 5,
     "offset": 12,
     "color": "#24211E",
-    "subtitleColor": "#6F675F"
+    "subtitleColor": "#5A554F",
+    "font": "Inter",
+    "fontWeight": 700,
+    "lineHeight": 22.5,
+    "subtitleFont": "Inter",
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6
   },
-
   "layer": [
     {
       "mark": {
@@ -47,48 +48,52 @@
         "strokeWidth": 1.4,
         "cursor": "pointer"
       },
-
       "encoding": {
         "x": {
           "field": "WeightKg",
           "type": "quantitative",
           "title": "Average weight (kg)",
-
           "scale": {
-            "domain": [0, 72]
+            "domain": [
+              0,
+              72
+            ]
           },
-
           "axis": {
-            "values": [0, 10, 20, 30, 40, 50, 60, 70],
-
+            "values": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60,
+              70
+            ],
             "labelFont": "Inter",
             "titleFont": "Inter",
-
             "labelFontSize": 10,
             "titleFontSize": 11,
             "titleFontWeight": "bold",
-
             "labelColor": "#6F675F",
             "titleColor": "#24211E",
-
             "grid": true,
             "gridColor": "#E9E2D9",
             "gridOpacity": 0.65,
-
             "domain": false,
             "tickColor": "#C9C0B5"
           }
         },
-
         "y": {
           "field": "LifespanYears",
           "type": "quantitative",
           "title": "Average lifespan (years)",
-
           "scale": {
-            "domain": [7.5, 15]
+            "domain": [
+              7.5,
+              15
+            ]
           },
-
           "axis": {
             "values": [
               8,
@@ -100,31 +105,24 @@
               14,
               15
             ],
-
             "labelFont": "Inter",
             "titleFont": "Inter",
-
             "labelFontSize": 10,
             "titleFontSize": 11,
             "titleFontWeight": "bold",
-
             "labelColor": "#6F675F",
             "titleColor": "#24211E",
-
             "grid": true,
             "gridColor": "#E9E2D9",
             "gridOpacity": 0.65,
-
             "domain": false,
             "tickColor": "#C9C0B5"
           }
         },
-
         "color": {
           "field": "Group",
           "type": "nominal",
           "title": "Breed group",
-
           "scale": {
             "domain": [
               "Companion",
@@ -134,7 +132,6 @@
               "Terrier",
               "Working"
             ],
-
             "range": [
               "#4E79A7",
               "#F28E2B",
@@ -144,48 +141,38 @@
               "#EDC948"
             ]
           },
-
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
             "columns": 3,
-
             "titleFont": "Inter",
             "labelFont": "Inter",
-
             "titleFontSize": 10,
             "labelFontSize": 9,
-
             "titleColor": "#514B46",
             "labelColor": "#6F675F",
-
             "symbolType": "circle",
             "symbolSize": 80,
-
             "offset": 14
           }
         },
-
         "tooltip": [
           {
             "field": "Breed",
             "type": "nominal",
             "title": "Breed"
           },
-
           {
             "field": "Group",
             "type": "nominal",
             "title": "Breed group"
           },
-
           {
             "field": "WeightKg",
             "type": "quantitative",
             "title": "Average weight",
             "format": ".1f"
           },
-
           {
             "field": "LifespanYears",
             "type": "quantitative",
@@ -195,7 +182,6 @@
         ]
       }
     },
-
     {
       "transform": [
         {
@@ -203,34 +189,39 @@
           "on": "WeightKg"
         }
       ],
-
       "mark": {
         "type": "line",
-        "strokeDash": [7, 5],
+        "strokeDash": [
+          7,
+          5
+        ],
         "strokeWidth": 2.4,
         "color": "#514B46",
         "opacity": 0.9
       },
-
       "encoding": {
         "x": {
           "field": "WeightKg",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 72]
+            "domain": [
+              0,
+              72
+            ]
           }
         },
-
         "y": {
           "field": "LifespanYears",
           "type": "quantitative",
           "scale": {
-            "domain": [7.5, 15]
+            "domain": [
+              7.5,
+              15
+            ]
           }
         }
       }
     },
-
     {
       "transform": [
         {
@@ -244,7 +235,6 @@
           }
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "left",
@@ -256,52 +246,59 @@
         "fontWeight": "bold",
         "color": "#514B46"
       },
-
       "encoding": {
         "x": {
           "field": "WeightKg",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 72]
+            "domain": [
+              0,
+              72
+            ]
           }
         },
-
         "y": {
           "field": "LifespanYears",
           "type": "quantitative",
           "scale": {
-            "domain": [7.5, 15]
+            "domain": [
+              7.5,
+              15
+            ]
           }
         },
-
         "text": {
           "field": "Breed"
         }
       }
     }
   ],
-
   "resolve": {
     "scale": {
       "x": "shared",
       "y": "shared"
     }
   },
-
   "config": {
     "background": "#FFFDF9",
-
     "view": {
       "stroke": null
     },
-
     "title": {
       "font": "Inter",
-      "subtitleFont": "Inter"
+      "subtitleFont": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     },
-
     "tooltip": {
       "font": "Inter"
-    }
+    },
+    "font": "Inter"
   }
 }

@@ -1,10 +1,11 @@
-Asset,Source,URL
-World breed origins,FCI nomenclature / paiv fci-breeds,https://www.fci.be/en/nomenclature/
-Australian membership,Dogs Australia membership statistics 1995–2025,https://www.dogsaustralia.org.au/media/10432/memberstats_to-2025v2.pdf
-Australian registrations,Dogs Australia national registration statistics,https://www.dogsaustralia.org.au/about-dogs-australia/statistics
-Australian population,"Australian Bureau of Statistics, Dec 2025",https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/dec-2025
-Pet ownership,"Animal Medicines Australia, Pets in Australia 2025",https://animalmedicinesaustralia.org.au/resources/pets-in-australia-a-national-survey-of-pets-and-people-3/
-Breed characteristics,VildMedPap/dogbreeds (DogTime-derived),https://github.com/VildMedPap/dogbreeds
-World boundaries,Natural Earth,https://www.naturalearthdata.com/
-Australia prototype boundaries,rowanhogan/australian-states,https://github.com/rowanhogan/australian-states
-World map geometry,vega-datasets world-110m,https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json
+Dataset / asset,Publisher / source,Year,URL,Date accessed,Licence / use note,Used in
+Official breed nomenclature,Fédération Cynologique Internationale (FCI),2026 access,https://www.fci.be/en/nomenclature/,22 October 2026,No open licence identified in project materials; attributed as official nomenclature source.,World origins; flow map; chord
+Machine-readable FCI breed compilation,paiv/fci-breeds,2016 onward,https://github.com/paiv/fci-breeds,22 October 2026,MIT License.,World origins; chord
+Membership statistics 1995-2025,Dogs Australia,2025,https://www.dogsaustralia.org.au/media/10432/memberstats_to-2025v2.pdf,22 October 2026,Publisher material; used with attribution for academic visualisation.,State choropleth; membership change
+National registration statistics,Dogs Australia,2000-2025,https://www.dogsaustralia.org.au/about-dogs-australia/statistics,22 October 2026,Publisher material; used with attribution for academic visualisation.,Flow map; trend; treemap; bump; slope
+"National, state and territory population",Australian Bureau of Statistics,Dec 2025,https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/dec-2025,22 October 2026,CC BY 4.0 unless otherwise noted by the ABS.,State choropleth
+Pets in Australia 2025,Animal Medicines Australia,2025,https://animalmedicinesaustralia.org.au/resources/pets-in-australia-a-national-survey-of-pets-and-people-3/,22 October 2026,Publisher material; used with attribution for academic visualisation.,Pet ownership waffle
+Dog breed characteristics,"VildMedPap/dogbreeds, derived from DogTime",Repository dataset,https://github.com/VildMedPap/dogbreeds,22 October 2026,No licence file identified in repository; original source credited and dataset attributed.,Heatmap; parallel coordinates; scatter
+World geographic boundaries,Natural Earth,1:110m dataset,https://www.naturalearthdata.com/,22 October 2026,Public domain.,World maps
+Australian state GeoJSON (states.geojson),rowanhogan/australian-states,Repository asset,https://github.com/rowanhogan/australian-states,22 October 2026,No licence file identified in repository; attributed as boundary source.,Australian choropleth
+World 110m TopoJSON distribution,vega-datasets,Current package access,https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json,22 October 2026,Used as delivery source for world basemap geometry.,World proportional-symbol map; flow map

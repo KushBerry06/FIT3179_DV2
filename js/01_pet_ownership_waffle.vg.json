@@ -1,34 +1,35 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-
   "width": 560,
   "height": 420,
-
   "autosize": {
     "type": "fit",
     "contains": "padding",
     "resize": true
   },
-
   "data": {
     "url": "data/pet_ownership_grid_2025.csv"
   },
-
   "title": {
-    "text": "Dogs Are Australia's Most Common Household Pet",
+    "text": "Dogs are Australia's most common household pet",
     "subtitle": [
       "Each grid represents 100 Australian households",
       "Filled squares show households that own each pet type • Categories can overlap"
     ],
     "anchor": "start",
-    "fontSize": 19,
-    "subtitleFontSize": 11,
+    "fontSize": 18,
+    "subtitleFontSize": 14,
     "subtitlePadding": 5,
     "offset": 12,
     "color": "#24211E",
-    "subtitleColor": "#6F675F"
+    "subtitleColor": "#5A554F",
+    "font": "Inter",
+    "fontWeight": 700,
+    "lineHeight": 22.5,
+    "subtitleFont": "Inter",
+    "subtitleFontWeight": 400,
+    "subtitleLineHeight": 19.6
   },
-
   "transform": [
     {
       "calculate": "floor((datum.Cell - 1) / 20) + 1",
@@ -55,7 +56,6 @@
       "as": "PercentageLabel"
     }
   ],
-
   "layer": [
     {
       "mark": {
@@ -65,27 +65,30 @@
         "stroke": "#F7F3EE",
         "strokeWidth": 1
       },
-
       "encoding": {
         "x": {
           "field": "PlotX",
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [0, 31]
+            "domain": [
+              0,
+              31
+            ]
           }
         },
-
         "y": {
           "field": "PlotY",
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [0, 43],
+            "domain": [
+              0,
+              43
+            ],
             "reverse": true
           }
         },
-
         "color": {
           "condition": [
             {
@@ -99,7 +102,6 @@
           ],
           "value": "#CFC8BE"
         },
-
         "opacity": {
           "condition": [
             {
@@ -113,7 +115,6 @@
           ],
           "value": 0.88
         },
-
         "tooltip": [
           {
             "field": "Pet",
@@ -129,14 +130,12 @@
         ]
       }
     },
-
     {
       "transform": [
         {
           "filter": "toNumber(datum.Cell) == 1"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "right",
@@ -146,40 +145,41 @@
         "fontWeight": "bold",
         "fill": "#24211E"
       },
-
       "encoding": {
         "x": {
           "datum": 3.7,
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [0, 31]
+            "domain": [
+              0,
+              31
+            ]
           }
         },
-
         "y": {
           "field": "LabelY",
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [0, 43],
+            "domain": [
+              0,
+              43
+            ],
             "reverse": true
           }
         },
-
         "text": {
           "field": "Pet"
         }
       }
     },
-
     {
       "transform": [
         {
           "filter": "toNumber(datum.Cell) == 1"
         }
       ],
-
       "mark": {
         "type": "text",
         "align": "left",
@@ -188,31 +188,33 @@
         "fontSize": 15,
         "fontWeight": "bold"
       },
-
       "encoding": {
         "x": {
           "datum": 26.3,
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [0, 31]
+            "domain": [
+              0,
+              31
+            ]
           }
         },
-
         "y": {
           "field": "LabelY",
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [0, 43],
+            "domain": [
+              0,
+              43
+            ],
             "reverse": true
           }
         },
-
         "text": {
           "field": "PercentageLabel"
         },
-
         "color": {
           "condition": {
             "test": "datum.Pet === 'Dogs'",
@@ -223,21 +225,26 @@
       }
     }
   ],
-
   "config": {
     "background": "#FFFDF9",
-
     "view": {
       "stroke": null
     },
-
     "title": {
       "font": "Inter",
-      "subtitleFont": "Inter"
+      "subtitleFont": "Inter",
+      "fontSize": 18,
+      "fontWeight": 700,
+      "lineHeight": 22.5,
+      "color": "#24211E",
+      "subtitleFontSize": 14,
+      "subtitleFontWeight": 400,
+      "subtitleLineHeight": 19.6,
+      "subtitleColor": "#5A554F"
     },
-
     "tooltip": {
       "font": "Inter"
-    }
+    },
+    "font": "Inter"
   }
 }
